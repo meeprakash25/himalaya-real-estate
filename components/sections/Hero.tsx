@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+
+import { useEffect, useState } from "react";
 import { Container } from "@/components/layout/container";
 import {
   budgetRanges,
@@ -39,7 +43,7 @@ function SearchField({
   icon: "location" | "home" | "budget";
 }) {
   return (
-    <label htmlFor={id} className="flex min-h-[58px] min-w-0 items-center gap-3 rounded-control border border-border px-3.5 focus-within:ring-2 focus-within:ring-primary">
+    <label htmlFor={id} className="flex min-h-[58px] min-w-0 items-center gap-3 rounded-control border border-border px-3.5">
       <span aria-hidden="true" className="shrink-0 text-primary">
         {icon === "location" ? (
           <PinIcon className="size-5" />
@@ -75,6 +79,17 @@ function SearchField({
 }
 
 export function Hero() {
+  const [transaction, setTransaction] = useState<"buy" | "rent">("buy");
+
+  useEffect(() => {
+    const handleTransactionChange = (event: Event) => {
+      setTransaction((event as CustomEvent<"buy" | "rent">).detail);
+    };
+
+    window.addEventListener("hero-transaction-change", handleTransactionChange);
+    return () => window.removeEventListener("hero-transaction-change", handleTransactionChange);
+  }, []);
+
   return (
     <section className="bg-accent py-8 md:py-10" aria-labelledby="hero-title" data-node-id="2:9438">
       <Container>
@@ -117,15 +132,15 @@ export function Hero() {
           <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
             <fieldset className="flex items-center gap-6" data-node-id="2:9459">
               <legend className="sr-only">Search for a property to buy or rent</legend>
-              <label className="relative cursor-pointer rounded-sm pb-2 text-sm font-bold text-muted has-[:checked]:text-primary focus-within:ring-2 focus-within:ring-primary">
-                <input className="peer sr-only" type="radio" name="transaction" value="buy" defaultChecked />
+              <label className="relative cursor-pointer rounded-sm pb-2 text-sm font-bold text-muted has-[:checked]:text-primary">
+                <input className="peer sr-only" type="radio" name="transaction" value="buy" checked={transaction === "buy"} onChange={() => setTransaction("buy")} />
                 Buy
-                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-checked:bg-primary" />
+                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-checked:bg-primary peer-focus-visible:bg-primary" />
               </label>
-              <label className="relative cursor-pointer rounded-sm pb-2 text-sm font-medium text-muted has-[:checked]:text-primary focus-within:ring-2 focus-within:ring-primary">
-                <input className="peer sr-only" type="radio" name="transaction" value="rent" />
+              <label className="relative cursor-pointer rounded-sm pb-2 text-sm font-medium text-muted has-[:checked]:text-primary">
+                <input className="peer sr-only" type="radio" name="transaction" value="rent" checked={transaction === "rent"} onChange={() => setTransaction("rent")} />
                 Rent
-                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-checked:bg-primary" />
+                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-checked:bg-primary peer-focus-visible:bg-primary" />
               </label>
             </fieldset>
             <p className="text-xs text-muted">A new beginning starts with a search.</p>

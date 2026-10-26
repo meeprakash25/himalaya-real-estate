@@ -9,6 +9,14 @@ import { Container } from "@/components/layout/container";
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  function selectHeroTransaction(label: string) {
+    if (label === "Buy" || label === "Sell") {
+      window.dispatchEvent(new CustomEvent<"buy" | "rent">("hero-transaction-change", { detail: "buy" }));
+    } else if (label === "Rent") {
+      window.dispatchEvent(new CustomEvent<"buy" | "rent">("hero-transaction-change", { detail: "rent" }));
+    }
+  }
+
   return (
     <header className="relative z-10 border-b border-border bg-surface" data-node-id="2:9421">
       <Container className="flex min-h-18 items-center justify-between gap-4 xl:h-22 xl:min-h-0" data-node-id="2:9422">
@@ -38,6 +46,7 @@ export function Navbar() {
               <li key={link.label}>
                 <Link
                   href={link.href}
+                  onClick={() => selectHeroTransaction(link.label)}
                   className="rounded-control text-sm font-medium text-foreground transition-colors hover:text-primary focus-visible:text-primary"
                 >
                   {link.label}
@@ -92,7 +101,10 @@ export function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => {
+                selectHeroTransaction(link.label);
+                setMenuOpen(false);
+              }}
               className="rounded-control px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary hover:text-primary"
             >
               {link.label}
