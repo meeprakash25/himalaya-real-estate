@@ -96,25 +96,42 @@ export function Hero() {
   return (
     <section className="bg-accent py-8 md:py-10" aria-labelledby="hero-title" data-node-id="2:9438">
       <Container>
-        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,580px)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(0,600px)_minmax(0,620px)] xl:gap-5" data-node-id="2:9439">
+        <div
+          className="grid items-center gap-8 lg:grid-cols-[minmax(0,580px)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(0,600px)_minmax(0,620px)] xl:gap-5"
+          data-node-id="2:9439">
           <div className="flex flex-col items-start" data-node-id="2:9440">
             <p className="flex items-center gap-2 text-label leading-[13px] font-bold tracking-[0.08em] text-primary">
               <span aria-hidden="true" className="h-0.5 w-5 bg-primary" />
               YOUR PLACE. YOUR POSSIBILITIES.
             </p>
-            <h1 id="hero-title" className="mt-6 max-w-xl font-heading text-4xl leading-tight font-semibold text-foreground sm:text-5xl xl:mt-7 xl:text-display" data-node-id="2:9444">
-              Find your next<br className="hidden sm:block" /> home in Nepal.
+            <h1
+              id="hero-title"
+              className="mt-6 max-w-xl font-heading text-4xl leading-tight font-semibold text-foreground sm:text-5xl xl:mt-7 xl:text-display"
+              data-node-id="2:9444">
+              Find your next
+              <br className="hidden sm:block" /> home in Nepal.
             </h1>
             <p className="mt-5 max-w-xl text-intro text-muted" data-node-id="2:9445">
               Verified home, land, and commercial spaces to buy or rent, all in one place.
             </p>
-            <ul className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-primary" aria-label="Listing benefits" data-node-id="2:9446">
-              <li className="inline-flex items-center gap-2"><CheckIcon />Verified listings</li>
-              <li className="inline-flex items-center gap-2"><CheckIcon />Local expertise</li>
+            <ul
+              className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-primary"
+              aria-label="Listing benefits"
+              data-node-id="2:9446">
+              <li className="inline-flex items-center gap-2">
+                <CheckIcon />
+                Verified listings
+              </li>
+              <li className="inline-flex items-center gap-2">
+                <CheckIcon />
+                Local expertise
+              </li>
             </ul>
           </div>
 
-          <figure className="relative aspect-[31/21] overflow-hidden rounded-panel lg:h-105 lg:aspect-auto" data-node-id="2:9453">
+          <figure
+            className="relative aspect-[31/21] overflow-hidden rounded-panel lg:h-105 lg:aspect-auto"
+            data-node-id="2:9453">
             <Image
               src="/hero-home.jpg"
               alt="A modern home surrounded by greenery in Nepal"
@@ -125,8 +142,7 @@ export function Hero() {
               data-node-id="2:9454"
             />
             <figcaption className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-control bg-surface px-3 py-2 text-[10px] leading-3 font-medium text-foreground">
-              <PinIcon className="size-3.5 shrink-0" />
-              A little closer to home.
+              <PinIcon className="size-3.5 shrink-0" />A little closer to home.
             </figcaption>
           </figure>
         </div>
@@ -138,37 +154,69 @@ export function Hero() {
               <RadioGroup
                 value={transaction}
                 onValueChange={(value) => {
-                  if (value === "buy" || value === "rent") setTransaction(value);
+                  if (value === "buy" || value === "rent") setTransaction(value)
                 }}
                 aria-label="Transaction type"
-                className="flex w-auto items-center gap-6"
-              >
+                className="flex w-auto items-center gap-6">
                 <div className="relative">
                   <RadioGroupItem id="transaction-buy" value="buy" className="peer sr-only" />
-                  <Label htmlFor="transaction-buy" className={`relative inline-flex cursor-pointer gap-0 rounded-sm pb-2 text-sm leading-normal ${transaction === "buy" ? "font-bold text-primary" : "font-medium text-muted"}`}>
+                  <Label
+                    htmlFor="transaction-buy"
+                    className={`relative inline-flex cursor-pointer gap-0 rounded-sm pb-2 text-sm leading-normal ${transaction === "buy" ? "font-bold text-primary" : "font-medium text-muted"}`}>
                     Buy
                   </Label>
-                  <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-data-checked:bg-primary peer-focus-visible:bg-primary" />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-data-checked:bg-primary peer-focus-visible:bg-primary"
+                  />
                 </div>
                 <div className="relative">
                   <RadioGroupItem id="transaction-rent" value="rent" className="peer sr-only" />
-                  <Label htmlFor="transaction-rent" className={`relative inline-flex cursor-pointer gap-0 rounded-sm pb-2 text-sm leading-normal ${transaction === "rent" ? "font-bold text-primary" : "font-medium text-muted"}`}>
+                  <Label
+                    htmlFor="transaction-rent"
+                    className={`relative inline-flex cursor-pointer gap-0 rounded-sm pb-2 text-sm leading-normal ${transaction === "rent" ? "font-bold text-primary" : "font-medium text-muted"}`}>
                     Rent
                   </Label>
-                  <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-data-checked:bg-primary peer-focus-visible:bg-primary" />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-data-checked:bg-primary peer-focus-visible:bg-primary"
+                  />
                 </div>
               </RadioGroup>
             </fieldset>
             <p className="text-xs text-muted">A new beginning starts with a search.</p>
           </div>
 
-          <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-[repeat(3,minmax(0,1fr))_196px]" data-node-id="2:9467">
-            <SearchField id="location" label="LOCATION" placeholder="City or neighbourhood" options={propertyLocations} icon="location" />
-            <SearchField id="home-type" label="HOME TYPE" placeholder="All property types" options={propertyTypes} icon="home" />
+          <div
+            className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-[repeat(3,minmax(0,1fr))_196px]"
+            data-node-id="2:9467">
+            <SearchField
+              id="location"
+              label="LOCATION"
+              placeholder="City or neighbourhood"
+              options={propertyLocations}
+              icon="location"
+            />
+            <SearchField
+              id="home-type"
+              label="HOME TYPE"
+              placeholder="All property types"
+              options={propertyTypes}
+              icon="home"
+            />
             <SearchField id="budget" label="BUDGET" placeholder="Any budget" options={budgetRanges} icon="budget" />
-            <Button type="button" size="lg" className="h-[50px] self-center rounded-control bg-primary px-5 text-sm font-semibold text-on-primary hover:bg-primary-dark focus-visible:outline-offset-2">
+            <Button
+              type="button"
+              size="lg"
+              className="h-[50px] self-center rounded-control bg-primary px-5 text-sm font-semibold text-on-primary hover:bg-primary-dark focus-visible:outline-offset-2">
               Search properties
-              <svg aria-hidden="true" viewBox="0 0 20 20" className="size-[18px]" fill="none" stroke="currentColor" strokeWidth="1.7">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 20 20"
+                className="size-[18px]"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7">
                 <circle cx="8.75" cy="8.75" r="5.75" />
                 <path d="m13 13 4 4" strokeLinecap="round" />
               </svg>
@@ -182,8 +230,7 @@ export function Hero() {
             <a
               key={search}
               href="#property-search"
-              className="inline-flex min-h-[29px] items-center gap-2 rounded-full border border-border-soft px-3 text-[11px] leading-[13px] text-foreground transition-colors hover:border-primary hover:text-primary"
-            >
+              className="inline-flex min-h-[29px] items-center gap-2 rounded-full border border-border-soft px-3 text-[11px] leading-[13px] text-foreground transition-colors hover:border-primary hover:text-primary">
               {search}
               <Image src="/arrow-up-right.svg" alt="" width={12} height={12} aria-hidden="true" />
             </a>
@@ -191,5 +238,5 @@ export function Hero() {
         </div>
       </Container>
     </section>
-  );
+  )
 }

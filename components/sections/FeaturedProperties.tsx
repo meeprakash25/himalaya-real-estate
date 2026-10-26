@@ -28,7 +28,7 @@ export function FeaturedProperties() {
   return (
     <section
       id="buy"
-      className="bg-background py-14 sm:py-16"
+      className="bg-background pt-14 sm:pt-16 pb-7 sm:pb-8"
       aria-labelledby="featured-properties-title"
       data-node-id="2:9503">
       <Container>

@@ -43,7 +43,7 @@ export function GuidesAndInsights() {
         </header>
 
         <div className="mt-7 grid gap-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-6" data-node-id="2:9762">
-          {guides.map((guide) => (
+          {guides.slice(0, 3).map((guide) => (
             <article key={guide.id} className="group min-w-0" data-node-id={guide.nodeId}>
               <div className="relative aspect-[41/22] overflow-hidden rounded-card" data-node-id={guide.imageNodeId}>
                 <Image
