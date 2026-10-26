@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-primary: #28634b;
+  --color-primary-dark: #173e30;
+  --color-primary-soft: #dce9df;
+  --color-secondary: #ebf2ec;
+  --color-background: #fcfcfa;
+  --color-surface: #ffffff;
+  --color-foreground: #202c27;
+  --color-muted: #6b746e;
+  --color-border: #e1e6df;
+  --color-border-soft: #d9ddd4;
+  --color-accent: #f4f2eb;
+  --color-on-primary: #ffffff;
+  --color-footer-muted: #becfc4;
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-inter);
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1.2;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.25rem;
+  --text-body-sm: 0.8125rem;
+  --text-body-sm--line-height: 1.3125rem;
+  --text-body: 0.9375rem;
+  --text-body--line-height: 1.5rem;
+  --text-title: 2.25rem;
+  --text-title--line-height: 2.6875rem;
+  --text-wordmark: 1.625rem;
+  --text-wordmark--line-height: 1.2;
+  --text-display: 4rem;
+  --text-display--line-height: 4.3125rem;
+  --spacing-section: 5rem;
+  --spacing-card: 1.5rem;
+  --spacing-control: 0.5rem;
+  --radius-control: 0.5rem;
+  --radius-brand: 0.625rem;
+  --radius-card: 1rem;
+  --radius-panel: 1.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 20rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
