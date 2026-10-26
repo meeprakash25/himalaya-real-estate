@@ -4,6 +4,10 @@ import Image from "next/image";
 
 import { useEffect, useState } from "react";
 import { Container } from "@/components/layout/container";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {
   budgetRanges,
   popularSearches,
@@ -42,8 +46,10 @@ function SearchField({
   options: readonly string[];
   icon: "location" | "home" | "budget";
 }) {
+  const [value, setValue] = useState<string | null>(null);
+
   return (
-    <label htmlFor={id} className="flex min-h-[58px] min-w-0 items-center gap-3 rounded-control border border-border px-3.5">
+    <div className="flex min-h-[58px] min-w-0 items-center gap-3 rounded-control border border-border px-3.5">
       <span aria-hidden="true" className="shrink-0 text-primary">
         {icon === "location" ? (
           <PinIcon className="size-5" />
@@ -58,23 +64,20 @@ function SearchField({
           </svg>
         )}
       </span>
-      <span className="flex min-w-0 flex-1 flex-col gap-1">
-        <span className="text-[10px] leading-3 font-semibold tracking-wide text-muted">{label}</span>
-        <select
-          id={id}
-          defaultValue=""
-          className="w-full appearance-none truncate bg-transparent text-[13px] leading-4 text-foreground focus-visible:outline-none"
-        >
-          <option value="" disabled>{placeholder}</option>
-          {options.map((option) => (
-            <option key={option} value={option}>{option}</option>
-          ))}
-        </select>
-      </span>
-      <svg aria-hidden="true" viewBox="0 0 16 16" className="size-4 shrink-0 text-muted" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="m4 6 4 4 4-4" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </label>
+      <div className="flex min-w-0 flex-1 flex-col gap-1">
+        <Label htmlFor={id} className="text-[10px] leading-3 font-semibold tracking-wide text-muted">{label}</Label>
+        <Select value={value} onValueChange={setValue}>
+          <SelectTrigger id={id} className="h-auto w-full min-w-0 justify-between gap-1 border-0 rounded-none bg-transparent py-0 pr-0 pl-0 text-[13px] leading-4 text-foreground shadow-none focus-visible:border-transparent focus-visible:ring-0">
+            <SelectValue placeholder={placeholder} />
+          </SelectTrigger>
+          <SelectContent align="start" className="bg-surface text-foreground">
+            {options.map((option) => (
+              <SelectItem key={option} value={option}>{option}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    </div>
   );
 }
 
@@ -130,18 +133,31 @@ export function Hero() {
 
         <div id="property-search" className="mt-7 rounded-card bg-surface p-4 sm:p-6" data-node-id="2:9458">
           <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
-            <fieldset className="flex items-center gap-6" data-node-id="2:9459">
+            <fieldset className="flex items-center" data-node-id="2:9459">
               <legend className="sr-only">Search for a property to buy or rent</legend>
-              <label className="relative cursor-pointer rounded-sm pb-2 text-sm font-bold text-muted has-[:checked]:text-primary">
-                <input className="peer sr-only" type="radio" name="transaction" value="buy" checked={transaction === "buy"} onChange={() => setTransaction("buy")} />
-                Buy
-                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-checked:bg-primary peer-focus-visible:bg-primary" />
-              </label>
-              <label className="relative cursor-pointer rounded-sm pb-2 text-sm font-medium text-muted has-[:checked]:text-primary">
-                <input className="peer sr-only" type="radio" name="transaction" value="rent" checked={transaction === "rent"} onChange={() => setTransaction("rent")} />
-                Rent
-                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-checked:bg-primary peer-focus-visible:bg-primary" />
-              </label>
+              <RadioGroup
+                value={transaction}
+                onValueChange={(value) => {
+                  if (value === "buy" || value === "rent") setTransaction(value);
+                }}
+                aria-label="Transaction type"
+                className="flex w-auto items-center gap-6"
+              >
+                <div className="relative">
+                  <RadioGroupItem id="transaction-buy" value="buy" className="peer sr-only" />
+                  <Label htmlFor="transaction-buy" className={`relative inline-flex cursor-pointer gap-0 rounded-sm pb-2 text-sm leading-normal ${transaction === "buy" ? "font-bold text-primary" : "font-medium text-muted"}`}>
+                    Buy
+                  </Label>
+                  <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-data-checked:bg-primary peer-focus-visible:bg-primary" />
+                </div>
+                <div className="relative">
+                  <RadioGroupItem id="transaction-rent" value="rent" className="peer sr-only" />
+                  <Label htmlFor="transaction-rent" className={`relative inline-flex cursor-pointer gap-0 rounded-sm pb-2 text-sm leading-normal ${transaction === "rent" ? "font-bold text-primary" : "font-medium text-muted"}`}>
+                    Rent
+                  </Label>
+                  <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-data-checked:bg-primary peer-focus-visible:bg-primary" />
+                </div>
+              </RadioGroup>
             </fieldset>
             <p className="text-xs text-muted">A new beginning starts with a search.</p>
           </div>
@@ -150,13 +166,13 @@ export function Hero() {
             <SearchField id="location" label="LOCATION" placeholder="City or neighbourhood" options={propertyLocations} icon="location" />
             <SearchField id="home-type" label="HOME TYPE" placeholder="All property types" options={propertyTypes} icon="home" />
             <SearchField id="budget" label="BUDGET" placeholder="Any budget" options={budgetRanges} icon="budget" />
-            <button type="button" className="inline-flex min-h-[50px] items-center justify-center gap-3 self-center rounded-control bg-primary px-5 text-sm font-semibold text-on-primary transition-colors hover:bg-primary-dark focus-visible:outline-offset-2">
+            <Button type="button" size="lg" className="h-[50px] self-center rounded-control bg-primary px-5 text-sm font-semibold text-on-primary hover:bg-primary-dark focus-visible:outline-offset-2">
               Search properties
               <svg aria-hidden="true" viewBox="0 0 20 20" className="size-[18px]" fill="none" stroke="currentColor" strokeWidth="1.7">
                 <circle cx="8.75" cy="8.75" r="5.75" />
                 <path d="m13 13 4 4" strokeLinecap="round" />
               </svg>
-            </button>
+            </Button>
           </div>
         </div>
 

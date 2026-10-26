@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { navigationLinks } from "@/data/navigation";
 import { Container } from "@/components/layout/container";
 
@@ -58,14 +59,14 @@ export function Navbar() {
 
         <div className="hidden shrink-0 items-center gap-6 xl:flex" data-node-id="2:9433">
           <Link
-            href="#join"
+            href="/login"
             className="rounded-control text-sm font-semibold text-foreground transition-colors hover:text-primary"
           >
             Join
           </Link>
           <Link
-            href="#list-property"
-            className="inline-flex h-11 items-center gap-3 rounded-control bg-primary px-4.5 text-sm font-semibold text-on-primary transition-colors hover:bg-primary-dark"
+            href="/signup"
+            className={buttonVariants({ variant: "default", size: "lg", className: "h-11 gap-3 rounded-control bg-primary px-4.5 text-sm font-semibold text-on-primary hover:bg-primary-dark" })}
             data-node-id="2:9435"
           >
             List your property
@@ -73,13 +74,15 @@ export function Navbar() {
           </Link>
         </div>
 
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="icon"
           aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
           onClick={() => setMenuOpen((open) => !open)}
-          className="inline-flex size-11 items-center justify-center rounded-control text-foreground transition-colors hover:bg-secondary xl:hidden"
+          className="size-11 rounded-control text-foreground hover:bg-secondary xl:hidden"
         >
           <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
           <span aria-hidden="true" className="flex w-5 flex-col gap-1.5">
@@ -87,7 +90,7 @@ export function Navbar() {
             <span className={`h-0.5 w-full bg-current transition-opacity ${menuOpen ? "opacity-0" : ""}`} />
             <span className={`h-0.5 w-full bg-current transition-transform ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
           </span>
-        </button>
+        </Button>
       </Container>
 
       <nav
@@ -111,16 +114,16 @@ export function Navbar() {
             </Link>
           ))}
           <Link
-            href="#join"
+            href="/login"
             onClick={() => setMenuOpen(false)}
             className="rounded-control px-3 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary hover:text-primary"
           >
             Join
           </Link>
           <Link
-            href="#list-property"
+            href="/signup"
             onClick={() => setMenuOpen(false)}
-            className="mt-2 inline-flex min-h-11 items-center justify-center gap-3 rounded-control bg-primary px-4 text-sm font-semibold text-on-primary transition-colors hover:bg-primary-dark"
+            className={buttonVariants({ variant: "default", size: "lg", className: "mt-2 min-h-11 gap-3 rounded-control bg-primary px-4 text-sm font-semibold text-on-primary hover:bg-primary-dark" })}
           >
             List your property
             <span aria-hidden="true" className="text-lg leading-none">+</span>

@@ -1,5 +1,6 @@
 import { Container } from "@/components/layout/container";
 import { planningTools } from "@/data/planning-tools";
+import { Card } from "@/components/ui/card";
 
 type PlanningIconName = (typeof planningTools)[number]["icon"];
 
@@ -56,7 +57,7 @@ export function PropertyPlanningTools() {
 
         <div className="mt-7 grid gap-5 sm:grid-cols-2 xl:grid-cols-4" data-node-id="2:9717">
           {planningTools.map((tool) => (
-            <article key={tool.id} className="flex min-h-[239px] flex-col rounded-card bg-surface p-6" data-node-id={tool.nodeId}>
+            <Card key={tool.id} className="min-h-[239px] gap-0 rounded-card bg-surface p-6 py-6 ring-0" data-node-id={tool.nodeId}>
               <div className={`flex size-[42px] items-center justify-center rounded-brand ${tool.tone === "sand" ? "bg-accent" : "bg-secondary"}`}>
                 <ToolIcon name={tool.icon} />
               </div>
@@ -70,7 +71,7 @@ export function PropertyPlanningTools() {
                 <span>{tool.action}</span>
                 {tool.tone !== "sand" && <ArrowRightIcon />}
               </div>
-            </article>
+            </Card>
           ))}
         </div>
       </Container>

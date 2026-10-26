@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
+import { buttonVariants } from "@/components/ui/button";
 import { guides } from "@/data/guides-footer";
 
 export function GuidesAndInsights() {
@@ -18,7 +19,7 @@ export function GuidesAndInsights() {
           </div>
           <Link
             href="#guides"
-            className="inline-flex min-h-[50px] shrink-0 items-center justify-center gap-3 self-start rounded-control border border-border px-5 text-sm font-semibold text-primary transition-colors hover:border-primary sm:self-auto"
+            className={buttonVariants({ variant: "outline", size: "lg", className: "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary hover:bg-transparent hover:text-primary sm:self-auto" })}
             data-node-id="2:9759"
           >
             All guides &amp; insights

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
+import { Separator } from "@/components/ui/separator";
 import { footerDescription, footerLinkGroups } from "@/data/guides-footer";
 import { footerCopyright, footerLegalLinks, footerOrigin, footerSocialLinks } from "@/data/site-footer";
 
@@ -44,7 +45,7 @@ export function Footer() {
           </Link>
         </div>
 
-        <div className="mt-10 border-t border-footer-divider" aria-hidden="true" />
+        <Separator className="mt-10 bg-footer-divider" />
 
         <div className="mt-10 grid gap-10 sm:grid-cols-2 xl:grid-cols-[280px_minmax(0,1fr)] xl:gap-12" data-node-id="2:9808">
           <div className="max-w-[280px]" data-node-id="2:9809">
@@ -90,7 +91,7 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-10 border-t border-footer-divider" aria-hidden="true" />
+        <Separator className="mt-10 bg-footer-divider" />
         <div className="mt-10 flex flex-col gap-4 text-micro text-footer-muted sm:flex-row sm:items-center sm:justify-between" data-node-id="2:9856">
           <p data-node-id="2:9857">{footerCopyright}</p>
           <nav aria-label="Legal links" className="flex items-center gap-6">

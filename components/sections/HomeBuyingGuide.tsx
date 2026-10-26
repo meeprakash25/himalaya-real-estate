@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
+import { buttonVariants } from "@/components/ui/button";
 import { homeBuyingGuide } from "@/data/home-buying-guide";
 
 export function HomeBuyingGuide() {
@@ -44,7 +45,7 @@ export function HomeBuyingGuide() {
 
             <Link
               href="#property-search"
-              className="mt-6 inline-flex min-h-[50px] items-center gap-3 rounded-control border border-border px-5 text-sm font-semibold text-primary transition-colors hover:border-primary"
+              className={buttonVariants({ variant: "outline", size: "lg", className: "mt-6 min-h-[50px] gap-3 rounded-control border-border bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary hover:bg-transparent hover:text-primary" })}
               data-node-id="2:9708"
             >
               {homeBuyingGuide.action}

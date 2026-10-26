@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
+import { Card } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { buttonVariants } from "@/components/ui/button";
 import { neighborhoods, propertyCategories } from "@/data/discover-places";
 
 type PropertyIconName = (typeof propertyCategories)[number]["icon"];
@@ -57,7 +60,7 @@ export function DiscoverPlaces() {
             </div>
             <Link
               href="#neighborhoods"
-              className="inline-flex min-h-[50px] shrink-0 items-center justify-center gap-3 self-start rounded-control border border-border bg-surface/50 px-5 text-sm font-semibold text-primary transition-colors hover:border-primary sm:self-auto"
+              className={buttonVariants({ variant: "outline", size: "lg", className: "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border bg-surface/50 px-5 text-sm font-semibold text-primary hover:border-primary hover:bg-surface/50 hover:text-primary sm:self-auto" })}
               data-node-id="2:9598"
             >
               Explore all locations
@@ -90,7 +93,7 @@ export function DiscoverPlaces() {
             ))}
           </div>
 
-          <div className="mt-14 border-t border-divider-soft" aria-hidden="true" />
+          <Separator orientation="horizontal" className="mt-14 bg-divider-soft" />
 
           <section className="mt-14" aria-labelledby="property-types-title" data-node-id="2:9647">
             <div data-node-id="2:9648">
@@ -105,15 +108,17 @@ export function DiscoverPlaces() {
                 <Link
                   key={category.id}
                   href="#property-search"
-                  className="group flex min-h-[140px] flex-col rounded-card bg-surface p-6 transition-colors hover:bg-background focus-visible:outline-offset-4"
+                  className="group block rounded-card focus-visible:outline-offset-4"
                   data-node-id={category.nodeId}
                 >
-                  <PropertyIcon name={category.icon} />
-                  <div className="mt-4.5 flex items-center justify-between gap-3">
-                    <h3 className="font-heading text-neighborhood font-semibold text-foreground">{category.title}</h3>
-                    <ArrowUpRightIcon />
-                  </div>
-                  <p className="mt-1.5 text-detail text-muted">{category.description}</p>
+                  <Card className="min-h-[140px] gap-0 rounded-card border-0 bg-surface p-6 py-6 ring-0 transition-colors group-hover:bg-background">
+                    <PropertyIcon name={category.icon} />
+                    <div className="mt-4.5 flex items-center justify-between gap-3">
+                      <h3 className="font-heading text-neighborhood font-semibold text-foreground">{category.title}</h3>
+                      <ArrowUpRightIcon />
+                    </div>
+                    <p className="mt-1.5 text-detail text-muted">{category.description}</p>
+                  </Card>
                 </Link>
               ))}
             </div>

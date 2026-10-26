@@ -1,6 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { SavePropertyButton } from "@/components/ui/save-property-button";
 import { featuredProperties } from "@/data/featured-properties";
 
@@ -17,6 +28,7 @@ export function FeaturedProperties() {
   return (
     <section id="buy" className="bg-background py-14 sm:py-16" aria-labelledby="featured-properties-title" data-node-id="2:9503">
       <Container>
+        <Carousel aria-label="Featured properties" opts={{ align: "start" }}>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between" data-node-id="2:9504">
           <div>
             <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary">HANDPICKED FOR YOU</p>
@@ -27,32 +39,38 @@ export function FeaturedProperties() {
               Explore standout homes and spaces across the valley.
             </p>
           </div>
-          <Link
-            href="#property-search"
-            className="inline-flex min-h-[50px] shrink-0 items-center justify-center gap-3 self-start rounded-control border border-border px-5 text-sm font-semibold text-primary transition-colors hover:border-primary sm:self-auto"
-            data-node-id="2:9509"
-          >
-            View all properties
-            <svg aria-hidden="true" viewBox="0 0 20 20" className="size-[18px]" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M5 15 15 5M6 5h9v9" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
+          <div className="flex shrink-0 items-center gap-2 self-start sm:self-auto">
+            <Link
+              href="#property-search"
+              className={buttonVariants({ variant: "outline", size: "lg", className: "min-h-[50px] gap-3 rounded-control border-border bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary hover:bg-transparent hover:text-primary" })}
+              data-node-id="2:9509"
+            >
+              View all properties
+              <svg aria-hidden="true" viewBox="0 0 20 20" className="size-[18px]" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M5 15 15 5M6 5h9v9" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+            <CarouselPrevious aria-label="Previous featured properties" className="static my-0 size-10 translate-x-0 translate-y-0 rounded-control border-border bg-surface text-primary hover:bg-secondary" />
+            <CarouselNext aria-label="Next featured properties" className="static my-0 size-10 translate-x-0 translate-y-0 rounded-control border-border bg-surface text-primary hover:bg-secondary" />
+          </div>
         </div>
 
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:mt-7 xl:grid-cols-4 xl:gap-6" data-node-id="2:9512">
-          {featuredProperties.map((property) => (
-            <article key={property.id} className="group overflow-hidden rounded-card border border-border bg-surface" data-node-id={property.nodeId}>
+        <CarouselContent className="-ml-5 mt-8 xl:-ml-6 xl:mt-7" data-node-id="2:9512">
+          {featuredProperties.map((property, index) => (
+            <CarouselItem key={property.id} aria-label={`${index + 1} of ${featuredProperties.length}`} className="pl-5 sm:basis-1/2 xl:basis-1/4 xl:pl-6">
+            <article className="group" data-node-id={property.nodeId}>
+              <Card className="gap-0 overflow-hidden rounded-card border border-border bg-surface p-0 py-0 ring-0">
               <div className="relative aspect-[151/104] overflow-hidden">
                 <Image
                   src={property.image}
                   alt={property.imageAlt}
                   fill
-                  sizes="(min-width: 1280px) 302px, (min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1280px) 402px, (min-width: 640px) 45vw, 100vw"
                   className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                 />
-                <span className="absolute top-3.5 left-3.5 rounded-md bg-surface px-2 py-1.5 text-micro font-semibold leading-3 tracking-wide text-primary">
+                <Badge variant="outline" className="absolute top-3.5 left-3.5 h-auto rounded-md border-0 bg-surface px-2 py-1.5 text-micro leading-3 font-normal tracking-wide text-primary">
                   FOR SALE
-                </span>
+                </Badge>
                 <SavePropertyButton title={property.title} />
               </div>
 
@@ -68,13 +86,17 @@ export function FeaturedProperties() {
                   <MapPinIcon />
                   <p>{property.address}</p>
                 </div>
-                <div className="mt-3 border-t border-border pt-3 text-micro leading-[15px] text-muted">
+                <div className="mt-3 pt-3 text-micro leading-[15px] text-muted">
+                  <Separator className="mb-3" />
                   {property.details}
                 </div>
               </div>
+              </Card>
             </article>
+            </CarouselItem>
           ))}
-        </div>
+        </CarouselContent>
+        </Carousel>
       </Container>
     </section>
   );
