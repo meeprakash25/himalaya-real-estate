@@ -24,21 +24,8 @@ export function Navbar() {
         <Link
           href="/"
           aria-label="Himalaya Real Etate home"
-          className="flex shrink-0 items-center gap-2 focus-visible:rounded-control"
-        >
-          <span className="flex size-9 items-center justify-center rounded-brand bg-primary">
-            <Image
-              src="/nicehomes-house.svg"
-              alt=""
-              width={24}
-              height={24}
-              aria-hidden="true"
-              priority
-            />
-          </span>
-          <span className="font-heading text-[clamp(1rem,5vw,1.625rem)] leading-tight font-bold tracking-tight text-foreground">
-            Himalaya Real Etate
-          </span>
+          className="flex shrink-0 items-center gap-2 focus-visible:rounded-control">
+          <Image src="/hre.png" alt="" width={ 190 } height={ 0 } aria-hidden="true" priority />
         </Link>
 
         <nav aria-label="Main navigation" className="hidden xl:block" data-node-id="2:9426">
@@ -48,8 +35,7 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   onClick={() => selectHeroTransaction(link.label)}
-                  className="rounded-control text-sm font-medium text-foreground transition-colors hover:text-primary focus-visible:text-primary"
-                >
+                  className="rounded-control text-sm font-medium text-foreground transition-colors hover:text-primary focus-visible:text-primary">
                   {link.label}
                 </Link>
               </li>
@@ -60,17 +46,22 @@ export function Navbar() {
         <div className="hidden shrink-0 items-center gap-6 xl:flex" data-node-id="2:9433">
           <Link
             href="/login"
-            className="rounded-control text-sm font-semibold text-foreground transition-colors hover:text-primary"
-          >
+            className="rounded-control text-sm font-semibold text-foreground transition-colors hover:text-primary">
             Join
           </Link>
           <Link
             href="/signup"
-            className={buttonVariants({ variant: "default", size: "lg", className: "h-11 gap-3 rounded-control bg-primary px-4.5 text-sm font-semibold text-on-primary hover:bg-primary-dark" })}
-            data-node-id="2:9435"
-          >
+            className={buttonVariants({
+              variant: "default",
+              size: "lg",
+              className:
+                "h-11 gap-3 rounded-control bg-primary px-4.5 text-sm font-semibold text-on-primary hover:bg-primary-dark",
+            })}
+            data-node-id="2:9435">
             List your property
-            <span aria-hidden="true" className="text-lg leading-none">+</span>
+            <span aria-hidden="true" className="text-lg leading-none">
+              +
+            </span>
           </Link>
         </div>
 
@@ -82,13 +73,16 @@ export function Navbar() {
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
           onClick={() => setMenuOpen((open) => !open)}
-          className="size-11 rounded-control text-foreground hover:bg-secondary xl:hidden"
-        >
+          className="size-11 rounded-control text-foreground hover:bg-secondary xl:hidden">
           <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
           <span aria-hidden="true" className="flex w-5 flex-col gap-1.5">
-            <span className={`h-0.5 w-full bg-current transition-transform ${menuOpen ? "translate-y-2 rotate-45" : ""}`} />
+            <span
+              className={`h-0.5 w-full bg-current transition-transform ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
+            />
             <span className={`h-0.5 w-full bg-current transition-opacity ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`h-0.5 w-full bg-current transition-transform ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+            <span
+              className={`h-0.5 w-full bg-current transition-transform ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
+            />
           </span>
         </Button>
       </Container>
@@ -97,39 +91,42 @@ export function Navbar() {
         id="mobile-navigation"
         aria-label="Mobile navigation"
         hidden={!menuOpen}
-        className="border-t border-border bg-surface xl:hidden"
-      >
+        className="border-t border-border bg-surface xl:hidden">
         <Container className="flex flex-col gap-1 py-4">
           {navigationLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
               onClick={() => {
-                selectHeroTransaction(link.label);
-                setMenuOpen(false);
+                selectHeroTransaction(link.label)
+                setMenuOpen(false)
               }}
-              className="rounded-control px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary hover:text-primary"
-            >
+              className="rounded-control px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary hover:text-primary">
               {link.label}
             </Link>
           ))}
           <Link
             href="/login"
             onClick={() => setMenuOpen(false)}
-            className="rounded-control px-3 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary hover:text-primary"
-          >
+            className="rounded-control px-3 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary hover:text-primary">
             Join
           </Link>
           <Link
             href="/signup"
             onClick={() => setMenuOpen(false)}
-            className={buttonVariants({ variant: "default", size: "lg", className: "mt-2 min-h-11 gap-3 rounded-control bg-primary px-4 text-sm font-semibold text-on-primary hover:bg-primary-dark" })}
-          >
+            className={buttonVariants({
+              variant: "default",
+              size: "lg",
+              className:
+                "mt-2 min-h-11 gap-3 rounded-control bg-primary px-4 text-sm font-semibold text-on-primary hover:bg-primary-dark",
+            })}>
             List your property
-            <span aria-hidden="true" className="text-lg leading-none">+</span>
+            <span aria-hidden="true" className="text-lg leading-none">
+              +
+            </span>
           </Link>
         </Container>
       </nav>
     </header>
-  );
+  )
 }

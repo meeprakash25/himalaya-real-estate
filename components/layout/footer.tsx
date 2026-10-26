@@ -3,6 +3,7 @@ import { Container } from "@/components/layout/container";
 import { Separator } from "@/components/ui/separator";
 import { footerDescription, footerLinkGroups } from "@/data/guides-footer";
 import { footerCopyright, footerLegalLinks, footerOrigin, footerSocialLinks } from "@/data/site-footer";
+import Image from "next/image"
 
 function SocialIcon({ name }: { name: (typeof footerSocialLinks)[number]["icon"] }) {
   if (name === "facebook") {
@@ -50,10 +51,7 @@ export function Footer() {
         <div className="mt-10 grid gap-10 sm:grid-cols-2 xl:grid-cols-[280px_minmax(0,1fr)] xl:gap-12" data-node-id="2:9808">
           <div className="max-w-[280px]" data-node-id="2:9809">
             <Link href="/" aria-label="Himalaya Real Etate home" className="inline-flex items-center gap-2 rounded-control focus-visible:outline-offset-4" data-node-id="2:9810">
-              <span className="flex size-[38px] items-center justify-center rounded-brand bg-primary-soft text-primary-dark">
-                <HouseMark />
-              </span>
-              <span className="font-heading text-xl leading-tight font-bold tracking-tight text-on-primary">Himalaya Real Etate</span>
+              <Image src="/hre-logo-light.png" alt="" width={ 130 } height={ 0 } aria-hidden="true" priority />
             </Link>
             <p className="mt-5 text-body-sm leading-[23px] text-footer-muted" data-node-id="2:9814">{footerDescription}</p>
             <nav aria-label="Social media" className="mt-5">
