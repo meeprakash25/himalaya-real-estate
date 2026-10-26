@@ -19,7 +19,7 @@ export function GuidesAndInsights() {
           </div>
           <Link
             href="#guides"
-            className={buttonVariants({ variant: "outline", size: "lg", className: "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary hover:bg-transparent hover:text-primary sm:self-auto" })}
+            className={buttonVariants({ variant: "outline", size: "lg", className: "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary hover:bg-transparent hover:text-primary sm:self-auto" })}
             data-node-id="2:9759"
           >
             All guides &amp; insights

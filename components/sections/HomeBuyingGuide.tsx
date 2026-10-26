@@ -24,14 +24,20 @@ export function HomeBuyingGuide() {
               <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary" data-node-id="2:9687">
                 {homeBuyingGuide.eyebrow}
               </p>
-              <h2 id="home-buying-guide-title" className="mt-3 font-heading text-title font-semibold text-foreground" data-node-id="2:9688">
+              <h2
+                id="home-buying-guide-title"
+                className="mt-3 font-heading text-title font-semibold text-foreground"
+                data-node-id="2:9688">
                 {homeBuyingGuide.title}
               </h2>
             </div>
 
             <ol className="mt-6 flex flex-col gap-5.5" aria-label="Steps to buying a home" data-node-id="2:9689">
               {homeBuyingGuide.steps.map((step) => (
-                <li key={step.number} className="flex items-start gap-4" data-node-id={`2:${9690 + (Number(step.number) - 1) * 6}`}>
+                <li
+                  key={step.number}
+                  className="flex items-start gap-4"
+                  data-node-id={`2:${9690 + (Number(step.number) - 1) * 6}`}>
                   <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-secondary text-micro font-semibold text-primary">
                     {step.number}
                   </span>
@@ -45,11 +51,21 @@ export function HomeBuyingGuide() {
 
             <Link
               href="#property-search"
-              className={buttonVariants({ variant: "outline", size: "lg", className: "mt-6 min-h-[50px] gap-3 rounded-control border-border bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary hover:bg-transparent hover:text-primary" })}
-              data-node-id="2:9708"
-            >
+              className={buttonVariants({
+                variant: "outline",
+                size: "lg",
+                className:
+                  "mt-6 min-h-[50px] gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary hover:bg-surface/80 hover:text-primary",
+              })}
+              data-node-id="2:9708">
               {homeBuyingGuide.action}
-              <svg aria-hidden="true" viewBox="0 0 20 20" className="size-[18px]" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 20 20"
+                className="size-[18px]"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5">
                 <path d="M5 15 15 5M6 5h9v9" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
@@ -57,5 +73,5 @@ export function HomeBuyingGuide() {
         </div>
       </Container>
     </section>
-  );
+  )
 }
