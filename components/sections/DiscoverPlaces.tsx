@@ -1,0 +1,125 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Container } from "@/components/layout/container";
+import { neighborhoods, propertyCategories } from "@/data/discover-places";
+
+type PropertyIconName = (typeof propertyCategories)[number]["icon"];
+
+function ArrowUpRightIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 20 20" className="size-5 shrink-0 text-primary" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M5 15 15 5M6 5h9v9" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function PropertyIcon({ name }: { name: PropertyIconName }) {
+  const shared = {
+    "aria-hidden": true as const,
+    viewBox: "0 0 28 28",
+    className: "size-7 text-primary",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.6,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+
+  if (name === "house") {
+    return <svg {...shared}><path d="m3 12 11-9 11 9v12H5V12" /><path d="M11 24v-7h6v7" /></svg>;
+  }
+
+  if (name === "land") {
+    return <svg {...shared}><path d="m4 7 13-3 7 4-2 15H6L4 7Z" /><path d="m4 7 7 5 13-4M11 12l-1 11" /></svg>;
+  }
+
+  if (name === "apartment") {
+    return <svg {...shared}><path d="M5 24V4h14v20M19 10h5v14M9 8h2m4 0h1M9 13h2m4 0h1M9 18h2m4 0h1m6-3h1m-1 5h1M3 24h23" /></svg>;
+  }
+
+  return <svg {...shared}><path d="M3 11h22l-2-7H5l-2 7ZM5 11v13h18V11M3 24h22M10 24v-7h8v7" /><path d="M3 11a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 4 0" /></svg>;
+}
+
+export function DiscoverPlaces() {
+  return (
+    <section className="bg-secondary py-14 sm:py-16" aria-labelledby="neighborhoods-title" data-node-id="2:9591">
+      <Container>
+        <div data-node-id="2:9592">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary">FIND YOUR KIND OF NEIGHBOURHOOD</p>
+              <h2 id="neighborhoods-title" className="mt-3 font-heading text-title font-semibold text-foreground" data-node-id="2:9596">
+                Good places. Great possibilities.
+              </h2>
+              <p className="mt-2 text-body text-muted" data-node-id="2:9597">
+                From lively city streets to peaceful foothills, find where you belong.
+              </p>
+            </div>
+            <Link
+              href="#neighborhoods"
+              className="inline-flex min-h-[50px] shrink-0 items-center justify-center gap-3 self-start rounded-control border border-border bg-surface/50 px-5 text-sm font-semibold text-primary transition-colors hover:border-primary sm:self-auto"
+              data-node-id="2:9598"
+            >
+              Explore all locations
+              <ArrowUpRightIcon />
+            </Link>
+          </div>
+
+          <div id="neighborhoods" className="mt-7 grid gap-x-6 gap-y-7 sm:grid-cols-2 xl:grid-cols-3" data-node-id="2:9601">
+            {neighborhoods.map((neighborhood) => (
+              <article key={neighborhood.id} className="min-w-0" data-node-id={neighborhood.nodeId}>
+                <Link href="#property-search" className="group block rounded-card focus-visible:outline-offset-4">
+                  <div className="relative aspect-[20/9] overflow-hidden rounded-control" data-node-id={neighborhood.imageNodeId}>
+                    <Image
+                      src={neighborhood.image}
+                      alt={neighborhood.imageAlt}
+                      fill
+                      sizes="(min-width: 1280px) 411px, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="mt-3 flex items-center justify-between gap-4">
+                    <div>
+                      <h3 className="font-heading text-neighborhood font-semibold text-foreground">{neighborhood.name}</h3>
+                      <p className="mt-1 text-detail text-muted">{neighborhood.description}</p>
+                    </div>
+                    <ArrowUpRightIcon />
+                  </div>
+                </Link>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-14 border-t border-divider-soft" aria-hidden="true" />
+
+          <section className="mt-14" aria-labelledby="property-types-title" data-node-id="2:9647">
+            <div data-node-id="2:9648">
+              <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary">A SPACE FOR EVERY PLAN</p>
+              <h2 id="property-types-title" className="mt-2.5 font-heading text-title font-semibold text-foreground" data-node-id="2:9651">
+                What are you looking for?
+              </h2>
+            </div>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4" data-node-id="2:9652">
+              {propertyCategories.map((category) => (
+                <Link
+                  key={category.id}
+                  href="#property-search"
+                  className="group flex min-h-[140px] flex-col rounded-card bg-surface p-6 transition-colors hover:bg-background focus-visible:outline-offset-4"
+                  data-node-id={category.nodeId}
+                >
+                  <PropertyIcon name={category.icon} />
+                  <div className="mt-4.5 flex items-center justify-between gap-3">
+                    <h3 className="font-heading text-neighborhood font-semibold text-foreground">{category.title}</h3>
+                    <ArrowUpRightIcon />
+                  </div>
+                  <p className="mt-1.5 text-detail text-muted">{category.description}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        </div>
+      </Container>
+    </section>
+  );
+}

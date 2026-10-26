@@ -1,0 +1,63 @@
+export const neighborhoods = [
+  {
+    id: "lalitpur",
+    nodeId: "2:9603",
+    imageNodeId: "2:9604",
+    name: "Lalitpur",
+    description: "Heritage meets modern living",
+    image: "/neighborhood-lalitpur.jpg",
+    imageAlt: "Historic temple architecture in Nepal",
+  },
+  {
+    id: "kathmandu",
+    nodeId: "2:9610",
+    imageNodeId: "2:9611",
+    name: "Kathmandu",
+    description: "At the heart of it all",
+    image: "/neighborhood-kathmandu.jpg",
+    imageAlt: "Swayambhunath Stupa overlooking Kathmandu",
+  },
+  {
+    id: "budhanilakantha",
+    nodeId: "2:9617",
+    imageNodeId: "2:9618",
+    name: "Budhanilakantha",
+    description: "Closer to nature",
+    image: "/neighborhood-budhanilakantha.jpg",
+    imageAlt: "Colorful Nepalese homes among lush greenery",
+  },
+  {
+    id: "chandragiri",
+    nodeId: "2:9625",
+    imageNodeId: "2:9626",
+    name: "Chandragiri",
+    description: "Room to breathe",
+    image: "/neighborhood-chandragiri.jpg",
+    imageAlt: "Green Himalayan hills and a suspension bridge in Nepal",
+  },
+  {
+    id: "mahalaxmi",
+    nodeId: "2:9632",
+    imageNodeId: "2:9633",
+    name: "Mahalaxmi",
+    description: "A growing place to call home",
+    image: "/neighborhood-mahalaxmi.jpg",
+    imageAlt: "Aerial view of a green Nepalese residential neighborhood",
+  },
+  {
+    id: "godawari",
+    nodeId: "2:9639",
+    imageNodeId: "2:9640",
+    name: "Godawari",
+    description: "A greener way of living",
+    image: "/neighborhood-godawari.jpg",
+    imageAlt: "Aerial view of green hills and valleys in Nepal",
+  },
+] as const;
+
+export const propertyCategories = [
+  { id: "house", nodeId: "2:9654", title: "House", description: "A home of your own", icon: "house" },
+  { id: "land", nodeId: "2:9661", title: "Land", description: "Build your possibilities", icon: "land" },
+  { id: "apartment", nodeId: "2:9668", title: "Apartment", description: "Make city living yours", icon: "apartment" },
+  { id: "commercial", nodeId: "2:9675", title: "Commercial", description: "Space for your next idea", icon: "commercial" },
+] as const;

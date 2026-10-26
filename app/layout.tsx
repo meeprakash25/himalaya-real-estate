@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import "./globals.css";
 
@@ -9,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "NiceHomes Nepal | Find your place",
+  title: "Himalaya Real Etate | Find your place",
   description: "Discover verified homes, land, and commercial spaces across Nepal.",
 };
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

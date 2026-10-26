@@ -14,7 +14,7 @@ export function Navbar() {
       <Container className="flex min-h-18 items-center justify-between gap-4 xl:h-22 xl:min-h-0" data-node-id="2:9422">
         <Link
           href="/"
-          aria-label="NiceHomes home"
+          aria-label="Himalaya Real Etate home"
           className="flex shrink-0 items-center gap-2 focus-visible:rounded-control"
         >
           <span className="flex size-9 items-center justify-center rounded-brand bg-primary">
@@ -27,8 +27,8 @@ export function Navbar() {
               priority
             />
           </span>
-          <span className="font-heading text-wordmark font-bold tracking-tight text-foreground">
-            nicehomes
+          <span className="font-heading text-[clamp(1rem,5vw,1.625rem)] leading-tight font-bold tracking-tight text-foreground">
+            Himalaya Real Etate
           </span>
         </Link>
 
