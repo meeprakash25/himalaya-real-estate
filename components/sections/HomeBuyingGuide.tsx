@@ -55,7 +55,7 @@ export function HomeBuyingGuide() {
                 variant: "outline",
                 size: "lg",
                 className:
-                  "mt-6 min-h-[50px] gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary hover:bg-surface/80 hover:text-primary",
+                  "mt-6 min-h-[50px] gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary",
               })}
               data-node-id="2:9708">
               {homeBuyingGuide.action}

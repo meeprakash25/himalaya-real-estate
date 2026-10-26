@@ -53,7 +53,7 @@ export function FeaturedProperties() {
                   variant: "outline",
                   size: "lg",
                   className:
-                    "min-h-[50px] gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary hover:bg-surface/80 hover:text-primary",
+                    "min-h-[50px] gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary",
                 })}
                 data-node-id="2:9509">
                 View all properties

@@ -26,7 +26,7 @@ export function GuidesAndInsights() {
               variant: "outline",
               size: "lg",
               className:
-                "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary hover:bg-surface/80 hover:text-primary sm:self-auto",
+                "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary sm:self-auto",
             })}
             data-node-id="2:9759">
             All guides &amp; insights

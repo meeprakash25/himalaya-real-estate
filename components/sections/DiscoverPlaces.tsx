@@ -60,7 +60,7 @@ export function DiscoverPlaces() {
             </div>
             <Link
               href="#neighborhoods"
-              className={buttonVariants({ variant: "outline", size: "lg", className: "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border! bg-surface/50 px-5 text-sm font-semibold text-primary hover:border-primary hover:bg-surface/80 hover:text-primary sm:self-auto" })}
+              className={buttonVariants({ variant: "outline", size: "lg", className: "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border! bg-surface/50 px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary sm:self-auto" })}
               data-node-id="2:9598"
             >
               Explore all locations
