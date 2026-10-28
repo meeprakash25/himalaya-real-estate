@@ -13,17 +13,17 @@ export function SellerInvitation () {
       data-node-id="2:9581">
       <Container>
         <div
-          className="grid overflow-hidden rounded-panel bg-primary-dark lg:grid-cols-[minmax(0,820fr)_minmax(0,460fr)]"
+          className="grid overflow-hidden rounded-panel bg-footer-background lg:grid-cols-[minmax(0,820fr)_minmax(0,460fr)]"
           data-node-id="2:9582">
           <div
             className="flex flex-col items-start justify-center px-6 py-10 sm:px-8 lg:p-12"
             data-node-id="2:9583">
-            <p className="text-micro leading-3 font-semibold tracking-[0.08em] text-primary-soft" data-node-id="2:9584">
+            <p className="text-micro leading-3 font-semibold tracking-[0.08em] text-footer-muted" data-node-id="2:9584">
               {sellerInvitation.eyebrow}
             </p>
             <h2
               id="seller-invitation-title"
-              className="mt-5 max-w-3xl font-heading text-3xl leading-tight font-semibold text-on-primary sm:text-promo-title"
+              className="mt-5 max-w-3xl font-heading text-3xl leading-tight font-semibold text-footer-foreground sm:text-promo-title"
               data-node-id="2:9585">
               {sellerInvitation.title}
             </h2>

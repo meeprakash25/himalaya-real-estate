@@ -8,6 +8,8 @@ import { Container } from "@/components/layout/container"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { navigationLinks } from "@/data/navigation"
 
+import { ModeToggle } from "../navbar/ModeToggle"
+
 export function Navbar () {
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -26,7 +28,7 @@ export function Navbar () {
           href="/"
           aria-label="Himalaya Real Etate home"
           className="flex shrink-0 items-center gap-2 focus-visible:rounded-control">
-          <Image src="/hre.png" alt="" width={ 190 } height={ 0 } aria-hidden="true" priority />
+          <Image src="/hre.png" alt="" width={600} height={140} aria-hidden="true" className="h-auto w-[190px] dark:brightness-0 dark:invert" priority />
         </Link>
 
         <nav aria-label="Main navigation" className="hidden xl:block" data-node-id="2:9426">
@@ -45,6 +47,7 @@ export function Navbar () {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-6 xl:flex" data-node-id="2:9433">
+          <ModeToggle />
           <Link
             href="/login"
             className="rounded-control text-sm font-semibold text-foreground transition-colors hover:text-primary">
@@ -56,7 +59,7 @@ export function Navbar () {
               variant: "default",
               size: "lg",
               className:
-                "h-11 gap-3 rounded-control bg-primary px-4.5 text-sm font-semibold text-on-primary hover:bg-primary-dark"
+                "h-11 gap-3 rounded-control bg-primary px-4.5 text-sm font-semibold text-on-primary hover:bg-primary-dark",
             })}
             data-node-id="2:9435">
             List your property
@@ -119,7 +122,7 @@ export function Navbar () {
               variant: "default",
               size: "lg",
               className:
-                "mt-2 min-h-11 gap-3 rounded-control bg-primary px-4 text-sm font-semibold text-on-primary hover:bg-primary-dark"
+                "mt-2 min-h-11 gap-3 rounded-control bg-primary px-4 text-sm font-semibold text-on-primary hover:bg-primary-dark",
             })}>
             List your property
             <span aria-hidden="true" className="text-lg leading-none">

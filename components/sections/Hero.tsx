@@ -69,7 +69,7 @@ function SearchField ({
               )}
       </span>
       <div className="flex min-w-0 flex-1 flex-col gap-1">
-        <Label htmlFor={id} className="text-[10px] leading-3 font-semibold tracking-wide text-muted">{label}</Label>
+        <Label htmlFor={id} className="text-[10px] leading-3 font-semibold tracking-wide text-muted-foreground">{label}</Label>
         <Select value={value} onValueChange={setValue}>
           <SelectTrigger id={id} className="h-auto w-full min-w-0 justify-between gap-1 rounded-none border-0 bg-transparent p-0 text-[13px] leading-4 text-foreground shadow-none focus-visible:border-transparent focus-visible:ring-0">
             <SelectValue placeholder={placeholder} />
@@ -115,7 +115,7 @@ export function Hero () {
               Find your next
               <br className="hidden sm:block" /> home in Nepal.
             </h1>
-            <p className="mt-5 max-w-xl text-intro text-muted" data-node-id="2:9445">
+            <p className="mt-5 max-w-xl text-intro text-muted-foreground" data-node-id="2:9445">
               Verified home, land, and commercial spaces to buy or rent, all in one place.
             </p>
             <ul
@@ -166,7 +166,7 @@ export function Hero () {
                   <RadioGroupItem id="transaction-buy" value="buy" className="peer sr-only" />
                   <Label
                     htmlFor="transaction-buy"
-                    className={`relative inline-flex cursor-pointer gap-0 rounded-sm pb-2 text-sm leading-normal ${transaction === "buy" ? "font-bold text-primary" : "font-medium text-muted"}`}>
+                    className={`relative inline-flex cursor-pointer gap-0 rounded-sm pb-2 text-sm leading-normal ${transaction === "buy" ? "font-bold text-primary" : "font-medium text-muted-foreground"}`}>
                     Buy
                   </Label>
                   <span
@@ -178,7 +178,7 @@ export function Hero () {
                   <RadioGroupItem id="transaction-rent" value="rent" className="peer sr-only" />
                   <Label
                     htmlFor="transaction-rent"
-                    className={`relative inline-flex cursor-pointer gap-0 rounded-sm pb-2 text-sm leading-normal ${transaction === "rent" ? "font-bold text-primary" : "font-medium text-muted"}`}>
+                    className={`relative inline-flex cursor-pointer gap-0 rounded-sm pb-2 text-sm leading-normal ${transaction === "rent" ? "font-bold text-primary" : "font-medium text-muted-foreground"}`}>
                     Rent
                   </Label>
                   <span
@@ -188,7 +188,7 @@ export function Hero () {
                 </div>
               </RadioGroup>
             </fieldset>
-            <p className="text-xs text-muted">A new beginning starts with a search.</p>
+            <p className="text-xs text-muted-foreground">A new beginning starts with a search.</p>
           </div>
 
           <div
@@ -229,14 +229,16 @@ export function Hero () {
         </div>
 
         <div className="mt-6 flex flex-wrap items-center gap-2.5" role="group" aria-label="Popular searches">
-          <span className="mr-1 text-xs font-semibold text-muted">Popular searches</span>
+          <span className="mr-1 text-xs font-semibold text-muted-foreground">Popular searches</span>
           {popularSearches.map((search) => (
             <a
               key={search}
               href="#property-search"
               className="inline-flex min-h-[29px] items-center gap-2 rounded-full border border-border-soft px-3 text-[11px] leading-[13px] text-foreground transition-colors hover:border-primary hover:text-primary">
               {search}
-              <Image src="/icons/arrow-up-right.svg" alt="" width={12} height={12} aria-hidden="true" />
+              <svg aria-hidden="true" viewBox="0 0 12 12" className="size-3 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.2">
+                <path d="M8.5 8.5v-5H3.5m5 0-5 5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </a>
           ))}
         </div>

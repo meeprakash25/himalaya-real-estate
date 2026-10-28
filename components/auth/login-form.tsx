@@ -98,23 +98,23 @@ export function LoginForm () {
 
       <div className="flex items-center gap-2">
         <Checkbox id="remember" checked={remember} onCheckedChange={(checked) => setRemember(checked === true)} />
-        <Label htmlFor="remember" className="cursor-pointer text-sm font-normal text-muted">Remember me</Label>
+        <Label htmlFor="remember" className="cursor-pointer text-sm font-normal text-muted-foreground">Remember me</Label>
       </div>
 
       <Button type="submit" size="lg" disabled={submitting} className="h-11 w-full bg-primary text-primary-foreground hover:bg-primary-dark">
         {submitting ? "Signing in..." : "Log in"}
       </Button>
-      <p role="status" aria-live="polite" className="text-center text-sm text-muted">{status}</p>
+      <p role="status" aria-live="polite" className="text-center text-sm text-muted-foreground">{status}</p>
 
       <div className="flex items-center gap-3" aria-label="Or continue with">
         <Separator className="flex-1" />
-        <span className="shrink-0 text-xs text-muted">Or continue with</span>
+        <span className="shrink-0 text-xs text-muted-foreground">Or continue with</span>
         <Separator className="flex-1" />
       </div>
 
       <GoogleAuthButton />
 
-      <p className="text-center text-sm text-muted">
+      <p className="text-center text-sm text-muted-foreground">
         Don&apos;t have an account?{" "}
         <Link href="/signup" className="font-semibold text-primary underline-offset-4 hover:underline">Sign up</Link>
       </p>

@@ -139,7 +139,7 @@ export function SignupForm () {
                 setValue("termsAccepted", accepted, { shouldValidate: true })
               }}
             />
-            <Label htmlFor="terms-accepted" className="cursor-pointer text-sm leading-5 font-normal text-muted">
+            <Label htmlFor="terms-accepted" className="cursor-pointer text-sm leading-5 font-normal text-muted-foreground">
               I agree to the <Link href="#terms" className="font-medium text-primary underline-offset-4 hover:underline">terms and conditions</Link>
             </Label>
           </div>
@@ -149,17 +149,17 @@ export function SignupForm () {
         <Button type="submit" size="lg" disabled={submitting} className="h-11 w-full bg-primary text-primary-foreground hover:bg-primary-dark">
           {submitting ? "Creating account..." : "Create account"}
         </Button>
-        <p role="status" aria-live="polite" className="text-center text-sm text-muted">{status}</p>
+        <p role="status" aria-live="polite" className="text-center text-sm text-muted-foreground">{status}</p>
 
         <div className="flex items-center gap-3" aria-label="Or continue with">
           <Separator className="flex-1" />
-          <span className="shrink-0 text-xs text-muted">Or continue with</span>
+          <span className="shrink-0 text-xs text-muted-foreground">Or continue with</span>
           <Separator className="flex-1" />
         </div>
 
         <GoogleAuthButton />
 
-        <p className="text-center text-sm text-muted">
+        <p className="text-center text-sm text-muted-foreground">
           Already have an account?{" "}
           <Link href="/login" className="font-semibold text-primary underline-offset-4 hover:underline">Log in</Link>
         </p>

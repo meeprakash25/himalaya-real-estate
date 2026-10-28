@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint --fix"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
@@ -17,6 +17,7 @@
     "eslint-plugin-tailwindcss": "^4.4.0",
     "lucide-react": "^1.61.0",
     "next": "16.4.3",
+    "next-themes": "^0.4.6",
     "prettier": "^3.9.10",
     "react": "19.3.0",
     "react-dom": "19.3.0",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.7",
     "@tailwindcss/turbopack": "^4",
+    "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -40,5 +42,11 @@
     "eslint-plugin-promise": "^6.6.0",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "packageManager": "npm@10.9.2",
+  "overrides": {
+    "react": "$react",
+    "react-dom": "$react-dom",
+    "eslint": "$eslint"
   }
 }

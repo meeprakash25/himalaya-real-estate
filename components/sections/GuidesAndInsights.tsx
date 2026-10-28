@@ -60,14 +60,14 @@ export function GuidesAndInsights () {
                 <div className="flex items-center gap-3">
                   <span className="text-article-meta font-bold tracking-[0.06em] text-primary">{guide.category}</span>
                   <span aria-hidden="true" className="size-[3px] rounded-full bg-muted" />
-                  <span className="text-micro leading-3 text-muted">{guide.readingTime}</span>
+                  <span className="text-micro leading-3 text-muted-foreground">{guide.readingTime}</span>
                 </div>
                 <h3 className="mt-3 font-heading text-article-title font-semibold text-foreground">
                   <Link href={guide.href} className="rounded-sm hover:text-primary">
                     {guide.title}
                   </Link>
                 </h3>
-                <p className="mt-3 text-body-sm text-muted">{guide.excerpt}</p>
+                <p className="mt-3 text-body-sm text-muted-foreground">{guide.excerpt}</p>
                 <Link
                   href={guide.href}
                   className="mt-3 inline-flex items-center gap-2 text-tool-action font-semibold text-primary hover:text-primary-dark">

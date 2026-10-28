@@ -55,7 +55,7 @@ export function DiscoverPlaces () {
               <h2 id="neighborhoods-title" className="mt-3 font-heading text-title font-semibold text-foreground" data-node-id="2:9596">
                 Good places. Great possibilities.
               </h2>
-              <p className="mt-2 text-body text-muted" data-node-id="2:9597">
+              <p className="mt-2 text-body text-muted-foreground" data-node-id="2:9597">
                 From lively city streets to peaceful foothills, find where you belong.
               </p>
             </div>
@@ -85,7 +85,7 @@ export function DiscoverPlaces () {
                   <div className="mt-3 flex items-center justify-between gap-4">
                     <div>
                       <h3 className="font-heading text-neighborhood font-semibold text-foreground">{neighborhood.name}</h3>
-                      <p className="mt-1 text-detail text-muted">{neighborhood.description}</p>
+                      <p className="mt-1 text-detail text-muted-foreground">{neighborhood.description}</p>
                     </div>
                     <ArrowUpRightIcon />
                   </div>
@@ -118,7 +118,7 @@ export function DiscoverPlaces () {
                       <h3 className="font-heading text-neighborhood font-semibold text-foreground">{category.title}</h3>
                       <ArrowUpRightIcon />
                     </div>
-                    <p className="mt-1.5 text-detail text-muted">{category.description}</p>
+                    <p className="mt-1.5 text-detail text-muted-foreground">{category.description}</p>
                   </Card>
                 </Link>
               ))}

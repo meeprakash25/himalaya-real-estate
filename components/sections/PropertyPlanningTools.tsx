@@ -50,7 +50,7 @@ export function PropertyPlanningTools () {
           <h2 id="planning-tools-title" className="mt-2.5 font-heading text-title font-semibold text-foreground" data-node-id="2:9715">
             Big decisions. Useful little tools.
           </h2>
-          <p className="mt-2.5 text-body text-muted" data-node-id="2:9716">
+          <p className="mt-2.5 text-body text-muted-foreground" data-node-id="2:9716">
             Work out the numbers before you take the next step.
           </p>
         </header>
@@ -64,10 +64,10 @@ export function PropertyPlanningTools () {
 
               <div className="mt-4.5">
                 <h3 className="min-h-11 font-heading text-tool-title font-semibold text-foreground">{tool.title}</h3>
-                <p className="mt-2 min-h-[46px] text-body-sm text-muted">{tool.description}</p>
+                <p className="mt-2 min-h-[46px] text-body-sm text-muted-foreground">{tool.description}</p>
               </div>
 
-              <div className={`mt-auto flex items-center gap-1.5 pt-4.5 text-tool-action font-semibold ${tool.tone === "sand" ? "text-muted" : "text-primary"}`}>
+              <div className={`mt-auto flex items-center gap-1.5 pt-4.5 text-tool-action font-semibold ${tool.tone === "sand" ? "text-muted-foreground" : "text-primary"}`}>
                 <span>{tool.action}</span>
                 {tool.tone !== "sand" && <ArrowRightIcon />}
               </div>

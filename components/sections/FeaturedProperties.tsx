@@ -18,7 +18,7 @@ import { featuredProperties } from "@/data/featured-properties"
 
 function MapPinIcon () {
   return (
-    <svg aria-hidden="true" viewBox="0 0 16 16" className="size-3.5 shrink-0 text-muted" fill="none" stroke="currentColor" strokeWidth="1.4">
+    <svg aria-hidden="true" viewBox="0 0 16 16" className="size-3.5 shrink-0 text-muted-foreground" fill="none" stroke="currentColor" strokeWidth="1.4">
       <path d="M13 6.67c0 3.67-5 7.33-5 7.33S3 10.34 3 6.67a5 5 0 1 1 10 0Z" strokeLinecap="round" strokeLinejoin="round" />
       <circle cx="8" cy="6.67" r="1.67" />
     </svg>
@@ -43,7 +43,7 @@ export function FeaturedProperties () {
                 data-node-id="2:9507">
                 A place for your next chapter.
               </h2>
-              <p className="mt-2 text-body text-muted" data-node-id="2:9508">
+              <p className="mt-2 text-body text-muted-foreground" data-node-id="2:9508">
                 Explore standout homes and spaces across the valley.
               </p>
             </div>
@@ -106,16 +106,16 @@ export function FeaturedProperties () {
                     <div className="p-4 sm:p-4.5">
                       <div className="flex min-h-7 items-center justify-between gap-2">
                         <p className="font-heading text-price leading-[27px] text-primary">{property.price}</p>
-                        <span className="text-micro leading-3 text-muted">{property.type}</span>
+                        <span className="text-micro leading-3 text-muted-foreground">{property.type}</span>
                       </div>
                       <h3 className="mt-3 min-h-[70px] text-card-title font-semibold text-foreground">
                         {property.title}
                       </h3>
-                      <div className="flex items-start gap-1.5 text-micro leading-[18px] text-muted">
+                      <div className="flex items-start gap-1.5 text-micro leading-[18px] text-muted-foreground">
                         <MapPinIcon />
                         <p>{property.address}</p>
                       </div>
-                      <div className="mt-3 pt-3 text-micro leading-[15px] text-muted">
+                      <div className="mt-3 pt-3 text-micro leading-[15px] text-muted-foreground">
                         <Separator className="mb-3" />
                         {property.details}
                       </div>
@@ -128,5 +128,5 @@ export function FeaturedProperties () {
         </Carousel>
       </Container>
     </section>
-  );
+  )
 }

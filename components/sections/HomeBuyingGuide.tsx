@@ -44,7 +44,7 @@ export function HomeBuyingGuide () {
                   </span>
                   <div>
                     <h3 className="text-[15px] leading-[18px] font-semibold text-foreground">{step.title}</h3>
-                    <p className="mt-1.5 text-body-sm text-muted">{step.description}</p>
+                    <p className="mt-1.5 text-body-sm text-muted-foreground">{step.description}</p>
                   </div>
                 </li>
               ))}
