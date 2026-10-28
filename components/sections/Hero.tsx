@@ -71,7 +71,7 @@ function SearchField ({
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <Label htmlFor={id} className="text-[10px] leading-3 font-semibold tracking-wide text-muted">{label}</Label>
         <Select value={value} onValueChange={setValue}>
-          <SelectTrigger id={id} className="h-auto w-full min-w-0 justify-between gap-1 border-0 rounded-none bg-transparent py-0 pr-0 pl-0 text-[13px] leading-4 text-foreground shadow-none focus-visible:border-transparent focus-visible:ring-0">
+          <SelectTrigger id={id} className="h-auto w-full min-w-0 justify-between gap-1 rounded-none border-0 bg-transparent p-0 text-[13px] leading-4 text-foreground shadow-none focus-visible:border-transparent focus-visible:ring-0">
             <SelectValue placeholder={placeholder} />
           </SelectTrigger>
           <SelectContent align="start" className="bg-surface text-foreground">
@@ -134,7 +134,7 @@ export function Hero () {
           </div>
 
           <figure
-            className="relative aspect-[31/21] overflow-hidden rounded-panel lg:h-105 lg:aspect-auto"
+            className="relative aspect-31/21 overflow-hidden rounded-panel lg:aspect-auto lg:h-105"
             data-node-id="2:9453">
             <Image
               src="/images/hero-home.jpg"
@@ -171,7 +171,7 @@ export function Hero () {
                   </Label>
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-data-checked:bg-primary peer-focus-visible:bg-primary"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-focus-visible:bg-primary peer-data-checked:bg-primary"
                   />
                 </div>
                 <div className="relative">
@@ -183,7 +183,7 @@ export function Hero () {
                   </Label>
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-data-checked:bg-primary peer-focus-visible:bg-primary"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-transparent peer-focus-visible:bg-primary peer-data-checked:bg-primary"
                   />
                 </div>
               </RadioGroup>

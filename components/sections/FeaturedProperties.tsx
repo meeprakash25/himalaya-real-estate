@@ -28,7 +28,7 @@ export function FeaturedProperties () {
   return (
     <section
       id="buy"
-      className="bg-background pt-14 sm:pt-16 pb-7 sm:pb-8"
+      className="bg-background pt-14 pb-7 sm:pt-16 sm:pb-8"
       aria-labelledby="featured-properties-title"
       data-node-id="2:9503">
       <Container>
@@ -53,7 +53,7 @@ export function FeaturedProperties () {
                   variant: "outline",
                   size: "lg",
                   className:
-                    "min-h-[50px] gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary"
+                    "min-h-[50px] gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary",
                 })}
                 data-node-id="2:9509">
                 View all properties
@@ -69,16 +69,16 @@ export function FeaturedProperties () {
               </Link>
               <CarouselPrevious
                 aria-label="Previous featured properties"
-                className="static my-0 size-10 translate-x-0 translate-y-0 rounded-control border-border bg-surface text-primary hover:bg-secondary"
+                className="static my-0 size-10 translate-0 rounded-control border-border bg-surface text-primary hover:bg-secondary"
               />
               <CarouselNext
                 aria-label="Next featured properties"
-                className="static my-0 size-10 translate-x-0 translate-y-0 rounded-control border-border bg-surface text-primary hover:bg-secondary"
+                className="static my-0 size-10 translate-0 rounded-control border-border bg-surface text-primary hover:bg-secondary"
               />
             </div>
           </div>
 
-          <CarouselContent className="-ml-5 mt-8 xl:-ml-6 xl:mt-7" data-node-id="2:9512">
+          <CarouselContent className="mt-8 -ml-5 xl:mt-7 xl:-ml-6" data-node-id="2:9512">
             {featuredProperties.map((property, index) => (
               <CarouselItem
                 key={property.id}
@@ -86,7 +86,7 @@ export function FeaturedProperties () {
                 className="pl-5 sm:basis-1/2 xl:basis-1/4 xl:pl-6">
                 <article className="group" data-node-id={property.nodeId}>
                   <Card className="gap-0 overflow-hidden rounded-card border border-border bg-surface p-0 py-0 ring-0">
-                    <div className="relative aspect-[151/104] overflow-hidden">
+                    <div className="relative aspect-151/104 overflow-hidden">
                       <Image
                         src={property.image}
                         alt={property.imageAlt}
@@ -127,5 +127,5 @@ export function FeaturedProperties () {
         </Carousel>
       </Container>
     </section>
-  )
+  );
 }

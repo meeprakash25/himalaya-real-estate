@@ -28,7 +28,7 @@ export default function BlogPage () {
           <div className="mt-7 grid gap-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-6">
             {blogPosts.map((post) => (
               <article key={post.id} className="group min-w-0">
-                <div className="relative aspect-[41/22] overflow-hidden rounded-card">
+                <div className="relative aspect-41/22 overflow-hidden rounded-card">
                   <Image
                     src={post.image}
                     alt={post.imageAlt}

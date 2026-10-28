@@ -41,7 +41,7 @@ export function Footer () {
         <Separator className="mt-10 bg-footer-divider" />
 
         <div className="mt-10 grid gap-10 sm:grid-cols-2 xl:grid-cols-[280px_minmax(0,1fr)] xl:gap-12" data-node-id="2:9808">
-          <div className="max-w-[280px]" data-node-id="2:9809">
+          <div className="max-w-70" data-node-id="2:9809">
             <Link href="/" aria-label="Himalaya Real Etate home" className="inline-flex items-center gap-2 rounded-control focus-visible:outline-offset-4" data-node-id="2:9810">
               <Image src="/hre-logo-light.png" alt="" width={ 130 } height={ 0 } aria-hidden="true" priority />
             </Link>

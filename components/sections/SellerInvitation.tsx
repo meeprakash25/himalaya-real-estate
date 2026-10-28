@@ -7,7 +7,7 @@ export function SellerInvitation () {
   return (
     <section
       id="sell"
-      className="bg-background pt-7 sm:pt-8 pb-14 sm:pb-16"
+      className="bg-background pt-7 pb-14 sm:pt-8 sm:pb-16"
       aria-labelledby="seller-invitation-title"
       data-node-id="2:9581">
       <Container>
@@ -15,7 +15,7 @@ export function SellerInvitation () {
           className="grid overflow-hidden rounded-panel bg-primary-dark lg:grid-cols-[minmax(0,820fr)_minmax(0,460fr)]"
           data-node-id="2:9582">
           <div
-            className="flex flex-col items-start justify-center px-6 py-10 sm:px-8 lg:px-12 lg:py-12"
+            className="flex flex-col items-start justify-center px-6 py-10 sm:px-8 lg:p-12"
             data-node-id="2:9583">
             <p className="text-micro leading-3 font-semibold tracking-[0.08em] text-primary-soft" data-node-id="2:9584">
               {sellerInvitation.eyebrow}
@@ -46,7 +46,7 @@ export function SellerInvitation () {
             </Link>
           </div>
 
-          <div className="relative aspect-[4/3] min-h-64 lg:aspect-auto lg:min-h-[342px]" data-node-id="2:9590">
+          <div className="relative aspect-4/3 min-h-64 lg:aspect-auto lg:min-h-[342px]" data-node-id="2:9590">
             <Image
               src="/images/seller-invitation.jpg"
               alt={sellerInvitation.imageAlt}

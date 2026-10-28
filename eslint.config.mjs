@@ -24,6 +24,11 @@ const eslintConfig = defineConfig([
       }
     }
   },
+  {
+    rules: {
+      "tailwindcss/no-unnecessary-arbitrary-value": "off"
+    }
+  },
   eslintConfigPrettier,
 
   {

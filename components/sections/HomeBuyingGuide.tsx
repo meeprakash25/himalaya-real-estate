@@ -8,8 +8,8 @@ export function HomeBuyingGuide () {
   return (
     <section className="bg-background py-14 sm:py-16" aria-labelledby="home-buying-guide-title" data-node-id="2:9682">
       <Container>
-        <div className="grid items-center gap-8 xl:grid-cols-[minmax(0,544px)_minmax(0,1fr)] xl:gap-[72px]">
-          <div className="relative aspect-[544/490] overflow-hidden rounded-panel" data-node-id="2:9683">
+        <div className="grid items-center gap-8 xl:grid-cols-[minmax(0,544px)_minmax(0,1fr)] xl:gap-18">
+          <div className="relative aspect-544/490 overflow-hidden rounded-panel" data-node-id="2:9683">
             <Image
               src="/images/home-buying-guide.jpg"
               alt={homeBuyingGuide.imageAlt}

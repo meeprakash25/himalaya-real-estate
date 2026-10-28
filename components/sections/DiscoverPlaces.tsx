@@ -72,7 +72,7 @@ export function DiscoverPlaces () {
             {neighborhoods.map((neighborhood) => (
               <article key={neighborhood.id} className="min-w-0" data-node-id={neighborhood.nodeId}>
                 <Link href="#property-search" className="group block rounded-card focus-visible:outline-offset-4">
-                  <div className="relative aspect-[20/9] overflow-hidden rounded-control" data-node-id={neighborhood.imageNodeId}>
+                  <div className="relative aspect-20/9 overflow-hidden rounded-control" data-node-id={neighborhood.imageNodeId}>
                     <Image
                       src={neighborhood.image}
                       alt={neighborhood.imageAlt}
@@ -111,7 +111,7 @@ export function DiscoverPlaces () {
                   className="group block rounded-card focus-visible:outline-offset-4"
                   data-node-id={category.nodeId}
                 >
-                  <Card className="min-h-[140px] gap-0 rounded-card border-0 bg-surface p-6 py-6 ring-0 transition-colors group-hover:bg-background">
+                  <Card className="min-h-35 gap-0 rounded-card border-0 bg-surface p-6 py-6 ring-0 transition-colors group-hover:bg-background">
                     <PropertyIcon name={category.icon} />
                     <div className="mt-4.5 flex items-center justify-between gap-3">
                       <h3 className="font-heading text-neighborhood font-semibold text-foreground">{category.title}</h3>

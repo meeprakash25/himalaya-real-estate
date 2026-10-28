@@ -101,14 +101,14 @@ export function Navbar () {
                 selectHeroTransaction(link.label)
                 setMenuOpen(false)
               }}
-              className="rounded-control px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary hover:text-primary">
+              className="rounded-control p-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary hover:text-primary">
               {link.label}
             </Link>
           ))}
           <Link
             href="/login"
             onClick={() => setMenuOpen(false)}
-            className="rounded-control px-3 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary hover:text-primary">
+            className="rounded-control p-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary hover:text-primary">
             Join
           </Link>
           <Link
