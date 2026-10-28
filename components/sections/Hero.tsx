@@ -1,10 +1,10 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 import { Container } from "@/components/layout/container"
-import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -14,6 +14,7 @@ import {
   propertyLocations,
   propertyTypes
 } from "@/data/hero"
+import { normalizeBudgetFilter, propertiesHref } from "@/data/property-search"
 
 function CheckIcon () {
   return (
@@ -38,16 +39,18 @@ function SearchField ({
   label,
   placeholder,
   options,
-  icon
+  icon,
+  value,
+  onChange
 }: {
   id: string;
   label: string;
   placeholder: string;
   options: readonly string[];
   icon: "location" | "home" | "budget";
+  value: string | null;
+  onChange: (value: string | null) => void;
 }) {
-  const [value, setValue] = useState<string | null>(null)
-
   return (
     <div className="flex min-h-[58px] min-w-0 items-center gap-3 rounded-control border border-border px-3.5">
       <span aria-hidden="true" className="shrink-0 text-primary">
@@ -70,7 +73,7 @@ function SearchField ({
       </span>
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <Label htmlFor={id} className="text-[10px] leading-3 font-semibold tracking-wide text-muted-foreground">{label}</Label>
-        <Select value={value} onValueChange={setValue}>
+        <Select value={value} onValueChange={onChange}>
           <SelectTrigger id={id} className="h-auto w-full min-w-0 justify-between gap-1 rounded-none border-0 bg-transparent p-0 text-[13px] leading-4 text-foreground shadow-none focus-visible:border-transparent focus-visible:ring-0">
             <SelectValue placeholder={placeholder} />
           </SelectTrigger>
@@ -87,6 +90,9 @@ function SearchField ({
 
 export function Hero () {
   const [transaction, setTransaction] = useState<"buy" | "rent">("buy")
+  const [location, setLocation] = useState<string | null>(null)
+  const [homeType, setHomeType] = useState<string | null>(null)
+  const [budget, setBudget] = useState<string | null>(null)
 
   useEffect(() => {
     const handleTransactionChange = (event: Event) => {
@@ -200,6 +206,8 @@ export function Hero () {
               placeholder="City or neighbourhood"
               options={propertyLocations}
               icon="location"
+              value={location}
+              onChange={setLocation}
             />
             <SearchField
               id="home-type"
@@ -207,12 +215,13 @@ export function Hero () {
               placeholder="All property types"
               options={propertyTypes}
               icon="home"
+              value={homeType}
+              onChange={setHomeType}
             />
-            <SearchField id="budget" label="BUDGET" placeholder="Any budget" options={budgetRanges} icon="budget" />
-            <Button
-              type="button"
-              size="lg"
-              className="h-[50px] self-center rounded-control bg-primary px-5 text-sm font-semibold text-on-primary hover:bg-primary-dark focus-visible:outline-offset-2">
+            <SearchField id="budget" label="BUDGET" placeholder="Any budget" options={budgetRanges} icon="budget" value={budget} onChange={setBudget} />
+            <Link
+              href={propertiesHref({ transaction, location: location ?? undefined, type: homeType ?? undefined, budget: normalizeBudgetFilter(budget ?? "any") })}
+              className="inline-flex h-[50px] items-center justify-center gap-2 self-center rounded-control bg-primary px-5 text-sm font-semibold text-on-primary hover:bg-primary-dark focus-visible:outline-offset-2">
               Search properties
               <svg
                 aria-hidden="true"
@@ -224,7 +233,7 @@ export function Hero () {
                 <circle cx="8.75" cy="8.75" r="5.75" />
                 <path d="m13 13 4 4" strokeLinecap="round" />
               </svg>
-            </Button>
+            </Link>
           </div>
         </div>
 
@@ -233,7 +242,13 @@ export function Hero () {
           {popularSearches.map((search) => (
             <a
               key={search}
-              href="#property-search"
+              href={propertiesHref(search.toLowerCase().includes("rent")
+                ? { transaction: "rent", location: "Bhaisepati" }
+                : search.toLowerCase().includes("land")
+                  ? { type: "Land", location: "Kathmandu" }
+                  : search.toLowerCase().includes("apartment")
+                    ? { type: "Apartment" }
+                    : { type: "House", location: "Lalitpur" })}
               className="inline-flex min-h-[29px] items-center gap-2 rounded-full border border-border-soft px-3 text-[11px] leading-[13px] text-foreground transition-colors hover:border-primary hover:text-primary">
               {search}
               <svg aria-hidden="true" viewBox="0 0 12 12" className="size-3 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.2">

@@ -51,7 +51,7 @@ export function HomeBuyingGuide () {
             </ol>
 
             <Link
-              href="#property-search"
+              href="/blog"
               className={buttonVariants({
                 variant: "outline",
                 size: "lg",

@@ -6,6 +6,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { neighborhoods, propertyCategories } from "@/data/discover-places"
+import { propertiesHref } from "@/data/property-search"
 
 type PropertyIconName = (typeof propertyCategories)[number]["icon"];
 
@@ -60,7 +61,7 @@ export function DiscoverPlaces () {
               </p>
             </div>
             <Link
-              href="#neighborhoods"
+              href={propertiesHref()}
               className={buttonVariants({ variant: "outline", size: "lg", className: "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border! bg-surface/50 px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary sm:self-auto" })}
               data-node-id="2:9598"
             >
@@ -72,7 +73,7 @@ export function DiscoverPlaces () {
           <div id="neighborhoods" className="mt-7 grid gap-x-6 gap-y-7 sm:grid-cols-2 xl:grid-cols-3" data-node-id="2:9601">
             {neighborhoods.map((neighborhood) => (
               <article key={neighborhood.id} className="min-w-0" data-node-id={neighborhood.nodeId}>
-                <Link href="#property-search" className="group block rounded-card focus-visible:outline-offset-4">
+                <Link href={propertiesHref({ location: neighborhood.name })} className="group block rounded-card focus-visible:outline-offset-4">
                   <div className="relative aspect-20/9 overflow-hidden rounded-control" data-node-id={neighborhood.imageNodeId}>
                     <Image
                       src={neighborhood.image}
@@ -108,7 +109,7 @@ export function DiscoverPlaces () {
               {propertyCategories.map((category) => (
                 <Link
                   key={category.id}
-                  href="#property-search"
+                  href={propertiesHref({ type: category.title })}
                   className="group block rounded-card focus-visible:outline-offset-4"
                   data-node-id={category.nodeId}
                 >

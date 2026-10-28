@@ -5,8 +5,8 @@ export const footerSocialLinks = [
 ] as const
 
 export const footerLegalLinks = [
-  { label: "Privacy policy", href: "#footer" },
-  { label: "Terms of use", href: "#footer" }
+  { label: "Privacy policy", href: "#" },
+  { label: "Terms of use", href: "#" }
 ] as const
 
 export const footerCopyright = "© 2026 Himalaya Real Etate. All rights reserved."

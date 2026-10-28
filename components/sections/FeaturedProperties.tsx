@@ -14,7 +14,8 @@ import {
 } from "@/components/ui/carousel"
 import { SavePropertyButton } from "@/components/ui/save-property-button"
 import { Separator } from "@/components/ui/separator"
-import { featuredProperties } from "@/data/featured-properties"
+import { properties } from "@/data/properties"
+import { propertiesHref } from "@/data/property-search"
 
 function MapPinIcon () {
   return (
@@ -49,7 +50,7 @@ export function FeaturedProperties () {
             </div>
             <div className="flex shrink-0 items-center gap-2 self-start sm:self-auto">
               <Link
-                href="#property-search"
+                href={propertiesHref()}
                 className={buttonVariants({
                   variant: "outline",
                   size: "lg",
@@ -80,21 +81,23 @@ export function FeaturedProperties () {
           </div>
 
           <CarouselContent className="mt-8 -ml-5 xl:mt-7 xl:-ml-6" data-node-id="2:9512">
-            {featuredProperties.map((property, index) => (
+            {properties.map((property, index) => (
               <CarouselItem
                 key={property.id}
-                aria-label={`${index + 1} of ${featuredProperties.length}`}
+                aria-label={`${index + 1} of ${properties.length}`}
                 className="pl-5 sm:basis-1/2 xl:basis-1/4 xl:pl-6">
                 <article className="group" data-node-id={property.nodeId}>
                   <Card className="gap-0 overflow-hidden rounded-card border border-border bg-surface p-0 py-0 ring-0">
                     <div className="relative aspect-151/104 overflow-hidden">
-                      <Image
-                        src={property.image}
-                        alt={property.imageAlt}
-                        fill
-                        sizes="(min-width: 1280px) 402px, (min-width: 640px) 45vw, 100vw"
-                        className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                      />
+                      <Link href={`/properties/${property.id}`} aria-label={`View ${property.title} photos`} className="absolute inset-0">
+                        <Image
+                          src={property.image}
+                          alt={property.imageAlt}
+                          fill
+                          sizes="(min-width: 1280px) 402px, (min-width: 640px) 45vw, 100vw"
+                          className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                        />
+                      </Link>
                       <Badge
                         variant="outline"
                         className="absolute top-3.5 left-3.5 h-auto rounded-md border-0 bg-surface px-2 py-1.5 text-micro leading-3 font-normal tracking-wide text-primary">
@@ -103,7 +106,7 @@ export function FeaturedProperties () {
                       <SavePropertyButton title={property.title} />
                     </div>
 
-                    <div className="p-4 sm:p-4.5">
+                    <Link href={`/properties/${property.id}`} className="block rounded-b-card p-4 focus-visible:outline-offset-[-3px] sm:p-4.5">
                       <div className="flex min-h-7 items-center justify-between gap-2">
                         <p className="font-heading text-price leading-[27px] text-primary">{property.price}</p>
                         <span className="text-micro leading-3 text-muted-foreground">{property.type}</span>
@@ -119,7 +122,7 @@ export function FeaturedProperties () {
                         <Separator className="mb-3" />
                         {property.details}
                       </div>
-                    </div>
+                    </Link>
                   </Card>
                 </article>
               </CarouselItem>

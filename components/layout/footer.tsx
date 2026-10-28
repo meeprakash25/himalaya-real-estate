@@ -28,7 +28,7 @@ export function Footer () {
             <p className="mt-2.5 text-sm leading-[21px] text-footer-muted" data-node-id="2:9803">Let’s find a place for your next chapter.</p>
           </div>
           <Link
-            href="#property-search"
+            href="/properties"
             className="inline-flex min-h-[50px] shrink-0 items-center justify-center gap-3 self-start rounded-control bg-surface px-5 text-sm font-semibold text-primary transition-colors hover:bg-primary-soft lg:self-auto"
             data-node-id="2:9804"
           >
@@ -52,7 +52,7 @@ export function Footer () {
                 {footerSocialLinks.map((social) => (
                   <li key={social.icon}>
                     <a
-                      href="#footer"
+                      href="#"
                       aria-label={social.label}
                       className="inline-flex size-[34px] items-center justify-center rounded-full border border-footer-divider text-footer-muted transition-colors hover:bg-surface/10 hover:text-footer-foreground"
                     >
