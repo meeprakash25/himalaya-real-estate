@@ -37,8 +37,6 @@ export const listingBudgetOptions = [
   { value: "above-5", label: "Above Rs 5 Cr" }
 ]
 
-export const listingBedroomOptions = ["2", "3", "4", "5+"]
-
 export const listingSortOptions = [
   { value: "newest", label: "Newest" },
   { value: "price-low", label: "Price: low to high" },

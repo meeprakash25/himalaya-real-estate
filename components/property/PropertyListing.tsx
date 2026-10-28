@@ -13,7 +13,6 @@ import { properties, type Property } from "@/data/properties"
 import {
   bedroomHomeLinks,
   homeownerBenefits,
-  listingBedroomOptions,
   listingBudgetOptions,
   listingPopularSearches,
   listingSortOptions,
@@ -93,7 +92,7 @@ function ListingSelect ({ label, value, onChange, options, className = "" }: { l
   return (
     <label className={`flex min-w-0 flex-col gap-1 text-[10px] font-semibold tracking-wide text-muted-foreground dark:text-footer-muted ${className}`}>
       {label}
-      <select value={value} onChange={(event) => onChange(event.target.value)} className="h-9 w-full min-w-0 rounded-control border border-border bg-transparent px-2 text-xs font-medium tracking-normal text-foreground dark:border-footer-divider/50 dark:text-footer-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring">
+      <select value={value} onChange={(event) => onChange(event.target.value)} className="h-9 w-full min-w-0 rounded-control border border-border bg-transparent px-2 text-xs font-medium tracking-normal text-foreground dark:border-footer-divider/50 dark:text-footer-foreground outline-none!">
         {options.map((option) => <option key={option.value} value={option.value} className="bg-card text-foreground">{option.label}</option>)}
       </select>
     </label>
@@ -127,6 +126,7 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
       const count = property.detail?.overview.bedrooms ?? 0
       const price = priceValue(property)
       const matchesBudget = budget === "any" || (budget === "under-1" && price < 1) || (budget === "1-3" && price >= 1 && price < 3) || (budget === "3-5" && price >= 3 && price <= 5) || (budget === "above-5" && price > 5)
+
       const matchesBedrooms = !bedrooms || (bedrooms === "5+" ? count >= 5 : count === Number(bedrooms))
 
       return transaction === "buy" && (!normalizedQuery || text.includes(normalizedQuery)) && (location === "all" || listingLocation.includes(location.toLowerCase())) && (type === "all" || property.type === type) && matchesBudget && matchesBedrooms
@@ -169,8 +169,8 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
         <Container className="py-3">
           <div className="grid gap-2 sm:grid-cols-[auto_minmax(150px,1fr)_repeat(3,minmax(120px,0.6fr))_auto] sm:items-end">
             <div className="flex items-center gap-1 rounded-control bg-muted p-1 text-xs font-semibold dark:bg-surface/10">
-              <button type="button" aria-pressed={transaction === "buy"} onClick={() => setTransaction("buy")} className={`rounded-sm px-3 py-2 ${transaction === "buy" ? "bg-surface text-foreground" : "text-foreground hover:bg-muted dark:text-footer-foreground dark:hover:bg-surface/10"}`}>Buy</button>
-              <button type="button" aria-pressed={transaction === "rent"} onClick={() => setTransaction("rent")} className={`rounded-sm px-3 py-2 ${transaction === "rent" ? "bg-surface text-foreground" : "text-foreground hover:bg-muted dark:text-footer-foreground dark:hover:bg-surface/10"}`}>Rent</button>
+              <button type="button" aria-pressed={transaction === "buy"} onClick={() => setTransaction("buy")} className={`rounded-sm px-3 py-2 ${transaction === "buy" ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted dark:text-footer-foreground dark:hover:bg-surface/10"}`}>Buy</button>
+              <button type="button" aria-pressed={transaction === "rent"} onClick={() => setTransaction("rent")} className={`rounded-sm px-3 py-2 ${transaction === "rent" ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted dark:text-footer-foreground dark:hover:bg-surface/10"}`}>Rent</button>
             </div>
             <label className="relative flex h-10 min-w-0 items-center gap-2 rounded-control bg-surface px-3 text-foreground">
               <Search aria-hidden="true" className="size-4 shrink-0 text-muted-foreground" />
@@ -199,7 +199,7 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
                 <div className="flex items-center justify-between gap-3 sm:justify-end">
                   {hasFilters && <button type="button" onClick={clearFilters} className="text-xs font-medium text-primary hover:underline">Clear filters</button>}
                   <label className="flex items-center gap-2 text-xs text-muted-foreground">Sort by
-                    <select value={sort} onChange={(event) => setSort(event.target.value)} className="h-9 rounded-control border border-border bg-card px-2 text-xs font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                    <select value={sort} onChange={(event) => setSort(event.target.value)} className="h-9 rounded-control border border-border bg-card px-2 text-xs font-medium text-foreground outline-none!">
                       {listingSortOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
                     </select>
                   </label>
@@ -216,13 +216,6 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
                   : visibleProperties.map((property) => <PropertyCard key={property.id} property={property} grid={view === "grid"} />)}
               </div>
               {visibleProperties.length === 0 && <div className="mt-4 rounded-card border border-dashed border-border bg-card px-5 py-10 text-center"><p className="font-medium text-foreground">No properties found</p><p className="mt-1 text-sm text-muted-foreground">Try adjusting your location, budget, or keyword.</p><button type="button" onClick={clearFilters} className="mt-4 text-sm font-semibold text-primary hover:underline">Reset filters</button></div>}
-            </section>
-
-            <section className="mt-6 rounded-card border border-border bg-card p-4 sm:flex sm:items-center sm:justify-between sm:px-5" aria-labelledby="bedroom-filter-title">
-              <h2 id="bedroom-filter-title" className="text-sm font-semibold text-foreground">How many bedrooms?</h2>
-              <div className="mt-3 flex flex-wrap gap-2 sm:mt-0" role="group" aria-label="Filter by bedrooms">
-                {listingBedroomOptions.map((count) => <button key={count} type="button" aria-pressed={bedrooms === count} onClick={() => setBedrooms(bedrooms === count ? "" : count)} className={`min-h-9 rounded-control border px-3 text-xs font-medium transition-colors ${bedrooms === count ? "border-primary bg-primary text-primary-foreground" : "border-border bg-background text-foreground hover:border-primary hover:text-primary"}`}>{count} Beds</button>)}
-              </div>
             </section>
 
             <section className="mt-9" aria-labelledby="area-snapshots-title">
