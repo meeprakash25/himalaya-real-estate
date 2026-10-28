@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Eye, EyeOff } from "lucide-react"
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
-export function PasswordInput({
+export function PasswordInput ({
   className = "",
   ...props
 }: Omit<React.ComponentProps<typeof Input>, "type">) {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   return (
     <div className="relative">
@@ -30,5 +30,5 @@ export function PasswordInput({
         {visible ? <EyeOff aria-hidden="true" /> : <Eye aria-hidden="true" />}
       </Button>
     </div>
-  );
+  )
 }

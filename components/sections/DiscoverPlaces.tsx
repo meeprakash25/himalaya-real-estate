@@ -1,22 +1,22 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Container } from "@/components/layout/container";
-import { Card } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { buttonVariants } from "@/components/ui/button";
-import { neighborhoods, propertyCategories } from "@/data/discover-places";
+import Image from "next/image"
+import Link from "next/link"
+import { Container } from "@/components/layout/container"
+import { Card } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { buttonVariants } from "@/components/ui/button"
+import { neighborhoods, propertyCategories } from "@/data/discover-places"
 
 type PropertyIconName = (typeof propertyCategories)[number]["icon"];
 
-function ArrowUpRightIcon() {
+function ArrowUpRightIcon () {
   return (
     <svg aria-hidden="true" viewBox="0 0 20 20" className="size-5 shrink-0 text-primary" fill="none" stroke="currentColor" strokeWidth="1.5">
       <path d="M5 15 15 5M6 5h9v9" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
-  );
+  )
 }
 
-function PropertyIcon({ name }: { name: PropertyIconName }) {
+function PropertyIcon ({ name }: { name: PropertyIconName }) {
   const shared = {
     "aria-hidden": true as const,
     viewBox: "0 0 28 28",
@@ -25,25 +25,25 @@ function PropertyIcon({ name }: { name: PropertyIconName }) {
     stroke: "currentColor",
     strokeWidth: 1.6,
     strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
+    strokeLinejoin: "round" as const
+  }
 
   if (name === "house") {
-    return <svg {...shared}><path d="m3 12 11-9 11 9v12H5V12" /><path d="M11 24v-7h6v7" /></svg>;
+    return <svg {...shared}><path d="m3 12 11-9 11 9v12H5V12" /><path d="M11 24v-7h6v7" /></svg>
   }
 
   if (name === "land") {
-    return <svg {...shared}><path d="m4 7 13-3 7 4-2 15H6L4 7Z" /><path d="m4 7 7 5 13-4M11 12l-1 11" /></svg>;
+    return <svg {...shared}><path d="m4 7 13-3 7 4-2 15H6L4 7Z" /><path d="m4 7 7 5 13-4M11 12l-1 11" /></svg>
   }
 
   if (name === "apartment") {
-    return <svg {...shared}><path d="M5 24V4h14v20M19 10h5v14M9 8h2m4 0h1M9 13h2m4 0h1M9 18h2m4 0h1m6-3h1m-1 5h1M3 24h23" /></svg>;
+    return <svg {...shared}><path d="M5 24V4h14v20M19 10h5v14M9 8h2m4 0h1M9 13h2m4 0h1M9 18h2m4 0h1m6-3h1m-1 5h1M3 24h23" /></svg>
   }
 
-  return <svg {...shared}><path d="M3 11h22l-2-7H5l-2 7ZM5 11v13h18V11M3 24h22M10 24v-7h8v7" /><path d="M3 11a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 4 0" /></svg>;
+  return <svg {...shared}><path d="M3 11h22l-2-7H5l-2 7ZM5 11v13h18V11M3 24h22M10 24v-7h8v7" /><path d="M3 11a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 4 0" /></svg>
 }
 
-export function DiscoverPlaces() {
+export function DiscoverPlaces () {
   return (
     <section className="bg-secondary py-14 sm:py-16" aria-labelledby="neighborhoods-title" data-node-id="2:9591">
       <Container>
@@ -126,5 +126,5 @@ export function DiscoverPlaces() {
         </div>
       </Container>
     </section>
-  );
+  )
 }

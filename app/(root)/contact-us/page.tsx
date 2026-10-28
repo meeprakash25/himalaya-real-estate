@@ -1,6 +1,6 @@
-import { Container } from "@/components/layout/container";
+import { Container } from "@/components/layout/container"
 
-export default function HelpPage() {
+export default function HelpPage () {
   return (
     <main id="main-content" className="flex-1">
       <section className="py-20 sm:py-28" aria-labelledby="page-title">
@@ -10,5 +10,5 @@ export default function HelpPage() {
         </Container>
       </section>
     </main>
-  );
+  )
 }

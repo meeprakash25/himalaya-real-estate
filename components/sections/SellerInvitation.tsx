@@ -1,9 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Container } from "@/components/layout/container";
-import { sellerInvitation } from "@/data/seller-invitation";
+import Image from "next/image"
+import Link from "next/link"
+import { Container } from "@/components/layout/container"
+import { sellerInvitation } from "@/data/seller-invitation"
 
-export function SellerInvitation() {
+export function SellerInvitation () {
   return (
     <section
       id="sell"

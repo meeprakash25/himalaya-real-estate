@@ -4,5 +4,5 @@ export const navigationLinks = [
   { label: "Rent", href: "/#rent" },
   { label: "Blog", href: "/blog" },
   // { label: "Calculator", href: "/calculator" },
-  { label: "Help", href: "/help" },
-] as const;
+  { label: "Help", href: "/help" }
+] as const

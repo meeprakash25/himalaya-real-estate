@@ -3,13 +3,13 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  CardTitle
+} from "@/components/ui/card"
 
-export function AuthCard({
+export function AuthCard ({
   title,
   description,
-  children,
+  children
 }: {
   title: string;
   description: string;
@@ -23,5 +23,5 @@ export function AuthCard({
       </CardHeader>
       <CardContent className="px-6 pb-6 sm:px-8 sm:pb-8">{children}</CardContent>
     </Card>
-  );
+  )
 }

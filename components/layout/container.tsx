@@ -1,6 +1,6 @@
-import type { HTMLAttributes } from "react";
+import type { HTMLAttributes } from "react"
 
-export function Container({
+export function Container ({
   className = "",
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
@@ -9,5 +9,5 @@ export function Container({
       className={`mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10 xl:px-0 ${className}`}
       {...props}
     />
-  );
+  )
 }

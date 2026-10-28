@@ -1,17 +1,17 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { useState } from "react";
-import { z } from "zod";
-import { type FieldErrors, type Resolver, useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { AuthCard } from "@/components/auth/auth-card";
-import { GoogleAuthButton } from "@/components/auth/google-auth-button";
-import { PasswordInput } from "@/components/auth/password-input";
+import Link from "next/link"
+import { useState } from "react"
+import { z } from "zod"
+import { type FieldErrors, type Resolver, useForm } from "react-hook-form"
+import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Separator } from "@/components/ui/separator"
+import { AuthCard } from "@/components/auth/auth-card"
+import { GoogleAuthButton } from "@/components/auth/google-auth-button"
+import { PasswordInput } from "@/components/auth/password-input"
 
 const signupSchema = z
   .object({
@@ -19,51 +19,51 @@ const signupSchema = z
     email: z.string().email("Enter a valid email address."),
     password: z.string().min(8, "Password must be at least 8 characters."),
     confirmPassword: z.string().min(1, "Please confirm your password."),
-    termsAccepted: z.boolean().refine((accepted) => accepted, "You must accept the terms and conditions."),
+    termsAccepted: z.boolean().refine((accepted) => accepted, "You must accept the terms and conditions.")
   })
   .refine((values) => !values.confirmPassword || values.password === values.confirmPassword, {
     path: ["confirmPassword"],
-    message: "Passwords do not match.",
-  });
+    message: "Passwords do not match."
+  })
 
 type SignupValues = z.infer<typeof signupSchema>;
 
 const signupResolver: Resolver<SignupValues> = async (values) => {
-  const result = signupSchema.safeParse(values);
-  if (result.success) return { values: result.data, errors: {} };
+  const result = signupSchema.safeParse(values)
+  if (result.success) return { values: result.data, errors: {} }
 
-  const errors: FieldErrors<SignupValues> = {};
+  const errors: FieldErrors<SignupValues> = {}
   for (const issue of result.error.issues) {
-    const field = issue.path[0];
-    if (field === "fullName") errors.fullName = { type: "validate", message: issue.message };
-    if (field === "email") errors.email = { type: "validate", message: issue.message };
-    if (field === "password") errors.password = { type: "validate", message: issue.message };
-    if (field === "confirmPassword") errors.confirmPassword = { type: "validate", message: issue.message };
-    if (field === "termsAccepted") errors.termsAccepted = { type: "validate", message: issue.message };
+    const field = issue.path[0]
+    if (field === "fullName") errors.fullName = { type: "validate", message: issue.message }
+    if (field === "email") errors.email = { type: "validate", message: issue.message }
+    if (field === "password") errors.password = { type: "validate", message: issue.message }
+    if (field === "confirmPassword") errors.confirmPassword = { type: "validate", message: issue.message }
+    if (field === "termsAccepted") errors.termsAccepted = { type: "validate", message: issue.message }
   }
 
-  return { values: {}, errors };
-};
+  return { values: {}, errors }
+}
 
-export function SignupForm() {
-  const [submitting, setSubmitting] = useState(false);
-  const [status, setStatus] = useState("");
-  const [termsAccepted, setTermsAccepted] = useState(false);
+export function SignupForm () {
+  const [submitting, setSubmitting] = useState(false)
+  const [status, setStatus] = useState("")
+  const [termsAccepted, setTermsAccepted] = useState(false)
   const {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
+    formState: { errors }
   } = useForm<SignupValues>({
     resolver: signupResolver,
-    defaultValues: { fullName: "", email: "", password: "", confirmPassword: "", termsAccepted: false },
-  });
-  async function onSubmit() {
-    setSubmitting(true);
-    setStatus("");
-    await new Promise((resolve) => window.setTimeout(resolve, 600));
-    setSubmitting(false);
-    setStatus("This sign-up form is a preview; account creation is not connected.");
+    defaultValues: { fullName: "", email: "", password: "", confirmPassword: "", termsAccepted: false }
+  })
+  async function onSubmit () {
+    setSubmitting(true)
+    setStatus("")
+    await new Promise((resolve) => window.setTimeout(resolve, 600))
+    setSubmitting(false)
+    setStatus("This sign-up form is a preview; account creation is not connected.")
   }
 
   return (
@@ -133,9 +133,9 @@ export function SignupForm() {
               aria-invalid={Boolean(errors.termsAccepted)}
               aria-describedby={errors.termsAccepted ? "terms-error" : undefined}
               onCheckedChange={(checked) => {
-                const accepted = checked === true;
-                setTermsAccepted(accepted);
-                setValue("termsAccepted", accepted, { shouldValidate: true });
+                const accepted = checked === true
+                setTermsAccepted(accepted)
+                setValue("termsAccepted", accepted, { shouldValidate: true })
               }}
             />
             <Label htmlFor="terms-accepted" className="cursor-pointer text-sm leading-5 font-normal text-muted">
@@ -164,5 +164,5 @@ export function SignupForm() {
         </p>
       </form>
     </AuthCard>
-  );
+  )
 }

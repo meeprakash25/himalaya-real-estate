@@ -1,20 +1,20 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { navigationLinks } from "@/data/navigation";
-import { Container } from "@/components/layout/container";
+import Image from "next/image"
+import Link from "next/link"
+import { useState } from "react"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { navigationLinks } from "@/data/navigation"
+import { Container } from "@/components/layout/container"
 
-export function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+export function Navbar () {
+  const [menuOpen, setMenuOpen] = useState(false)
 
-  function selectHeroTransaction(label: string) {
+  function selectHeroTransaction (label: string) {
     if (label === "Buy" || label === "Sell") {
-      window.dispatchEvent(new CustomEvent<"buy" | "rent">("hero-transaction-change", { detail: "buy" }));
+      window.dispatchEvent(new CustomEvent<"buy" | "rent">("hero-transaction-change", { detail: "buy" }))
     } else if (label === "Rent") {
-      window.dispatchEvent(new CustomEvent<"buy" | "rent">("hero-transaction-change", { detail: "rent" }));
+      window.dispatchEvent(new CustomEvent<"buy" | "rent">("hero-transaction-change", { detail: "rent" }))
     }
   }
 
@@ -55,7 +55,7 @@ export function Navbar() {
               variant: "default",
               size: "lg",
               className:
-                "h-11 gap-3 rounded-control bg-primary px-4.5 text-sm font-semibold text-on-primary hover:bg-primary-dark",
+                "h-11 gap-3 rounded-control bg-primary px-4.5 text-sm font-semibold text-on-primary hover:bg-primary-dark"
             })}
             data-node-id="2:9435">
             List your property
@@ -118,7 +118,7 @@ export function Navbar() {
               variant: "default",
               size: "lg",
               className:
-                "mt-2 min-h-11 gap-3 rounded-control bg-primary px-4 text-sm font-semibold text-on-primary hover:bg-primary-dark",
+                "mt-2 min-h-11 gap-3 rounded-control bg-primary px-4 text-sm font-semibold text-on-primary hover:bg-primary-dark"
             })}>
             List your property
             <span aria-hidden="true" className="text-lg leading-none">

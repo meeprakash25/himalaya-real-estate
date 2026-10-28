@@ -1,10 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Container } from "@/components/layout/container";
-import { buttonVariants } from "@/components/ui/button";
-import { guides } from "@/data/guides-footer";
+import Image from "next/image"
+import Link from "next/link"
+import { Container } from "@/components/layout/container"
+import { buttonVariants } from "@/components/ui/button"
+import { guides } from "@/data/guides-footer"
 
-export function GuidesAndInsights() {
+export function GuidesAndInsights () {
   return (
     <section id="guides" className="bg-background py-14 sm:py-16" aria-labelledby="guides-title" data-node-id="2:9754">
       <Container>
@@ -26,7 +26,7 @@ export function GuidesAndInsights() {
               variant: "outline",
               size: "lg",
               className:
-                "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary sm:self-auto",
+                "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary sm:self-auto"
             })}
             data-node-id="2:9759">
             All guides &amp; insights

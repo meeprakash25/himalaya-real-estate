@@ -1,10 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Container } from "@/components/layout/container";
-import { buttonVariants } from "@/components/ui/button";
-import { homeBuyingGuide } from "@/data/home-buying-guide";
+import Image from "next/image"
+import Link from "next/link"
+import { Container } from "@/components/layout/container"
+import { buttonVariants } from "@/components/ui/button"
+import { homeBuyingGuide } from "@/data/home-buying-guide"
 
-export function HomeBuyingGuide() {
+export function HomeBuyingGuide () {
   return (
     <section className="bg-background py-14 sm:py-16" aria-labelledby="home-buying-guide-title" data-node-id="2:9682">
       <Container>
@@ -55,7 +55,7 @@ export function HomeBuyingGuide() {
                 variant: "outline",
                 size: "lg",
                 className:
-                  "mt-6 min-h-[50px] gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary",
+                  "mt-6 min-h-[50px] gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary"
               })}
               data-node-id="2:9708">
               {homeBuyingGuide.action}

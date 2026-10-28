@@ -6,7 +6,7 @@ export const planningTools = [
     description: "Understand your monthly home loan payment.",
     action: "Calculate EMI",
     icon: "calculator",
-    tone: "green",
+    tone: "green"
   },
   {
     id: "construction-calculator",
@@ -15,7 +15,7 @@ export const planningTools = [
     description: "Get a starting estimate for building your home.",
     action: "Estimate cost",
     icon: "hard-hat",
-    tone: "green",
+    tone: "green"
   },
   {
     id: "area-converter",
@@ -24,7 +24,7 @@ export const planningTools = [
     description: "Convert Ropani, Aana, square feet and more.",
     action: "Convert area",
     icon: "ruler",
-    tone: "green",
+    tone: "green"
   },
   {
     id: "loan-processor",
@@ -33,6 +33,6 @@ export const planningTools = [
     description: "A simpler way to prepare for your home loan.",
     action: "Coming soon",
     icon: "file-check",
-    tone: "sand",
-  },
-] as const;
+    tone: "sand"
+  }
+] as const

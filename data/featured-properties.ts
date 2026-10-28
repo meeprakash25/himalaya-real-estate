@@ -8,7 +8,7 @@ export const featuredProperties = [
     type: "Bungalow",
     title: "Bungalow For Sale in Greenhill City Housing - Mulpani",
     address: "Greenhill City Housing, Kageshwori Municipality",
-    details: "Mulpani · Housing colony",
+    details: "Mulpani · Housing colony"
   },
   {
     id: "kirtipur-bungalow",
@@ -19,7 +19,7 @@ export const featuredProperties = [
     type: "Bungalow",
     title: "European Design Bungalow For Sale at Kirtipur",
     address: "Jakha, Kirtipur Municipality",
-    details: "Kirtipur · European design",
+    details: "Kirtipur · European design"
   },
   {
     id: "harmony-colony-bungalow",
@@ -30,7 +30,7 @@ export const featuredProperties = [
     type: "Bungalow",
     title: "Bungalow for Sale – Harmony Colony",
     address: "Bhaisepati, Lalitpur",
-    details: "4 beds · 7 Aana",
+    details: "4 beds · 7 Aana"
   },
   {
     id: "tikathali-house",
@@ -41,7 +41,7 @@ export const featuredProperties = [
     type: "House",
     title: "House For Sale At Tikathali United Colony",
     address: "Mahalaxmi Municipality",
-    details: "6 beds · 4 baths · 5 Aana 2 Paisa 3 Daam",
+    details: "6 beds · 4 baths · 5 Aana 2 Paisa 3 Daam"
   },
   {
     id: "bhaisepati-family-home",
@@ -52,7 +52,7 @@ export const featuredProperties = [
     type: "House",
     title: "Spacious Family Home for Sale in Bhaisepati",
     address: "Bhaisepati, Lalitpur",
-    details: "5 beds · 4 baths · 8 Aana",
+    details: "5 beds · 4 baths · 8 Aana"
   },
   {
     id: "mulpani-modern-home",
@@ -63,6 +63,6 @@ export const featuredProperties = [
     type: "House",
     title: "Modern House for Sale in Mulpani",
     address: "Mulpani, Kageshwori Manohara",
-    details: "4 beds · 3 baths · 5 Aana",
-  },
-] as const;
+    details: "4 beds · 3 baths · 5 Aana"
+  }
+] as const

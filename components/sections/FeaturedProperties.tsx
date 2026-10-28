@@ -1,30 +1,30 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Container } from "@/components/layout/container";
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
-import { buttonVariants } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import Image from "next/image"
+import Link from "next/link"
+import { Container } from "@/components/layout/container"
+import { Badge } from "@/components/ui/badge"
+import { Card } from "@/components/ui/card"
+import { buttonVariants } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { SavePropertyButton } from "@/components/ui/save-property-button";
-import { featuredProperties } from "@/data/featured-properties";
+  CarouselPrevious
+} from "@/components/ui/carousel"
+import { SavePropertyButton } from "@/components/ui/save-property-button"
+import { featuredProperties } from "@/data/featured-properties"
 
-function MapPinIcon() {
+function MapPinIcon () {
   return (
     <svg aria-hidden="true" viewBox="0 0 16 16" className="size-3.5 shrink-0 text-muted" fill="none" stroke="currentColor" strokeWidth="1.4">
       <path d="M13 6.67c0 3.67-5 7.33-5 7.33S3 10.34 3 6.67a5 5 0 1 1 10 0Z" strokeLinecap="round" strokeLinejoin="round" />
       <circle cx="8" cy="6.67" r="1.67" />
     </svg>
-  );
+  )
 }
 
-export function FeaturedProperties() {
+export function FeaturedProperties () {
   return (
     <section
       id="buy"
@@ -53,7 +53,7 @@ export function FeaturedProperties() {
                   variant: "outline",
                   size: "lg",
                   className:
-                    "min-h-[50px] gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary",
+                    "min-h-[50px] gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary"
                 })}
                 data-node-id="2:9509">
                 View all properties

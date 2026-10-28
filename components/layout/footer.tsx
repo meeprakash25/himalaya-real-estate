@@ -1,31 +1,23 @@
-import Link from "next/link";
-import { Container } from "@/components/layout/container";
-import { Separator } from "@/components/ui/separator";
-import { footerDescription, footerLinkGroups } from "@/data/guides-footer";
-import { footerCopyright, footerLegalLinks, footerOrigin, footerSocialLinks } from "@/data/site-footer";
+import Link from "next/link"
+import { Container } from "@/components/layout/container"
+import { Separator } from "@/components/ui/separator"
+import { footerDescription, footerLinkGroups } from "@/data/guides-footer"
+import { footerCopyright, footerLegalLinks, footerOrigin, footerSocialLinks } from "@/data/site-footer"
 import Image from "next/image"
 
-function SocialIcon({ name }: { name: (typeof footerSocialLinks)[number]["icon"] }) {
+function SocialIcon ({ name }: { name: (typeof footerSocialLinks)[number]["icon"] }) {
   if (name === "facebook") {
-    return <svg aria-hidden="true" viewBox="0 0 16 16" className="size-4" fill="currentColor"><path d="M9.1 14V8.7h1.8l.3-2.1H9.1V5.2c0-.6.2-1 1.1-1h1.1V2.3c-.2 0-.9-.1-1.7-.1-1.7 0-2.9 1-2.9 2.9v1.6H4.8v2.1h1.9V14h2.4Z" /></svg>;
+    return <svg aria-hidden="true" viewBox="0 0 16 16" className="size-4" fill="currentColor"><path d="M9.1 14V8.7h1.8l.3-2.1H9.1V5.2c0-.6.2-1 1.1-1h1.1V2.3c-.2 0-.9-.1-1.7-.1-1.7 0-2.9 1-2.9 2.9v1.6H4.8v2.1h1.9V14h2.4Z" /></svg>
   }
 
   if (name === "instagram") {
-    return <svg aria-hidden="true" viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.3"><rect x="2.5" y="2.5" width="11" height="11" rx="3" /><circle cx="8" cy="8" r="2.5" /><circle cx="11.6" cy="4.6" r=".6" fill="currentColor" stroke="none" /></svg>;
+    return <svg aria-hidden="true" viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.3"><rect x="2.5" y="2.5" width="11" height="11" rx="3" /><circle cx="8" cy="8" r="2.5" /><circle cx="11.6" cy="4.6" r=".6" fill="currentColor" stroke="none" /></svg>
   }
 
-  return <svg aria-hidden="true" viewBox="0 0 16 16" className="size-4" fill="currentColor"><path d="M3.3 5.9H1.1V15h2.2V5.9ZM2.2 1a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6ZM15 9.8c0-2.7-1.4-4-3.3-4a2.9 2.9 0 0 0-2.6 1.4V5.9H6.9V15h2.2v-4.5c0-1.2.2-2.4 1.8-2.4s1.7 1.4 1.7 2.5V15H15V9.8Z" /></svg>;
+  return <svg aria-hidden="true" viewBox="0 0 16 16" className="size-4" fill="currentColor"><path d="M3.3 5.9H1.1V15h2.2V5.9ZM2.2 1a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6ZM15 9.8c0-2.7-1.4-4-3.3-4a2.9 2.9 0 0 0-2.6 1.4V5.9H6.9V15h2.2v-4.5c0-1.2.2-2.4 1.8-2.4s1.7 1.4 1.7 2.5V15H15V9.8Z" /></svg>
 }
 
-function HouseMark() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8M3 10a1 1 0 0 1 .35-.76l7-6a1 1 0 0 1 1.3 0l7 6A1 1 0 0 1 19 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9Z" />
-    </svg>
-  );
-}
-
-export function Footer() {
+export function Footer () {
   return (
     <footer id="footer" className="bg-primary-dark text-on-primary" data-node-id="2:9799">
       <Container className="pt-12 pb-7">
@@ -101,5 +93,5 @@ export function Footer() {
         </div>
       </Container>
     </footer>
-  );
+  )
 }

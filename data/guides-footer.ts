@@ -9,7 +9,7 @@ export const guides = [
     readingTime: "6 min read",
     title: "Your checklist for buying a home in Nepal",
     excerpt: "From your first viewing to ownership documents: know what to look for.",
-    href: "#home-buying-guide-title",
+    href: "#home-buying-guide-title"
   },
   {
     id: "buying-land",
@@ -21,7 +21,7 @@ export const guides = [
     readingTime: "5 min read",
     title: "Buying land? Start with the right questions.",
     excerpt: "A practical look at land records, road access and planning for your plot.",
-    href: "#property-search",
+    href: "#property-search"
   },
   {
     id: "renting-well",
@@ -33,12 +33,12 @@ export const guides = [
     readingTime: "4 min read",
     title: "Find a rental that feels like your own.",
     excerpt: "The details to consider before you sign for your next apartment.",
-    href: "#property-search",
-  },
-] as const;
+    href: "#property-search"
+  }
+] as const
 
 export const footerDescription =
-  "Bringing people and places together. Discover homes, land and commercial spaces across Nepal.";
+  "Bringing people and places together. Discover homes, land and commercial spaces across Nepal."
 
 export const footerLinkGroups = [
   {
@@ -47,8 +47,8 @@ export const footerLinkGroups = [
       { label: "Buy a property", href: "#buy" },
       { label: "Rent a property", href: "#rent" },
       { label: "Sell with Himalaya Real Etate", href: "#sell" },
-      { label: "List your property", href: "#sell" },
-    ],
+      { label: "List your property", href: "#sell" }
+    ]
   },
   {
     title: "Popular locations",
@@ -58,8 +58,8 @@ export const footerLinkGroups = [
       { label: "Budhanilakantha", href: "#neighborhoods" },
       { label: "Mahalaxmi", href: "#neighborhoods" },
       { label: "Chandragiri", href: "#neighborhoods" },
-      { label: "Godawari", href: "#neighborhoods" },
-    ],
+      { label: "Godawari", href: "#neighborhoods" }
+    ]
   },
   {
     title: "Resources",
@@ -68,8 +68,8 @@ export const footerLinkGroups = [
       { label: "EMI Calculator", href: "#planning-tools-title" },
       { label: "Construction Calculator", href: "#planning-tools-title" },
       { label: "Area Converter", href: "#planning-tools-title" },
-      { label: "Blog & insights", href: "#guides" },
-    ],
+      { label: "Blog & insights", href: "#guides" }
+    ]
   },
   {
     title: "Himalaya Real Etate",
@@ -77,7 +77,7 @@ export const footerLinkGroups = [
       { label: "About us", href: "#footer" },
       { label: "Help centre", href: "#footer" },
       { label: "Contact us", href: "#footer" },
-      { label: "Join Himalaya Real Etate", href: "#footer" },
-    ],
-  },
-] as const;
+      { label: "Join Himalaya Real Etate", href: "#footer" }
+    ]
+  }
+] as const

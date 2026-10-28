@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 
-export function GoogleAuthButton() {
+export function GoogleAuthButton () {
   return (
     <Button type="button" variant="outline" size="lg" className="h-11 w-full gap-2 border-border bg-surface">
       <svg aria-hidden="true" viewBox="0 0 24 24" className="size-4" fill="currentColor">
@@ -11,5 +11,5 @@ export function GoogleAuthButton() {
       </svg>
       Continue with Google
     </Button>
-  );
+  )
 }

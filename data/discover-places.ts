@@ -6,7 +6,7 @@ export const neighborhoods = [
     name: "Lalitpur",
     description: "Heritage meets modern living",
     image: "/images/neighborhood-lalitpur.jpg",
-    imageAlt: "Historic temple architecture in Nepal",
+    imageAlt: "Historic temple architecture in Nepal"
   },
   {
     id: "kathmandu",
@@ -15,7 +15,7 @@ export const neighborhoods = [
     name: "Kathmandu",
     description: "At the heart of it all",
     image: "/images/neighborhood-kathmandu.jpg",
-    imageAlt: "Swayambhunath Stupa overlooking Kathmandu",
+    imageAlt: "Swayambhunath Stupa overlooking Kathmandu"
   },
   {
     id: "budhanilakantha",
@@ -24,7 +24,7 @@ export const neighborhoods = [
     name: "Budhanilakantha",
     description: "Closer to nature",
     image: "/images/neighborhood-budhanilakantha.jpg",
-    imageAlt: "Colorful Nepalese homes among lush greenery",
+    imageAlt: "Colorful Nepalese homes among lush greenery"
   },
   {
     id: "chandragiri",
@@ -33,7 +33,7 @@ export const neighborhoods = [
     name: "Chandragiri",
     description: "Room to breathe",
     image: "/images/neighborhood-chandragiri.jpg",
-    imageAlt: "Green Himalayan hills and a suspension bridge in Nepal",
+    imageAlt: "Green Himalayan hills and a suspension bridge in Nepal"
   },
   {
     id: "mahalaxmi",
@@ -42,7 +42,7 @@ export const neighborhoods = [
     name: "Mahalaxmi",
     description: "A growing place to call home",
     image: "/images/neighborhood-mahalaxmi.jpg",
-    imageAlt: "Aerial view of a green Nepalese residential neighborhood",
+    imageAlt: "Aerial view of a green Nepalese residential neighborhood"
   },
   {
     id: "godawari",
@@ -51,13 +51,13 @@ export const neighborhoods = [
     name: "Godawari",
     description: "A greener way of living",
     image: "/images/neighborhood-godawari.jpg",
-    imageAlt: "Aerial view of green hills and valleys in Nepal",
-  },
-] as const;
+    imageAlt: "Aerial view of green hills and valleys in Nepal"
+  }
+] as const
 
 export const propertyCategories = [
   { id: "house", nodeId: "2:9654", title: "House", description: "A home of your own", icon: "house" },
   { id: "land", nodeId: "2:9661", title: "Land", description: "Build your possibilities", icon: "land" },
   { id: "apartment", nodeId: "2:9668", title: "Apartment", description: "Make city living yours", icon: "apartment" },
-  { id: "commercial", nodeId: "2:9675", title: "Commercial", description: "Space for your next idea", icon: "commercial" },
-] as const;
+  { id: "commercial", nodeId: "2:9675", title: "Commercial", description: "Space for your next idea", icon: "commercial" }
+] as const

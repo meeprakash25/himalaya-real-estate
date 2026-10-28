@@ -1,4 +1,4 @@
-import { guides } from "@/data/guides-footer";
+import { guides } from "@/data/guides-footer"
 
 export const blogPosts = [
   ...guides.map((guide) => ({ ...guide, href: `/${guide.href}` })),
@@ -10,7 +10,7 @@ export const blogPosts = [
     readingTime: "7 min read",
     title: "Property papers in Nepal: what to verify before you buy",
     excerpt: "A practical checklist for reviewing land records, ownership details and access before making an offer.",
-    href: "/#property-search",
+    href: "/#property-search"
   },
   {
     id: "kathmandu-house-hunt",
@@ -20,6 +20,6 @@ export const blogPosts = [
     readingTime: "5 min read",
     title: "House-hunting in Kathmandu: five details worth checking",
     excerpt: "Compare everyday essentials like road access, water, sunlight and commute before choosing a home.",
-    href: "/#property-search",
-  },
-];
+    href: "/#property-search"
+  }
+]

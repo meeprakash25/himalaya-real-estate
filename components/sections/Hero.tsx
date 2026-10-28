@@ -1,44 +1,44 @@
-"use client";
+"use client"
 
-import Image from "next/image";
+import Image from "next/image"
 
-import { useEffect, useState } from "react";
-import { Container } from "@/components/layout/container";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useEffect, useState } from "react"
+import { Container } from "@/components/layout/container"
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {
   budgetRanges,
   popularSearches,
   propertyLocations,
-  propertyTypes,
-} from "@/data/hero";
+  propertyTypes
+} from "@/data/hero"
 
-function CheckIcon() {
+function CheckIcon () {
   return (
     <svg aria-hidden="true" viewBox="0 0 18 18" className="size-[17px] shrink-0 fill-none stroke-primary" strokeWidth="1.5">
       <circle cx="9" cy="9" r="7.5" />
       <path d="m5.5 9 2.25 2.25L12.5 6.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
-  );
+  )
 }
 
-function PinIcon({ className = "" }: { className?: string }) {
+function PinIcon ({ className = "" }: { className?: string }) {
   return (
     <svg aria-hidden="true" viewBox="0 0 16 16" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
       <path d="M13 6.67c0 3.67-5 7.33-5 7.33S3 10.34 3 6.67a5 5 0 1 1 10 0Z" strokeLinecap="round" strokeLinejoin="round" />
       <circle cx="8" cy="6.67" r="1.67" />
     </svg>
-  );
+  )
 }
 
-function SearchField({
+function SearchField ({
   id,
   label,
   placeholder,
   options,
-  icon,
+  icon
 }: {
   id: string;
   label: string;
@@ -46,23 +46,27 @@ function SearchField({
   options: readonly string[];
   icon: "location" | "home" | "budget";
 }) {
-  const [value, setValue] = useState<string | null>(null);
+  const [value, setValue] = useState<string | null>(null)
 
   return (
     <div className="flex min-h-[58px] min-w-0 items-center gap-3 rounded-control border border-border px-3.5">
       <span aria-hidden="true" className="shrink-0 text-primary">
-        {icon === "location" ? (
+        {icon === "location"
+          ? (
           <PinIcon className="size-5" />
-        ) : icon === "home" ? (
+            )
+          : icon === "home"
+            ? (
           <svg viewBox="0 0 20 20" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="m2.5 9 7.5-6 7.5 6v8.5h-5v-5h-5v5h-5V9Z" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-        ) : (
+              )
+            : (
           <svg viewBox="0 0 20 20" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.5">
             <rect x="2.5" y="4.5" width="15" height="11" rx="2" />
             <path d="M2.5 8h15M6 12h3" strokeLinecap="round" />
           </svg>
-        )}
+              )}
       </span>
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <Label htmlFor={id} className="text-[10px] leading-3 font-semibold tracking-wide text-muted">{label}</Label>
@@ -78,20 +82,20 @@ function SearchField({
         </Select>
       </div>
     </div>
-  );
+  )
 }
 
-export function Hero() {
-  const [transaction, setTransaction] = useState<"buy" | "rent">("buy");
+export function Hero () {
+  const [transaction, setTransaction] = useState<"buy" | "rent">("buy")
 
   useEffect(() => {
     const handleTransactionChange = (event: Event) => {
-      setTransaction((event as CustomEvent<"buy" | "rent">).detail);
-    };
+      setTransaction((event as CustomEvent<"buy" | "rent">).detail)
+    }
 
-    window.addEventListener("hero-transaction-change", handleTransactionChange);
-    return () => window.removeEventListener("hero-transaction-change", handleTransactionChange);
-  }, []);
+    window.addEventListener("hero-transaction-change", handleTransactionChange)
+    return () => window.removeEventListener("hero-transaction-change", handleTransactionChange)
+  }, [])
 
   return (
     <section className="bg-accent py-8 md:py-10" aria-labelledby="hero-title" data-node-id="2:9438">

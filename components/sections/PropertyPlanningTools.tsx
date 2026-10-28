@@ -1,10 +1,10 @@
-import { Container } from "@/components/layout/container";
-import { planningTools } from "@/data/planning-tools";
-import { Card } from "@/components/ui/card";
+import { Container } from "@/components/layout/container"
+import { planningTools } from "@/data/planning-tools"
+import { Card } from "@/components/ui/card"
 
 type PlanningIconName = (typeof planningTools)[number]["icon"];
 
-function ToolIcon({ name }: { name: PlanningIconName }) {
+function ToolIcon ({ name }: { name: PlanningIconName }) {
   const shared = {
     "aria-hidden": true as const,
     viewBox: "0 0 22 22",
@@ -13,33 +13,33 @@ function ToolIcon({ name }: { name: PlanningIconName }) {
     stroke: "currentColor",
     strokeWidth: 1.6,
     strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
+    strokeLinejoin: "round" as const
+  }
 
   if (name === "calculator") {
-    return <svg {...shared}><rect x="4" y="2.5" width="14" height="17" rx="2" /><path d="M7.5 6.5h7M7.5 10.5h1m2.5 0h1m2.5 0h.1m-7.1 3.5h1m2.5 0h1m2.5 0h.1m-7.1 3h1m2.5 0h1m2.5 0h.1" /></svg>;
+    return <svg {...shared}><rect x="4" y="2.5" width="14" height="17" rx="2" /><path d="M7.5 6.5h7M7.5 10.5h1m2.5 0h1m2.5 0h.1m-7.1 3.5h1m2.5 0h1m2.5 0h.1m-7.1 3h1m2.5 0h1m2.5 0h.1" /></svg>
   }
 
   if (name === "hard-hat") {
-    return <svg {...shared}><path d="M3 14.5a8 8 0 0 1 16 0v1H3v-1ZM2 18h18M8 6.8V5a3 3 0 0 1 6 0v1.8M11 7v7" /></svg>;
+    return <svg {...shared}><path d="M3 14.5a8 8 0 0 1 16 0v1H3v-1ZM2 18h18M8 6.8V5a3 3 0 0 1 6 0v1.8M11 7v7" /></svg>
   }
 
   if (name === "ruler") {
-    return <svg {...shared}><path d="M3 15.5 15.5 3l3.5 3.5L6.5 19 3 15.5Z" /><path d="m12.5 6 3.5 3.5m-6-1 1.5 1.5m-4 1 3.5 3.5m-6-1 1.5 1.5" /></svg>;
+    return <svg {...shared}><path d="M3 15.5 15.5 3l3.5 3.5L6.5 19 3 15.5Z" /><path d="m12.5 6 3.5 3.5m-6-1 1.5 1.5m-4 1 3.5 3.5m-6-1 1.5 1.5" /></svg>
   }
 
-  return <svg {...shared}><path d="M5 2.5h8l4 4v13H5v-17Z" /><path d="M13 2.5v4h4M8 12l2 2 4-4" /></svg>;
+  return <svg {...shared}><path d="M5 2.5h8l4 4v13H5v-17Z" /><path d="M13 2.5v4h4M8 12l2 2 4-4" /></svg>
 }
 
-function ArrowRightIcon() {
+function ArrowRightIcon () {
   return (
     <svg aria-hidden="true" viewBox="0 0 16 16" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
       <path d="M3 8h10m-4-4 4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
-  );
+  )
 }
 
-export function PropertyPlanningTools() {
+export function PropertyPlanningTools () {
   return (
     <section className="bg-accent py-14 sm:py-16" aria-labelledby="planning-tools-title" data-node-id="2:9711">
       <Container>
@@ -76,5 +76,5 @@ export function PropertyPlanningTools() {
         </div>
       </Container>
     </section>
-  );
+  )
 }
