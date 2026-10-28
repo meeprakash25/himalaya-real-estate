@@ -12,7 +12,7 @@ const compat = new FlatCompat({
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  ...compat.extends("standard"),
+  ...compat.extends("standard", "plugin:tailwindcss/recommended","prettier"),
   {
     rules: {
       quotes: ["error", "double", { avoidEscape: true }]
