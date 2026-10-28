@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import type { PropertyAmenityGroup } from "@/data/properties"
 
 export function Amenities ({ amenities }: { amenities: PropertyAmenityGroup[] }) {
-  const [expanded, setExpanded] = useState(true)
+  const [expanded, setExpanded] = useState(false)
   const visibleGroups = expanded ? amenities : amenities.slice(0, 4)
 
   return (

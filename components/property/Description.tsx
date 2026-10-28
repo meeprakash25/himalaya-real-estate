@@ -27,7 +27,7 @@ export function Description ({ property }: { property: Property }) {
             aria-expanded={expanded}
             aria-controls="property-description-copy"
             onClick={() => setExpanded((value) => !value)}
-            className="mt-2 h-auto p-0 font-medium text-foreground"
+            className="mt-2 h-auto p-0 font-medium text-primary"
           >
             {expanded ? "Read less" : "Read more"}
           </Button>

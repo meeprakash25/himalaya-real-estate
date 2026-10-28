@@ -3,7 +3,7 @@
 import { Bath, BedDouble, Grid2X2, MapPin, Ruler, Search, SlidersHorizontal, List } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 
 import { Container } from "@/components/layout/container"
 import { SavePropertyButton } from "@/components/ui/save-property-button"
@@ -23,6 +23,19 @@ import {
 
 function priceValue (property: Property) {
   return Number(property.price.replace(/[^\d.]/g, ""))
+}
+
+function PropertyCardSkeleton ({ grid }: { grid: boolean }) {
+  return (
+    <div aria-hidden="true" className={`animate-pulse rounded-card border border-border bg-card p-3 ${grid ? "" : "flex gap-3"}`}>
+      <div className={`shrink-0 rounded-control bg-muted ${grid ? "aspect-[1.7] w-full" : "h-24 w-32"}`} />
+      <div className="mt-3 flex-1 space-y-2">
+        <div className="h-4 w-3/4 rounded bg-muted" />
+        <div className="h-3 w-1/2 rounded bg-muted" />
+        <div className="h-3 w-1/3 rounded bg-muted" />
+      </div>
+    </div>
+  )
 }
 
 function PropertyCard ({ property, grid }: { property: Property, grid: boolean }) {
@@ -78,9 +91,9 @@ function PropertyCard ({ property, grid }: { property: Property, grid: boolean }
 
 function ListingSelect ({ label, value, onChange, options, className = "" }: { label: string, value: string, onChange: (value: string) => void, options: { value: string, label: string }[], className?: string }) {
   return (
-    <label className={`flex min-w-0 flex-col gap-1 text-[10px] font-semibold tracking-wide text-footer-muted ${className}`}>
+    <label className={`flex min-w-0 flex-col gap-1 text-[10px] font-semibold tracking-wide text-muted-foreground dark:text-footer-muted ${className}`}>
       {label}
-      <select value={value} onChange={(event) => onChange(event.target.value)} className="h-9 w-full min-w-0 rounded-control border border-footer-divider/50 bg-transparent px-2 text-xs font-medium tracking-normal text-footer-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring">
+      <select value={value} onChange={(event) => onChange(event.target.value)} className="h-9 w-full min-w-0 rounded-control border border-border bg-transparent px-2 text-xs font-medium tracking-normal text-foreground dark:border-footer-divider/50 dark:text-footer-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring">
         {options.map((option) => <option key={option.value} value={option.value} className="bg-card text-foreground">{option.label}</option>)}
       </select>
     </label>
@@ -96,6 +109,12 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
   const [transaction, setTransaction] = useState<"buy" | "rent">(initialFilters.transaction === "rent" ? "rent" : "buy")
   const [sort, setSort] = useState("newest")
   const [view, setView] = useState<"list" | "grid">("list")
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsLoading(false), 800)
+    return () => window.clearTimeout(timer)
+  }, [])
 
   const locationOptions = useMemo(() => [...new Set([...propertyLocations, ...neighborhoods.map((item) => item.name)])].sort(), [])
   const typeOptions = useMemo(() => [...new Set([...properties.map((property) => property.type), ...propertyCategories.map((item) => item.title)])].sort(), [])
@@ -146,29 +165,29 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
 
   return (
     <main id="main-content" className="flex-1 bg-background">
-      <section aria-label="Property search filters" className="bg-footer-background text-footer-foreground">
+      <section aria-label="Property search filters" className="border-b border-border bg-primary/10 text-foreground dark:border-transparent dark:bg-footer-background dark:text-footer-foreground">
         <Container className="py-3">
           <div className="grid gap-2 sm:grid-cols-[auto_minmax(150px,1fr)_repeat(3,minmax(120px,0.6fr))_auto] sm:items-end">
-            <div className="flex items-center gap-1 rounded-control bg-surface/10 p-1 text-xs font-semibold">
-              <button type="button" aria-pressed={transaction === "buy"} onClick={() => setTransaction("buy")} className={`rounded-sm px-3 py-2 ${transaction === "buy" ? "bg-surface text-foreground" : "text-footer-foreground hover:bg-surface/10"}`}>Buy</button>
-              <button type="button" aria-pressed={transaction === "rent"} onClick={() => setTransaction("rent")} className={`rounded-sm px-3 py-2 ${transaction === "rent" ? "bg-surface text-foreground" : "text-footer-foreground hover:bg-surface/10"}`}>Rent</button>
+            <div className="flex items-center gap-1 rounded-control bg-muted p-1 text-xs font-semibold dark:bg-surface/10">
+              <button type="button" aria-pressed={transaction === "buy"} onClick={() => setTransaction("buy")} className={`rounded-sm px-3 py-2 ${transaction === "buy" ? "bg-surface text-foreground" : "text-foreground hover:bg-muted dark:text-footer-foreground dark:hover:bg-surface/10"}`}>Buy</button>
+              <button type="button" aria-pressed={transaction === "rent"} onClick={() => setTransaction("rent")} className={`rounded-sm px-3 py-2 ${transaction === "rent" ? "bg-surface text-foreground" : "text-foreground hover:bg-muted dark:text-footer-foreground dark:hover:bg-surface/10"}`}>Rent</button>
             </div>
             <label className="relative flex h-10 min-w-0 items-center gap-2 rounded-control bg-surface px-3 text-foreground">
               <Search aria-hidden="true" className="size-4 shrink-0 text-muted-foreground" />
               <span className="sr-only">Search city, area, or keyword</span>
-              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search city, area, or keyword" className="min-w-0 flex-1 bg-transparent text-xs outline-none placeholder:text-muted-foreground" />
+              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search city, area, or keyword" className="min-w-0 flex-1 bg-transparent text-xs outline-none! placeholder:text-muted-foreground" />
               {query && <button type="button" onClick={() => setQuery("")} aria-label="Clear search" className="text-muted-foreground hover:text-foreground">×</button>}
             </label>
             <ListingSelect label="LOCATION" value={location} onChange={setLocation} options={[{ value: "all", label: "All locations" }, ...locationOptions.map((item) => ({ value: item, label: item }))]} />
             <ListingSelect label="BUDGET" value={budget} onChange={setBudget} options={listingBudgetOptions} />
             <ListingSelect label="PROPERTY TYPE" value={type} onChange={setType} options={[{ value: "all", label: "All types" }, ...typeOptions.map((item) => ({ value: item, label: item }))]} />
-            <button type="button" onClick={() => document.getElementById("bedroom-filter-title")?.scrollIntoView({ behavior: "smooth" })} className="inline-flex h-10 items-center justify-center gap-2 rounded-control bg-primary px-4 text-xs font-semibold text-primary-foreground hover:bg-primary/90"><SlidersHorizontal aria-hidden="true" className="size-4" /> More filters</button>
+            <button type="button" onClick={() => { setQuery(""); setLocation("all"); setType("all"); setBudget("any"); setBedrooms(""); }} className="inline-flex h-10 items-center justify-center gap-2 rounded-control bg-primary px-4 text-xs font-semibold text-primary-foreground hover:bg-primary/90"><SlidersHorizontal aria-hidden="true" className="size-4" /> Reset Filters</button>
           </div>
         </Container>
       </section>
 
       <Container className="py-5 sm:py-7">
-        <nav aria-label="Breadcrumb" className="mb-3 text-xs text-muted-foreground"><Link href="/" className="hover:text-primary">Home</Link><span aria-hidden="true" className="mx-2">›</span><span className="text-foreground">Properties for Sale</span></nav>
+        <nav aria-label="Breadcrumb" className="mb-3 text-xs text-muted-foreground"><Link href="/" className="hover:text-primary">Home</Link><span aria-hidden="true" className="mx-2">›</span><span className="text-foreground">Properties for {transaction === "buy" ? "Sale" : "Rent"}</span></nav>
         <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_17rem] xl:gap-7">
           <div className="min-w-0">
             <section id="property-results" aria-labelledby="results-title">
@@ -191,8 +210,10 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
                 </div>
               </div>
 
-              <div className={view === "grid" ? "grid gap-4 sm:grid-cols-2" : "space-y-3"}>
-                {visibleProperties.map((property) => <PropertyCard key={property.id} property={property} grid={view === "grid"} />)}
+              <div aria-busy={isLoading} className={view === "grid" ? "grid gap-4 sm:grid-cols-2" : "space-y-3"}>
+                {isLoading
+                  ? Array.from({ length: 3 }, (_, index) => <PropertyCardSkeleton key={index} grid={view === "grid"} />)
+                  : visibleProperties.map((property) => <PropertyCard key={property.id} property={property} grid={view === "grid"} />)}
               </div>
               {visibleProperties.length === 0 && <div className="mt-4 rounded-card border border-dashed border-border bg-card px-5 py-10 text-center"><p className="font-medium text-foreground">No properties found</p><p className="mt-1 text-sm text-muted-foreground">Try adjusting your location, budget, or keyword.</p><button type="button" onClick={clearFilters} className="mt-4 text-sm font-semibold text-primary hover:underline">Reset filters</button></div>}
             </section>

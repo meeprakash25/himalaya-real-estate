@@ -512,6 +512,5 @@ export const propertySectionLinks = [
   { id: "overview", label: "Overview" },
   { id: "description", label: "Description" },
   { id: "amenities", label: "Amenities" },
-  { id: "similar-properties", label: "Compare" },
-  { id: "quick-links", label: "Tools" }
+  { id: "similar-properties", label: "Similar Properties" }
 ]
