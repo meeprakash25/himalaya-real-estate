@@ -2,8 +2,10 @@ import { FlatCompat } from "@eslint/eslintrc"
 import { defineConfig, globalIgnores } from "eslint/config"
 import { dirname } from "node:path"
 import { fileURLToPath } from "node:url"
+import eslintConfigPrettier from "eslint-config-prettier/flat"
 import nextVitals from "eslint-config-next/core-web-vitals"
 import nextTs from "eslint-config-next/typescript"
+import eslintPluginTailwindcss from "eslint-plugin-tailwindcss"
 
 const compat = new FlatCompat({
   baseDirectory: dirname(fileURLToPath(import.meta.url))
@@ -12,12 +14,18 @@ const compat = new FlatCompat({
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  ...compat.extends("standard", "plugin:tailwindcss/recommended","prettier"),
+  ...compat.extends("standard"),
+  eslintPluginTailwindcss.configs["flat/recommended"] ||
+    eslintPluginTailwindcss.configs.recommended,
   {
-    rules: {
-      quotes: ["error", "double", { avoidEscape: true }]
+    settings: {
+      tailwindcss: {
+        cssConfigPath: "./app/globals.css"
+      }
     }
   },
+  eslintConfigPrettier,
+
   {
     files: ["**/*.ts", "**/*.tsx"],
     rules: {
