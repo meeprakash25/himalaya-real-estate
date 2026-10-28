@@ -110,7 +110,7 @@ export function FeaturedProperties() {
                       <h3 className="mt-3 min-h-[70px] text-card-title font-semibold text-foreground">
                         {property.title}
                       </h3>
-                      <div className="mt-3 flex min-h-9 items-start gap-1.5 text-micro leading-[18px] text-muted">
+                      <div className="flex items-start gap-1.5 text-micro leading-[18px] text-muted">
                         <MapPinIcon />
                         <p>{property.address}</p>
                       </div>
