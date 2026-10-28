@@ -31,20 +31,18 @@ export function FeaturedProperties () {
     <section
       id="buy"
       className="bg-background pt-14 pb-7 sm:pt-16 sm:pb-8"
-      aria-labelledby="featured-properties-title"
-      data-node-id="2:9503">
+      aria-labelledby="featured-properties-title">
       <Container>
         <Carousel aria-label="Featured properties" opts={{ align: "start" }}>
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between" data-node-id="2:9504">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary">HANDPICKED FOR YOU</p>
               <h2
                 id="featured-properties-title"
-                className="mt-3 font-heading text-title font-semibold text-foreground"
-                data-node-id="2:9507">
+                className="mt-3 font-heading text-title font-semibold text-foreground">
                 A place for your next chapter.
               </h2>
-              <p className="mt-2 text-body text-muted-foreground" data-node-id="2:9508">
+              <p className="mt-2 text-body text-muted-foreground">
                 Explore standout homes and spaces across the valley.
               </p>
             </div>
@@ -56,8 +54,7 @@ export function FeaturedProperties () {
                   size: "lg",
                   className:
                     "min-h-[50px] gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary",
-                })}
-                data-node-id="2:9509">
+                })}>
                 View all properties
                 <svg
                   aria-hidden="true"
@@ -80,13 +77,13 @@ export function FeaturedProperties () {
             </div>
           </div>
 
-          <CarouselContent className="mt-8 -ml-5 xl:mt-7 xl:-ml-6" data-node-id="2:9512">
+          <CarouselContent className="mt-8 -ml-5 xl:mt-7 xl:-ml-6">
             {properties.map((property, index) => (
               <CarouselItem
                 key={property.id}
                 aria-label={`${index + 1} of ${properties.length}`}
                 className="pl-5 sm:basis-1/2 xl:basis-1/4 xl:pl-6">
-                <article className="group" data-node-id={property.nodeId}>
+                <article className="group">
                   <Card className="gap-0 overflow-hidden rounded-card border border-border bg-surface p-0 py-0 ring-0">
                     <div className="relative aspect-151/104 overflow-hidden">
                       <Link href={`/properties/${property.id}`} aria-label={`View ${property.title} photos`} className="absolute inset-0">

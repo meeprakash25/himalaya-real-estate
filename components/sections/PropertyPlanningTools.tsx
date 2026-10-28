@@ -41,23 +41,23 @@ function ArrowRightIcon () {
 
 export function PropertyPlanningTools () {
   return (
-    <section className="bg-accent py-14 sm:py-16" aria-labelledby="planning-tools-title" data-node-id="2:9711">
+    <section className="bg-accent py-14 sm:py-16" aria-labelledby="planning-tools-title">
       <Container>
-        <header data-node-id="2:9712">
-          <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary" data-node-id="2:9714">
+        <header>
+          <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary">
             PLAN WITH A CLEARER PICTURE
           </p>
-          <h2 id="planning-tools-title" className="mt-2.5 font-heading text-title font-semibold text-foreground" data-node-id="2:9715">
+          <h2 id="planning-tools-title" className="mt-2.5 font-heading text-title font-semibold text-foreground">
             Big decisions. Useful little tools.
           </h2>
-          <p className="mt-2.5 text-body text-muted-foreground" data-node-id="2:9716">
+          <p className="mt-2.5 text-body text-muted-foreground">
             Work out the numbers before you take the next step.
           </p>
         </header>
 
-        <div className="mt-7 grid gap-5 sm:grid-cols-2 xl:grid-cols-4" data-node-id="2:9717">
+        <div className="mt-7 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {planningTools.map((tool) => (
-            <Card key={tool.id} className="min-h-[239px] gap-0 rounded-card bg-surface p-6 py-6 ring-0" data-node-id={tool.nodeId}>
+            <Card key={tool.id} className="min-h-[239px] gap-0 rounded-card bg-surface p-6 py-6 ring-0">
               <div className={`flex size-[42px] items-center justify-center rounded-brand ${tool.tone === "sand" ? "bg-accent" : "bg-secondary"}`}>
                 <ToolIcon name={tool.icon} />
               </div>

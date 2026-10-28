@@ -1,22 +1,14 @@
 import { Container } from "@/components/layout/container"
-import { Amenities } from "@/components/property-detail/Amenities"
-import { CommonQuestions } from "@/components/property-detail/CommonQuestions"
-import { ContactTourCard } from "@/components/property-detail/ContactTourCard"
-import { Description } from "@/components/property-detail/Description"
-import { Gallery } from "@/components/property-detail/Gallery"
-import { Header } from "@/components/property-detail/Header"
-import { Overview } from "@/components/property-detail/Overview"
-import { QuickLinks } from "@/components/property-detail/QuickLinks"
-import { SimilarProperties } from "@/components/property-detail/SimilarProperties"
-import type { Property } from "@/data/properties"
-
-const sectionLabels = [
-  { id: "overview", label: "Overview" },
-  { id: "description", label: "Description" },
-  { id: "amenities", label: "Amenities" },
-  { id: "similar-properties", label: "Compare" },
-  { id: "quick-links", label: "Tools" }
-]
+import { Amenities } from "@/components/property/Amenities"
+import { CommonQuestions } from "@/components/property/CommonQuestions"
+import { ContactTourCard } from "@/components/property/ContactTourCard"
+import { Description } from "@/components/property/Description"
+import { Gallery } from "@/components/property/Gallery"
+import { Header } from "@/components/property/Header"
+import { Overview } from "@/components/property/Overview"
+import { QuickLinks } from "@/components/property/QuickLinks"
+import { SimilarProperties } from "@/components/property/SimilarProperties"
+import { propertySectionLinks, type Property } from "@/data/properties"
 
 export function PropertyDetailSkeleton ({ property, similarProperties }: { property: Property, similarProperties: Property[] }) {
   return (
@@ -30,7 +22,7 @@ export function PropertyDetailSkeleton ({ property, similarProperties }: { prope
 
               <nav aria-label="Property sections" className="overflow-x-auto rounded-card border border-border bg-card">
                 <ul className="flex min-w-max items-center gap-5 px-4 py-3 text-sm text-muted-foreground sm:gap-7 sm:px-5">
-                  {sectionLabels.map((section) => (
+                  {propertySectionLinks.map((section) => (
                     <li key={section.id}>
                       <a href={`#${section.id}`} className="whitespace-nowrap hover:text-foreground">{section.label}</a>
                     </li>

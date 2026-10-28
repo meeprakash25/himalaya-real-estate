@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import { SharePropertyButton } from "@/components/property-detail/SharePropertyButton"
+import { SharePropertyButton } from "@/components/property/SharePropertyButton"
 import { buttonVariants } from "@/components/ui/button"
 import { SavePropertyButton } from "@/components/ui/save-property-button"
 import type { Property } from "@/data/properties"

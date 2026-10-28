@@ -9,31 +9,26 @@ export function SellerInvitation () {
     <section
       id="sell"
       className="bg-background pt-7 pb-14 sm:pt-8 sm:pb-16"
-      aria-labelledby="seller-invitation-title"
-      data-node-id="2:9581">
+      aria-labelledby="seller-invitation-title">
       <Container>
         <div
-          className="grid overflow-hidden rounded-panel bg-footer-background lg:grid-cols-[minmax(0,820fr)_minmax(0,460fr)]"
-          data-node-id="2:9582">
+          className="grid overflow-hidden rounded-panel bg-footer-background lg:grid-cols-[minmax(0,820fr)_minmax(0,460fr)]">
           <div
-            className="flex flex-col items-start justify-center px-6 py-10 sm:px-8 lg:p-12"
-            data-node-id="2:9583">
-            <p className="text-micro leading-3 font-semibold tracking-[0.08em] text-footer-muted" data-node-id="2:9584">
+            className="flex flex-col items-start justify-center px-6 py-10 sm:px-8 lg:p-12">
+            <p className="text-micro leading-3 font-semibold tracking-[0.08em] text-footer-muted">
               {sellerInvitation.eyebrow}
             </p>
             <h2
               id="seller-invitation-title"
-              className="mt-5 max-w-3xl font-heading text-3xl leading-tight font-semibold text-footer-foreground sm:text-promo-title"
-              data-node-id="2:9585">
+              className="mt-5 max-w-3xl font-heading text-3xl leading-tight font-semibold text-footer-foreground sm:text-promo-title">
               {sellerInvitation.title}
             </h2>
-            <p className="mt-4 max-w-3xl text-sm leading-6 text-footer-muted" data-node-id="2:9586">
+            <p className="mt-4 max-w-3xl text-sm leading-6 text-footer-muted">
               {sellerInvitation.description}
             </p>
             <Link
               href="#list-property"
-              className="mt-5 inline-flex min-h-[50px] items-center gap-3 rounded-control bg-surface px-5 text-sm font-semibold text-primary transition-colors hover:bg-primary-soft"
-              data-node-id="2:9587">
+              className="mt-5 inline-flex min-h-[50px] items-center gap-3 rounded-control bg-surface px-5 text-sm font-semibold text-primary transition-colors hover:bg-primary-soft">
               {sellerInvitation.action}
               <svg
                 aria-hidden="true"
@@ -47,7 +42,7 @@ export function SellerInvitation () {
             </Link>
           </div>
 
-          <div className="relative aspect-4/3 min-h-64 lg:aspect-auto lg:min-h-[342px]" data-node-id="2:9590">
+          <div className="relative aspect-4/3 min-h-64 lg:aspect-auto lg:min-h-[342px]">
             <Image
               src="/images/seller-invitation.jpg"
               alt={sellerInvitation.imageAlt}

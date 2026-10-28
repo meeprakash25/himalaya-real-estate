@@ -47,34 +47,33 @@ function PropertyIcon ({ name }: { name: PropertyIconName }) {
 
 export function DiscoverPlaces () {
   return (
-    <section className="bg-secondary py-14 sm:py-16" aria-labelledby="neighborhoods-title" data-node-id="2:9591">
+    <section className="bg-secondary py-14 sm:py-16" aria-labelledby="neighborhoods-title">
       <Container>
-        <div data-node-id="2:9592">
+        <div>
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary">FIND YOUR KIND OF NEIGHBOURHOOD</p>
-              <h2 id="neighborhoods-title" className="mt-3 font-heading text-title font-semibold text-foreground" data-node-id="2:9596">
+              <h2 id="neighborhoods-title" className="mt-3 font-heading text-title font-semibold text-foreground">
                 Good places. Great possibilities.
               </h2>
-              <p className="mt-2 text-body text-muted-foreground" data-node-id="2:9597">
+              <p className="mt-2 text-body text-muted-foreground">
                 From lively city streets to peaceful foothills, find where you belong.
               </p>
             </div>
             <Link
               href={propertiesHref()}
               className={buttonVariants({ variant: "outline", size: "lg", className: "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border! bg-surface/50 px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary sm:self-auto" })}
-              data-node-id="2:9598"
             >
               Explore all locations
               <ArrowUpRightIcon />
             </Link>
           </div>
 
-          <div id="neighborhoods" className="mt-7 grid gap-x-6 gap-y-7 sm:grid-cols-2 xl:grid-cols-3" data-node-id="2:9601">
+          <div id="neighborhoods" className="mt-7 grid gap-x-6 gap-y-7 sm:grid-cols-2 xl:grid-cols-3">
             {neighborhoods.map((neighborhood) => (
-              <article key={neighborhood.id} className="min-w-0" data-node-id={neighborhood.nodeId}>
+              <article key={neighborhood.id} className="min-w-0">
                 <Link href={propertiesHref({ location: neighborhood.name })} className="group block rounded-card focus-visible:outline-offset-4">
-                  <div className="relative aspect-20/9 overflow-hidden rounded-control" data-node-id={neighborhood.imageNodeId}>
+                  <div className="relative aspect-20/9 overflow-hidden rounded-control">
                     <Image
                       src={neighborhood.image}
                       alt={neighborhood.imageAlt}
@@ -97,21 +96,20 @@ export function DiscoverPlaces () {
 
           <Separator orientation="horizontal" className="mt-14 bg-divider-soft" />
 
-          <section className="mt-14" aria-labelledby="property-types-title" data-node-id="2:9647">
-            <div data-node-id="2:9648">
+          <section className="mt-14" aria-labelledby="property-types-title">
+            <div>
               <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary">A SPACE FOR EVERY PLAN</p>
-              <h2 id="property-types-title" className="mt-2.5 font-heading text-title font-semibold text-foreground" data-node-id="2:9651">
+              <h2 id="property-types-title" className="mt-2.5 font-heading text-title font-semibold text-foreground">
                 What are you looking for?
               </h2>
             </div>
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4" data-node-id="2:9652">
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {propertyCategories.map((category) => (
                 <Link
                   key={category.id}
                   href={propertiesHref({ type: category.title })}
                   className="group block rounded-card focus-visible:outline-offset-4"
-                  data-node-id={category.nodeId}
                 >
                   <Card className="min-h-35 gap-0 rounded-card border-0 bg-surface p-6 py-6 ring-0 transition-colors group-hover:bg-background">
                     <PropertyIcon name={category.icon} />

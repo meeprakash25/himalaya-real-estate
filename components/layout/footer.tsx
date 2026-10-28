@@ -20,17 +20,16 @@ function SocialIcon ({ name }: { name: (typeof footerSocialLinks)[number]["icon"
 
 export function Footer () {
   return (
-    <footer id="footer" className="bg-footer-background text-footer-foreground" data-node-id="2:9799">
+    <footer id="footer" className="bg-footer-background text-footer-foreground">
       <Container className="pt-12 pb-7">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between" data-node-id="2:9800">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-3xl">
-            <h2 className="font-heading text-title font-medium text-footer-foreground" data-node-id="2:9802">Home is closer than you think.</h2>
-            <p className="mt-2.5 text-sm leading-[21px] text-footer-muted" data-node-id="2:9803">Let’s find a place for your next chapter.</p>
+            <h2 className="font-heading text-title font-medium text-footer-foreground">Home is closer than you think.</h2>
+            <p className="mt-2.5 text-sm leading-[21px] text-footer-muted">Let’s find a place for your next chapter.</p>
           </div>
           <Link
             href="/properties"
             className="inline-flex min-h-[50px] shrink-0 items-center justify-center gap-3 self-start rounded-control bg-surface px-5 text-sm font-semibold text-primary transition-colors hover:bg-primary-soft lg:self-auto"
-            data-node-id="2:9804"
           >
             Find your home
             <svg aria-hidden="true" viewBox="0 0 20 20" className="size-[18px]" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -41,12 +40,12 @@ export function Footer () {
 
         <Separator className="mt-10 bg-footer-divider" />
 
-        <div className="mt-10 grid gap-10 sm:grid-cols-2 xl:grid-cols-[280px_minmax(0,1fr)] xl:gap-12" data-node-id="2:9808">
-          <div className="max-w-70" data-node-id="2:9809">
-            <Link href="/" aria-label="Himalaya Real Etate home" className="inline-flex items-center gap-2 rounded-control focus-visible:outline-offset-4" data-node-id="2:9810">
+        <div className="mt-10 grid gap-10 sm:grid-cols-2 xl:grid-cols-[280px_minmax(0,1fr)] xl:gap-12">
+          <div className="max-w-70">
+            <Link href="/" aria-label="Himalaya Real Etate home" className="inline-flex items-center gap-2 rounded-control focus-visible:outline-offset-4">
               <Image src="/hre-logo-light.png" alt="" width={384} height={200} aria-hidden="true" className="h-auto w-[130px]" priority />
             </Link>
-            <p className="mt-5 text-body-sm leading-[23px] text-footer-muted" data-node-id="2:9814">{footerDescription}</p>
+            <p className="mt-5 text-body-sm leading-[23px] text-footer-muted">{footerDescription}</p>
             <nav aria-label="Social media" className="mt-5">
               <ul className="flex items-center gap-3">
                 {footerSocialLinks.map((social) => (
@@ -64,7 +63,7 @@ export function Footer () {
             </nav>
           </div>
 
-          <nav aria-label="Footer navigation" className="grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-2 xl:grid-cols-4 xl:gap-7" data-node-id="2:9822">
+          <nav aria-label="Footer navigation" className="grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-2 xl:grid-cols-4 xl:gap-7">
             {footerLinkGroups.map((group) => (
               <div key={group.title}>
                 <h3 className="text-xs leading-[15px] font-semibold text-footer-foreground">{group.title}</h3>
@@ -83,14 +82,14 @@ export function Footer () {
         </div>
 
         <Separator className="mt-10 bg-footer-divider" />
-        <div className="mt-10 flex flex-col gap-4 text-micro text-footer-muted sm:flex-row sm:items-center sm:justify-between" data-node-id="2:9856">
-          <p data-node-id="2:9857">{footerCopyright}</p>
+        <div className="mt-10 flex flex-col gap-4 text-micro text-footer-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>{footerCopyright}</p>
           <nav aria-label="Legal links" className="flex items-center gap-6">
             {footerLegalLinks.map((link) => (
               <Link key={link.label} href={link.href} className="transition-colors hover:text-footer-foreground">{link.label}</Link>
             ))}
           </nav>
-          <p data-node-id="2:9861">{footerOrigin}</p>
+          <p>{footerOrigin}</p>
         </div>
       </Container>
     </footer>

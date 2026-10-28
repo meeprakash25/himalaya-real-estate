@@ -7,17 +7,16 @@ import { guides } from "@/data/guides-footer"
 
 export function GuidesAndInsights () {
   return (
-    <section id="guides" className="bg-background py-14 sm:py-16" aria-labelledby="guides-title" data-node-id="2:9754">
+    <section id="guides" className="bg-background py-14 sm:py-16" aria-labelledby="guides-title">
       <Container>
-        <header className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between" data-node-id="2:9755">
+        <header className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary" data-node-id="2:9757">
+            <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary">
               A LITTLE LOCAL KNOWLEDGE
             </p>
             <h2
               id="guides-title"
-              className="mt-2.5 font-heading text-title font-semibold text-foreground"
-              data-node-id="2:9758">
+              className="mt-2.5 font-heading text-title font-semibold text-foreground">
               Make your next move an informed one.
             </h2>
           </div>
@@ -28,8 +27,7 @@ export function GuidesAndInsights () {
               size: "lg",
               className:
                 "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary sm:self-auto"
-            })}
-            data-node-id="2:9759">
+            })}>
             All guides &amp; insights
             <svg
               aria-hidden="true"
@@ -43,10 +41,10 @@ export function GuidesAndInsights () {
           </Link>
         </header>
 
-        <div className="mt-7 grid gap-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-6" data-node-id="2:9762">
+        <div className="mt-7 grid gap-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-6">
           {guides.slice(0, 3).map((guide) => (
-            <article key={guide.id} className="group min-w-0" data-node-id={guide.nodeId}>
-              <div className="relative aspect-41/22 overflow-hidden rounded-card" data-node-id={guide.imageNodeId}>
+            <article key={guide.id} className="group min-w-0">
+              <div className="relative aspect-41/22 overflow-hidden rounded-card">
                 <Image
                   src={guide.image}
                   alt={guide.imageAlt}

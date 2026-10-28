@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
 
-import { PropertyDetailSkeleton } from "@/components/property-detail/PropertyDetailSkeleton"
+import { PropertyDetailSkeleton } from "@/components/property/PropertyDetailSkeleton"
 import { properties } from "@/data/properties"
 
 interface PropertyPageProps {

@@ -104,30 +104,27 @@ export function Hero () {
   }, [])
 
   return (
-    <section className="bg-accent py-8 md:py-10" aria-labelledby="hero-title" data-node-id="2:9438">
+    <section className="bg-accent py-8 md:py-10" aria-labelledby="hero-title">
       <Container>
         <div
-          className="grid items-center gap-8 lg:grid-cols-[minmax(0,580px)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(0,600px)_minmax(0,620px)] xl:gap-5"
-          data-node-id="2:9439">
-          <div className="flex flex-col items-start" data-node-id="2:9440">
+          className="grid items-center gap-8 lg:grid-cols-[minmax(0,580px)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(0,600px)_minmax(0,620px)] xl:gap-5">
+          <div className="flex flex-col items-start">
             <p className="flex items-center gap-2 text-label leading-[13px] font-bold tracking-[0.08em] text-primary">
               <span aria-hidden="true" className="h-0.5 w-5 bg-primary" />
               YOUR PLACE. YOUR POSSIBILITIES.
             </p>
             <h1
               id="hero-title"
-              className="mt-6 max-w-xl font-heading text-4xl leading-tight font-semibold text-foreground sm:text-5xl xl:mt-7 xl:text-display"
-              data-node-id="2:9444">
+              className="mt-6 max-w-xl font-heading text-4xl leading-tight font-semibold text-foreground sm:text-5xl xl:mt-7 xl:text-display">
               Find your next
               <br className="hidden sm:block" /> home in Nepal.
             </h1>
-            <p className="mt-5 max-w-xl text-intro text-muted-foreground" data-node-id="2:9445">
+            <p className="mt-5 max-w-xl text-intro text-muted-foreground">
               Verified home, land, and commercial spaces to buy or rent, all in one place.
             </p>
             <ul
               className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-primary"
-              aria-label="Listing benefits"
-              data-node-id="2:9446">
+              aria-label="Listing benefits">
               <li className="inline-flex items-center gap-2">
                 <CheckIcon />
                 Verified listings
@@ -140,8 +137,7 @@ export function Hero () {
           </div>
 
           <figure
-            className="relative aspect-31/21 overflow-hidden rounded-panel lg:aspect-auto lg:h-105"
-            data-node-id="2:9453">
+            className="relative aspect-31/21 overflow-hidden rounded-panel lg:aspect-auto lg:h-105">
             <Image
               src="/images/hero-home.jpg"
               alt="A modern home surrounded by greenery in Nepal"
@@ -149,7 +145,6 @@ export function Hero () {
               priority
               sizes="(min-width: 1280px) 620px, (min-width: 1024px) 50vw, 100vw"
               className="object-cover"
-              data-node-id="2:9454"
             />
             <figcaption className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-control bg-surface px-3 py-2 text-[10px] leading-3 font-medium text-foreground">
               <PinIcon className="size-3.5 shrink-0" />A little closer to home.
@@ -157,9 +152,9 @@ export function Hero () {
           </figure>
         </div>
 
-        <div id="property-search" className="mt-7 rounded-card bg-surface p-4 sm:p-6" data-node-id="2:9458">
+        <div id="property-search" className="mt-7 rounded-card bg-surface p-4 sm:p-6">
           <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
-            <fieldset className="flex items-center" data-node-id="2:9459">
+            <fieldset className="flex items-center">
               <legend className="sr-only">Search for a property to buy or rent</legend>
               <RadioGroup
                 value={transaction}
@@ -198,8 +193,7 @@ export function Hero () {
           </div>
 
           <div
-            className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-[repeat(3,minmax(0,1fr))_196px]"
-            data-node-id="2:9467">
+            className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-[repeat(3,minmax(0,1fr))_196px]">
             <SearchField
               id="location"
               label="LOCATION"

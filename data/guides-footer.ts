@@ -1,8 +1,6 @@
 export const guides = [
   {
     id: "buying-home",
-    nodeId: "2:9763",
-    imageNodeId: "2:9764",
     image: "/images/home-buying-guide.jpg",
     imageAlt: "Bright, welcoming home interior with natural light",
     category: "BUYING A HOME",
@@ -13,8 +11,6 @@ export const guides = [
   },
   {
     id: "buying-land",
-    nodeId: "2:9775",
-    imageNodeId: "2:9776",
     image: "/images/neighborhood-godawari.jpg",
     imageAlt: "Green hills and open land in Nepal",
     category: "LAND & OWNERSHIP",
@@ -25,8 +21,6 @@ export const guides = [
   },
   {
     id: "renting-well",
-    nodeId: "2:9787",
-    imageNodeId: "2:9788",
     image: "/images/guide-renting.jpg",
     imageAlt: "Contemporary apartment living room with natural light",
     category: "RENTING WELL",

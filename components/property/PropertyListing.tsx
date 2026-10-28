@@ -10,17 +10,16 @@ import { SavePropertyButton } from "@/components/ui/save-property-button"
 import { neighborhoods, propertyCategories } from "@/data/discover-places"
 import { propertyLocations } from "@/data/hero"
 import { properties, type Property } from "@/data/properties"
-import { normalizeBudgetFilter, type PropertySearchFilters } from "@/data/property-search"
-
-const budgetOptions = [
-  { value: "any", label: "Any budget" },
-  { value: "under-1", label: "Under Rs 1 Cr" },
-  { value: "1-3", label: "Rs 1–3 Cr" },
-  { value: "3-5", label: "Rs 3–5 Cr" },
-  { value: "above-5", label: "Above Rs 5 Cr" }
-]
-
-const bedroomOptions = ["2", "3", "4", "5+"]
+import {
+  bedroomHomeLinks,
+  homeownerBenefits,
+  listingBedroomOptions,
+  listingBudgetOptions,
+  listingPopularSearches,
+  listingSortOptions,
+  normalizeBudgetFilter,
+  type PropertySearchFilters
+} from "@/data/property-search"
 
 function priceValue (property: Property) {
   return Number(property.price.replace(/[^\d.]/g, ""))
@@ -161,7 +160,7 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
               {query && <button type="button" onClick={() => setQuery("")} aria-label="Clear search" className="text-muted-foreground hover:text-foreground">×</button>}
             </label>
             <ListingSelect label="LOCATION" value={location} onChange={setLocation} options={[{ value: "all", label: "All locations" }, ...locationOptions.map((item) => ({ value: item, label: item }))]} />
-            <ListingSelect label="BUDGET" value={budget} onChange={setBudget} options={budgetOptions} />
+            <ListingSelect label="BUDGET" value={budget} onChange={setBudget} options={listingBudgetOptions} />
             <ListingSelect label="PROPERTY TYPE" value={type} onChange={setType} options={[{ value: "all", label: "All types" }, ...typeOptions.map((item) => ({ value: item, label: item }))]} />
             <button type="button" onClick={() => document.getElementById("bedroom-filter-title")?.scrollIntoView({ behavior: "smooth" })} className="inline-flex h-10 items-center justify-center gap-2 rounded-control bg-primary px-4 text-xs font-semibold text-primary-foreground hover:bg-primary/90"><SlidersHorizontal aria-hidden="true" className="size-4" /> More filters</button>
           </div>
@@ -182,7 +181,7 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
                   {hasFilters && <button type="button" onClick={clearFilters} className="text-xs font-medium text-primary hover:underline">Clear filters</button>}
                   <label className="flex items-center gap-2 text-xs text-muted-foreground">Sort by
                     <select value={sort} onChange={(event) => setSort(event.target.value)} className="h-9 rounded-control border border-border bg-card px-2 text-xs font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                      <option value="newest">Newest</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option>
+                      {listingSortOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
                     </select>
                   </label>
                   <div className="hidden items-center rounded-control border border-border p-0.5 sm:flex" role="group" aria-label="Results layout">
@@ -201,7 +200,7 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
             <section className="mt-6 rounded-card border border-border bg-card p-4 sm:flex sm:items-center sm:justify-between sm:px-5" aria-labelledby="bedroom-filter-title">
               <h2 id="bedroom-filter-title" className="text-sm font-semibold text-foreground">How many bedrooms?</h2>
               <div className="mt-3 flex flex-wrap gap-2 sm:mt-0" role="group" aria-label="Filter by bedrooms">
-                {bedroomOptions.map((count) => <button key={count} type="button" aria-pressed={bedrooms === count} onClick={() => setBedrooms(bedrooms === count ? "" : count)} className={`min-h-9 rounded-control border px-3 text-xs font-medium transition-colors ${bedrooms === count ? "border-primary bg-primary text-primary-foreground" : "border-border bg-background text-foreground hover:border-primary hover:text-primary"}`}>{count} Beds</button>)}
+                {listingBedroomOptions.map((count) => <button key={count} type="button" aria-pressed={bedrooms === count} onClick={() => setBedrooms(bedrooms === count ? "" : count)} className={`min-h-9 rounded-control border px-3 text-xs font-medium transition-colors ${bedrooms === count ? "border-primary bg-primary text-primary-foreground" : "border-border bg-background text-foreground hover:border-primary hover:text-primary"}`}>{count} Beds</button>)}
               </div>
             </section>
 
@@ -225,9 +224,9 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
                 {[
                   { title: "Properties in popular areas", links: locationOptions },
                   { title: "Browse by type", links: typeOptions },
-                  { title: "Browse by budget", links: budgetOptions.slice(1).map((option) => option.label) },
-                  { title: "Land your next home", links: ["2 bedroom homes", "3 bedroom homes", "4 bedroom homes", "5+ bedroom homes"] }
-                ].map((group, index) => <div key={group.title} className="rounded-card border border-border bg-card p-4"><h3 className="text-xs font-semibold text-foreground">{group.title}</h3><ul className="mt-3 space-y-2">{group.links.map((item) => <li key={item}><button type="button" onClick={() => index === 0 ? setLocation(item) : index === 1 ? setType(item) : index === 2 ? setBudget(budgetOptions.find((option) => option.label === item)?.value ?? "any") : setBedrooms(item.split(" ")[0])} className="text-left text-xs text-muted-foreground hover:text-primary">{item}</button></li>)}</ul></div>)}
+                  { title: "Browse by budget", links: listingBudgetOptions.slice(1).map((option) => option.label) },
+                  { title: "Land your next home", links: bedroomHomeLinks }
+                ].map((group, index) => <div key={group.title} className="rounded-card border border-border bg-card p-4"><h3 className="text-xs font-semibold text-foreground">{group.title}</h3><ul className="mt-3 space-y-2">{group.links.map((item) => <li key={item}><button type="button" onClick={() => index === 0 ? setLocation(item) : index === 1 ? setType(item) : index === 2 ? setBudget(listingBudgetOptions.find((option) => option.label === item)?.value ?? "any") : setBedrooms(item.split(" ")[0])} className="text-left text-xs text-muted-foreground hover:text-primary">{item}</button></li>)}</ul></div>)}
               </div>
             </section>
           </div>
@@ -244,12 +243,12 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
               <p className="mt-1 text-xs leading-5 text-footer-muted">Find genuine buyers and renters easily.</p>
               <Link href="/signup" className="mt-3 inline-flex min-h-9 w-full items-center justify-center rounded-control bg-primary px-3 text-xs font-semibold text-primary-foreground hover:bg-primary/90">List your property</Link>
               <p className="mt-3 text-[10px] font-semibold tracking-wide text-footer-muted">WHY HOMEOWNERS CHOOSE US</p>
-              <ul className="mt-2 space-y-1 text-[10px] text-footer-muted"><li>✓ Free listing</li><li>✓ Direct buyer and renter enquiries</li><li>✓ Local guidance at every step</li></ul>
+              <ul className="mt-2 space-y-1 text-[10px] text-footer-muted">{homeownerBenefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul>
             </section>
 
             <section className="rounded-card border border-border bg-card p-4" aria-labelledby="popular-searches-title">
               <h2 id="popular-searches-title" className="text-sm font-semibold text-foreground">Popular searches</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{["House for sale", "Land and plots", "Apartments for sale", "Flats for rent"].map((search) => <button key={search} type="button" onClick={() => applySearch(search.replace(/ for (sale|rent)$/i, ""))} className="rounded-full border border-border px-2.5 py-1.5 text-[10px] text-muted-foreground hover:border-primary hover:text-primary">{search}</button>)}</div>
+              <div className="mt-3 flex flex-wrap gap-2">{listingPopularSearches.map((search) => <button key={search} type="button" onClick={() => applySearch(search.replace(/ for (sale|rent)$/i, ""))} className="rounded-full border border-border px-2.5 py-1.5 text-[10px] text-muted-foreground hover:border-primary hover:text-primary">{search}</button>)}</div>
             </section>
           </aside>
         </div>

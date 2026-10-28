@@ -1,8 +1,6 @@
 export const neighborhoods = [
   {
     id: "lalitpur",
-    nodeId: "2:9603",
-    imageNodeId: "2:9604",
     name: "Lalitpur",
     description: "Heritage meets modern living",
     image: "/images/neighborhood-lalitpur.jpg",
@@ -10,8 +8,6 @@ export const neighborhoods = [
   },
   {
     id: "kathmandu",
-    nodeId: "2:9610",
-    imageNodeId: "2:9611",
     name: "Kathmandu",
     description: "At the heart of it all",
     image: "/images/neighborhood-kathmandu.jpg",
@@ -19,8 +15,6 @@ export const neighborhoods = [
   },
   {
     id: "budhanilakantha",
-    nodeId: "2:9617",
-    imageNodeId: "2:9618",
     name: "Budhanilakantha",
     description: "Closer to nature",
     image: "/images/neighborhood-budhanilakantha.jpg",
@@ -28,8 +22,6 @@ export const neighborhoods = [
   },
   {
     id: "chandragiri",
-    nodeId: "2:9625",
-    imageNodeId: "2:9626",
     name: "Chandragiri",
     description: "Room to breathe",
     image: "/images/neighborhood-chandragiri.jpg",
@@ -37,8 +29,6 @@ export const neighborhoods = [
   },
   {
     id: "mahalaxmi",
-    nodeId: "2:9632",
-    imageNodeId: "2:9633",
     name: "Mahalaxmi",
     description: "A growing place to call home",
     image: "/images/neighborhood-mahalaxmi.jpg",
@@ -46,8 +36,6 @@ export const neighborhoods = [
   },
   {
     id: "godawari",
-    nodeId: "2:9639",
-    imageNodeId: "2:9640",
     name: "Godawari",
     description: "A greener way of living",
     image: "/images/neighborhood-godawari.jpg",
@@ -56,8 +44,8 @@ export const neighborhoods = [
 ] as const
 
 export const propertyCategories = [
-  { id: "house", nodeId: "2:9654", title: "House", description: "A home of your own", icon: "house" },
-  { id: "land", nodeId: "2:9661", title: "Land", description: "Build your possibilities", icon: "land" },
-  { id: "apartment", nodeId: "2:9668", title: "Apartment", description: "Make city living yours", icon: "apartment" },
-  { id: "commercial", nodeId: "2:9675", title: "Commercial", description: "Space for your next idea", icon: "commercial" }
+  { id: "house", title: "House", description: "A home of your own", icon: "house" },
+  { id: "land", title: "Land", description: "Build your possibilities", icon: "land" },
+  { id: "apartment", title: "Apartment", description: "Make city living yours", icon: "apartment" },
+  { id: "commercial", title: "Commercial", description: "Space for your next idea", icon: "commercial" }
 ] as const

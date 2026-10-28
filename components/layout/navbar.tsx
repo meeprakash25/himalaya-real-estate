@@ -22,8 +22,8 @@ export function Navbar () {
   }
 
   return (
-    <header className="relative z-10 border-b border-border bg-surface" data-node-id="2:9421">
-      <Container className="flex min-h-18 items-center justify-between gap-4 xl:h-22 xl:min-h-0" data-node-id="2:9422">
+    <header className="relative z-10 border-b border-border bg-surface">
+      <Container className="flex min-h-18 items-center justify-between gap-4 xl:h-22 xl:min-h-0">
         <Link
           href="/"
           aria-label="Himalaya Real Etate home"
@@ -31,7 +31,7 @@ export function Navbar () {
           <Image src="/hre.png" alt="" width={600} height={140} aria-hidden="true" className="h-auto w-[190px] dark:brightness-0 dark:invert" priority />
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden xl:block" data-node-id="2:9426">
+        <nav aria-label="Main navigation" className="hidden xl:block">
           <ul className="flex items-center gap-8">
             {navigationLinks.map((link) => (
               <li key={link.label}>
@@ -46,7 +46,7 @@ export function Navbar () {
           </ul>
         </nav>
 
-        <div className="hidden shrink-0 items-center gap-6 xl:flex" data-node-id="2:9433">
+        <div className="hidden shrink-0 items-center gap-6 xl:flex">
           <ModeToggle />
           <Link
             href="/login"
@@ -60,8 +60,7 @@ export function Navbar () {
               size: "lg",
               className:
                 "h-11 gap-3 rounded-control bg-primary px-4.5 text-sm font-semibold text-on-primary hover:bg-primary-dark",
-            })}
-            data-node-id="2:9435">
+            })}>
             List your property
             <span aria-hidden="true" className="text-lg leading-none">
               +

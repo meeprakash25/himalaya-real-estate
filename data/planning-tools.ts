@@ -1,7 +1,6 @@
 export const planningTools = [
   {
     id: "emi-calculator",
-    nodeId: "2:9719",
     title: "EMI Calculator",
     description: "Understand your monthly home loan payment.",
     action: "Calculate EMI",
@@ -10,7 +9,6 @@ export const planningTools = [
   },
   {
     id: "construction-calculator",
-    nodeId: "2:9728",
     title: "Construction Calculator",
     description: "Get a starting estimate for building your home.",
     action: "Estimate cost",
@@ -19,7 +17,6 @@ export const planningTools = [
   },
   {
     id: "area-converter",
-    nodeId: "2:9737",
     title: "Area Converter",
     description: "Convert Ropani, Aana, square feet and more.",
     action: "Convert area",
@@ -28,7 +25,6 @@ export const planningTools = [
   },
   {
     id: "loan-processor",
-    nodeId: "2:9746",
     title: "Loan Processor",
     description: "A simpler way to prepare for your home loan.",
     action: "Coming soon",

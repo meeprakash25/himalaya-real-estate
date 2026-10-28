@@ -7,10 +7,10 @@ import { homeBuyingGuide } from "@/data/home-buying-guide"
 
 export function HomeBuyingGuide () {
   return (
-    <section className="bg-background py-14 sm:py-16" aria-labelledby="home-buying-guide-title" data-node-id="2:9682">
+    <section className="bg-background py-14 sm:py-16" aria-labelledby="home-buying-guide-title">
       <Container>
         <div className="grid items-center gap-8 xl:grid-cols-[minmax(0,544px)_minmax(0,1fr)] xl:gap-18">
-          <div className="relative aspect-544/490 overflow-hidden rounded-panel" data-node-id="2:9683">
+          <div className="relative aspect-544/490 overflow-hidden rounded-panel">
             <Image
               src="/images/home-buying-guide.jpg"
               alt={homeBuyingGuide.imageAlt}
@@ -21,24 +21,22 @@ export function HomeBuyingGuide () {
           </div>
 
           <div>
-            <div data-node-id="2:9685">
-              <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary" data-node-id="2:9687">
+            <div>
+              <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary">
                 {homeBuyingGuide.eyebrow}
               </p>
               <h2
                 id="home-buying-guide-title"
-                className="mt-3 font-heading text-title font-semibold text-foreground"
-                data-node-id="2:9688">
+                className="mt-3 font-heading text-title font-semibold text-foreground">
                 {homeBuyingGuide.title}
               </h2>
             </div>
 
-            <ol className="mt-6 flex flex-col gap-5.5" aria-label="Steps to buying a home" data-node-id="2:9689">
+            <ol className="mt-6 flex flex-col gap-5.5" aria-label="Steps to buying a home">
               {homeBuyingGuide.steps.map((step) => (
                 <li
                   key={step.number}
-                  className="flex items-start gap-4"
-                  data-node-id={`2:${9690 + (Number(step.number) - 1) * 6}`}>
+                  className="flex items-start gap-4">
                   <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-secondary text-micro font-semibold text-primary">
                     {step.number}
                   </span>
@@ -57,8 +55,7 @@ export function HomeBuyingGuide () {
                 size: "lg",
                 className:
                   "mt-6 min-h-[50px] gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary"
-              })}
-              data-node-id="2:9708">
+              })}>
               {homeBuyingGuide.action}
               <svg
                 aria-hidden="true"

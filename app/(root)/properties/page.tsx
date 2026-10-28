@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
 
-import { PropertyListing } from "@/components/PropertyListing"
+import { PropertyListing } from "@/components/property/PropertyListing"
 import type { PropertySearchFilters } from "@/data/property-search"
 
 export const metadata: Metadata = {
