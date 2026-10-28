@@ -5,7 +5,7 @@ export const neighborhoods = [
     imageNodeId: "2:9604",
     name: "Lalitpur",
     description: "Heritage meets modern living",
-    image: "/neighborhood-lalitpur.jpg",
+    image: "/images/neighborhood-lalitpur.jpg",
     imageAlt: "Historic temple architecture in Nepal",
   },
   {
@@ -14,7 +14,7 @@ export const neighborhoods = [
     imageNodeId: "2:9611",
     name: "Kathmandu",
     description: "At the heart of it all",
-    image: "/neighborhood-kathmandu.jpg",
+    image: "/images/neighborhood-kathmandu.jpg",
     imageAlt: "Swayambhunath Stupa overlooking Kathmandu",
   },
   {
@@ -23,7 +23,7 @@ export const neighborhoods = [
     imageNodeId: "2:9618",
     name: "Budhanilakantha",
     description: "Closer to nature",
-    image: "/neighborhood-budhanilakantha.jpg",
+    image: "/images/neighborhood-budhanilakantha.jpg",
     imageAlt: "Colorful Nepalese homes among lush greenery",
   },
   {
@@ -32,7 +32,7 @@ export const neighborhoods = [
     imageNodeId: "2:9626",
     name: "Chandragiri",
     description: "Room to breathe",
-    image: "/neighborhood-chandragiri.jpg",
+    image: "/images/neighborhood-chandragiri.jpg",
     imageAlt: "Green Himalayan hills and a suspension bridge in Nepal",
   },
   {
@@ -41,7 +41,7 @@ export const neighborhoods = [
     imageNodeId: "2:9633",
     name: "Mahalaxmi",
     description: "A growing place to call home",
-    image: "/neighborhood-mahalaxmi.jpg",
+    image: "/images/neighborhood-mahalaxmi.jpg",
     imageAlt: "Aerial view of a green Nepalese residential neighborhood",
   },
   {
@@ -50,7 +50,7 @@ export const neighborhoods = [
     imageNodeId: "2:9640",
     name: "Godawari",
     description: "A greener way of living",
-    image: "/neighborhood-godawari.jpg",
+    image: "/images/neighborhood-godawari.jpg",
     imageAlt: "Aerial view of green hills and valleys in Nepal",
   },
 ] as const;

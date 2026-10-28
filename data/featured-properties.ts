@@ -2,7 +2,7 @@ export const featuredProperties = [
   {
     id: "mulpani-bungalow",
     nodeId: "2:9513",
-    image: "/property-mulpani.jpg",
+    image: "/properties/property-mulpani.jpg",
     imageAlt: "Two-story family bungalow with landscaped garden",
     price: "Rs 3.97 Cr",
     type: "Bungalow",
@@ -13,7 +13,7 @@ export const featuredProperties = [
   {
     id: "kirtipur-bungalow",
     nodeId: "2:9530",
-    image: "/property-kirtipur.jpg",
+    image: "/properties/property-kirtipur.jpg",
     imageAlt: "Modern white bungalow with a landscaped front garden",
     price: "Rs 4.20 Cr",
     type: "Bungalow",
@@ -24,7 +24,7 @@ export const featuredProperties = [
   {
     id: "harmony-colony-bungalow",
     nodeId: "2:9547",
-    image: "/property-bhaisepati.jpg",
+    image: "/properties/property-bhaisepati.jpg",
     imageAlt: "Modern bungalow entrance surrounded by tropical greenery",
     price: "Rs 5.50 Cr",
     type: "Bungalow",
@@ -35,7 +35,7 @@ export const featuredProperties = [
   {
     id: "tikathali-house",
     nodeId: "2:9564",
-    image: "/property-tikathali.jpg",
+    image: "/properties/property-tikathali.jpg",
     imageAlt: "Contemporary suburban home surrounded by a green garden",
     price: "Rs 4 Cr",
     type: "House",
@@ -46,7 +46,7 @@ export const featuredProperties = [
   {
     id: "bhaisepati-family-home",
     nodeId: "2:9581",
-    image: "/property-bhaisepaty01.jpeg",
+    image: "/properties/property-bhaisepaty01.jpeg",
     imageAlt: "Modern family home surrounded by landscaped greenery",
     price: "Rs 6.25 Cr",
     type: "House",
@@ -57,7 +57,7 @@ export const featuredProperties = [
   {
     id: "mulpani-modern-home",
     nodeId: "2:9598",
-    image: "/property-mulpani01.jpg",
+    image: "/properties/property-mulpani01.jpg",
     imageAlt: "Two-story modern home with a landscaped garden",
     price: "Rs 3.65 Cr",
     type: "House",

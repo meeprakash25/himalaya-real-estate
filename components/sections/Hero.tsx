@@ -133,7 +133,7 @@ export function Hero() {
             className="relative aspect-[31/21] overflow-hidden rounded-panel lg:h-105 lg:aspect-auto"
             data-node-id="2:9453">
             <Image
-              src="/hero-home.jpg"
+              src="/images/hero-home.jpg"
               alt="A modern home surrounded by greenery in Nepal"
               fill
               priority
@@ -232,7 +232,7 @@ export function Hero() {
               href="#property-search"
               className="inline-flex min-h-[29px] items-center gap-2 rounded-full border border-border-soft px-3 text-[11px] leading-[13px] text-foreground transition-colors hover:border-primary hover:text-primary">
               {search}
-              <Image src="/arrow-up-right.svg" alt="" width={12} height={12} aria-hidden="true" />
+              <Image src="/icons/arrow-up-right.svg" alt="" width={12} height={12} aria-hidden="true" />
             </a>
           ))}
         </div>

@@ -11,7 +11,7 @@ export function HomeBuyingGuide() {
         <div className="grid items-center gap-8 xl:grid-cols-[minmax(0,544px)_minmax(0,1fr)] xl:gap-[72px]">
           <div className="relative aspect-[544/490] overflow-hidden rounded-panel" data-node-id="2:9683">
             <Image
-              src="/home-buying-guide.jpg"
+              src="/images/home-buying-guide.jpg"
               alt={homeBuyingGuide.imageAlt}
               fill
               sizes="(min-width: 1280px) 544px, (min-width: 640px) 50vw, 100vw"

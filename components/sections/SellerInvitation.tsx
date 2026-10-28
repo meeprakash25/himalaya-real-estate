@@ -48,7 +48,7 @@ export function SellerInvitation() {
 
           <div className="relative aspect-[4/3] min-h-64 lg:aspect-auto lg:min-h-[342px]" data-node-id="2:9590">
             <Image
-              src="/seller-invitation.jpg"
+              src="/images/seller-invitation.jpg"
               alt={sellerInvitation.imageAlt}
               fill
               sizes="(min-width: 1280px) 460px, (min-width: 1024px) 40vw, 100vw"

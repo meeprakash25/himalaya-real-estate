@@ -4,7 +4,7 @@ export const blogPosts = [
   ...guides.map((guide) => ({ ...guide, href: `/${guide.href}` })),
   {
     id: "ownership-documents",
-    image: "/guide-land-ownership.jpg",
+    image: "/images/guide-land-ownership.jpg",
     imageAlt: "Land ownership records and property documents in Nepal",
     category: "LAND & OWNERSHIP",
     readingTime: "7 min read",
@@ -14,7 +14,7 @@ export const blogPosts = [
   },
   {
     id: "kathmandu-house-hunt",
-    image: "/property-mulpani.jpg",
+    image: "/properties/property-mulpani.jpg",
     imageAlt: "A family home with a garden in a Kathmandu neighborhood",
     category: "HOME BUYING",
     readingTime: "5 min read",
