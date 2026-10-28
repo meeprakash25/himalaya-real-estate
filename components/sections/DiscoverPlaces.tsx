@@ -1,9 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
+
 import { Container } from "@/components/layout/container"
+import { buttonVariants } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { buttonVariants } from "@/components/ui/button"
 import { neighborhoods, propertyCategories } from "@/data/discover-places"
 
 type PropertyIconName = (typeof propertyCategories)[number]["icon"];

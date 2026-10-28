@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+
 import { Container } from "@/components/layout/container"
 import { blogPosts } from "@/data/blog-posts"
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
-import { LoginForm } from "@/components/auth/login-form"
+
 import { AuthCard } from "@/components/auth/auth-card"
+import { LoginForm } from "@/components/auth/login-form"
 
 export const metadata: Metadata = {
   title: "Log in | Himalaya Real Etate"

@@ -2,16 +2,17 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { z } from "zod"
 import { type FieldErrors, type Resolver, useForm } from "react-hook-form"
+import { z } from "zod"
+
+import { AuthCard } from "@/components/auth/auth-card"
+import { GoogleAuthButton } from "@/components/auth/google-auth-button"
+import { PasswordInput } from "@/components/auth/password-input"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
-import { AuthCard } from "@/components/auth/auth-card"
-import { GoogleAuthButton } from "@/components/auth/google-auth-button"
-import { PasswordInput } from "@/components/auth/password-input"
 
 const signupSchema = z
   .object({

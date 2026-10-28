@@ -1,16 +1,17 @@
 "use client"
 
 import Link from "next/link"
-import { z } from "zod"
 import { useState } from "react"
 import { type FieldErrors, type Resolver, useForm } from "react-hook-form"
+import { z } from "zod"
+
+import { GoogleAuthButton } from "@/components/auth/google-auth-button"
+import { PasswordInput } from "@/components/auth/password-input"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
-import { GoogleAuthButton } from "@/components/auth/google-auth-button"
-import { PasswordInput } from "@/components/auth/password-input"
 
 const loginSchema = z.object({
   email: z.string().email("Enter a valid email address."),

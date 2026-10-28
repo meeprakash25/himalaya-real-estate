@@ -1,8 +1,8 @@
 "use client"
 
 import Image from "next/image"
-
 import { useEffect, useState } from "react"
+
 import { Container } from "@/components/layout/container"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"

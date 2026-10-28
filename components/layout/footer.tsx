@@ -1,9 +1,10 @@
+import Image from "next/image"
 import Link from "next/link"
+
 import { Container } from "@/components/layout/container"
 import { Separator } from "@/components/ui/separator"
 import { footerDescription, footerLinkGroups } from "@/data/guides-footer"
 import { footerCopyright, footerLegalLinks, footerOrigin, footerSocialLinks } from "@/data/site-footer"
-import Image from "next/image"
 
 function SocialIcon ({ name }: { name: (typeof footerSocialLinks)[number]["icon"] }) {
   if (name === "facebook") {

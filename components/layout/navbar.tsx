@@ -3,9 +3,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
+
+import { Container } from "@/components/layout/container"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { navigationLinks } from "@/data/navigation"
-import { Container } from "@/components/layout/container"
 
 export function Navbar () {
   const [menuOpen, setMenuOpen] = useState(false)

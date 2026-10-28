@@ -1,10 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
+
 import { Container } from "@/components/layout/container"
 import { Badge } from "@/components/ui/badge"
-import { Card } from "@/components/ui/card"
 import { buttonVariants } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+import { Card } from "@/components/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -13,6 +13,7 @@ import {
   CarouselPrevious
 } from "@/components/ui/carousel"
 import { SavePropertyButton } from "@/components/ui/save-property-button"
+import { Separator } from "@/components/ui/separator"
 import { featuredProperties } from "@/data/featured-properties"
 
 function MapPinIcon () {
