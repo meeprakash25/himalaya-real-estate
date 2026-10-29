@@ -17,6 +17,7 @@ import {
   listingPopularSearches,
   listingSortOptions,
   normalizeBudgetFilter,
+  propertiesHref,
   type PropertySearchFilters
 } from "@/data/property-search"
 
@@ -77,7 +78,7 @@ function PropertyCard ({ property, grid }: { property: Property, grid: boolean }
       <div className={`flex flex-col justify-center gap-3 border-border p-4 ${grid ? "mt-auto border-t pt-3" : "border-t sm:border-t-0 sm:border-l"}`}>
         <div className="hidden sm:block">
           <p className="font-heading text-lg font-semibold text-foreground">{property.price}</p>
-          <p className="mt-1 text-xs text-muted-foreground">{property.detail?.emiEstimate ?? "For sale"}</p>
+          <p className="mt-1 text-xs text-muted-foreground">{property.detail?.emiEstimate ?? (property.transaction === "rent" ? "For rent" : "For sale")}</p>
         </div>
         <Link href={`/properties/${property.id}`} className="inline-flex min-h-9 items-center justify-center rounded-control bg-primary px-3 text-xs font-semibold text-primary-foreground transition-colors hover:bg-primary/90">
           Contact
@@ -129,7 +130,7 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
 
       const matchesBedrooms = !bedrooms || (bedrooms === "5+" ? count >= 5 : count === Number(bedrooms))
 
-      return transaction === "buy" && (!normalizedQuery || text.includes(normalizedQuery)) && (location === "all" || listingLocation.includes(location.toLowerCase())) && (type === "all" || property.type === type) && matchesBudget && matchesBedrooms
+      return property.transaction === transaction && (!normalizedQuery || text.includes(normalizedQuery)) && (location === "all" || listingLocation.includes(location.toLowerCase())) && (type === "all" || property.type === type) && matchesBudget && matchesBedrooms
     })
 
     if (sort === "price-low") return filtered.sort((left, right) => priceValue(left) - priceValue(right))
@@ -225,7 +226,7 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
                 <table className="w-full min-w-[480px] text-left text-xs">
                   <thead className="border-b border-border text-[10px] font-semibold tracking-wide text-muted-foreground"><tr><th className="px-4 py-3">AREA</th><th className="px-4 py-3">LISTINGS</th><th className="px-4 py-3 text-right">STARTING PRICE</th></tr></thead>
                   <tbody className="divide-y divide-border">
-                    {areaSnapshots.map(([area, listings]) => <tr key={area}><td className="px-4 py-3 text-foreground"><MapPin aria-hidden="true" className="mr-1.5 inline size-3.5 text-muted-foreground" />{area}</td><td className="px-4 py-3 text-muted-foreground">{listings.length} {listings.length === 1 ? "listing" : "listings"}</td><td className="px-4 py-3 text-right text-foreground">from {listings.slice().sort((left, right) => priceValue(left) - priceValue(right))[0].price}</td></tr>)}
+                    {areaSnapshots.map(([area, listings]) => <tr key={area}><td className="px-4 py-3 text-foreground"><button type="button" onClick={() => applySearch(area)} className="inline-flex items-center text-left hover:text-primary"><MapPin aria-hidden="true" className="mr-1.5 inline size-3.5 text-muted-foreground" />{area}</button></td><td className="px-4 py-3 text-muted-foreground">{listings.length} {listings.length === 1 ? "listing" : "listings"}</td><td className="px-4 py-3 text-right text-foreground">from {listings.slice().sort((left, right) => priceValue(left) - priceValue(right))[0].price}</td></tr>)}
                   </tbody>
                 </table>
               </div>
@@ -236,11 +237,11 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
               <p className="mt-1 text-xs text-muted-foreground">Find your next home with a little more inspiration.</p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 {[
-                  { title: "Properties in popular areas", links: locationOptions },
-                  { title: "Browse by type", links: typeOptions },
-                  { title: "Browse by budget", links: listingBudgetOptions.slice(1).map((option) => option.label) },
-                  { title: "Land your next home", links: bedroomHomeLinks }
-                ].map((group, index) => <div key={group.title} className="rounded-card border border-border bg-card p-4"><h3 className="text-xs font-semibold text-foreground">{group.title}</h3><ul className="mt-3 space-y-2">{group.links.map((item) => <li key={item}><button type="button" onClick={() => index === 0 ? setLocation(item) : index === 1 ? setType(item) : index === 2 ? setBudget(listingBudgetOptions.find((option) => option.label === item)?.value ?? "any") : setBedrooms(item.split(" ")[0])} className="text-left text-xs text-muted-foreground hover:text-primary">{item}</button></li>)}</ul></div>)}
+                  { title: "Properties in popular areas", links: locationOptions.map((item) => ({ label: item, href: propertiesHref({ transaction: "buy", location: item }) })) },
+                  { title: "Browse by type", links: typeOptions.map((item) => ({ label: item, href: propertiesHref({ transaction: "buy", type: item }) })) },
+                  { title: "Browse by budget", links: listingBudgetOptions.slice(1).map((option) => ({ label: option.label, href: propertiesHref({ transaction: "buy", budget: option.value }) })) },
+                  { title: "Land your next home", links: bedroomHomeLinks.map((item) => ({ label: item, onSelect: () => setBedrooms(item.split(" ")[0]) })) }
+                ].map((group) => <div key={group.title} className="rounded-card border border-border bg-card p-4"><h3 className="text-xs font-semibold text-foreground">{group.title}</h3><ul className="mt-3 space-y-2">{group.links.map((item) => <li key={item.label}>{"href" in item ? <Link href={item.href} className="text-left text-xs text-muted-foreground hover:text-primary">{item.label}</Link> : <button type="button" onClick={item.onSelect} className="text-left text-xs text-muted-foreground hover:text-primary">{item.label}</button>}</li>)}</ul></div>)}
               </div>
             </section>
           </div>

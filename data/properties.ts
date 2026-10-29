@@ -25,6 +25,7 @@ export interface PropertyTourDate {
 
 export interface Property {
   id: string
+  transaction: "buy" | "rent"
   image: string
   imageAlt: string
   price: string
@@ -61,7 +62,19 @@ export interface Property {
 
 export const properties: Property[] = [
   {
+    id: "bhaisepati-apartment-rent",
+    transaction: "rent",
+    image: "/properties/property-bhaisepati.jpg",
+    imageAlt: "Residential home entrance with landscaped greenery",
+    price: "Rs 65,000/month",
+    type: "Apartment",
+    title: "Apartment for Rent in Bhaisepati",
+    address: "Bhaisepati, Lalitpur",
+    details: "3 beds · 2 baths · 4 Aana"
+  },
+  {
     id: "mulpani-bungalow",
+    transaction: "buy",
     image: "/properties/property-mulpani.jpg",
     imageAlt: "Two-story family bungalow with landscaped garden",
     price: "Rs 3.97 Cr",
@@ -101,7 +114,7 @@ export const properties: Property[] = [
         }
       ],
       overview: {
-        size: "4 Aana",
+        size: "2100 sq ft",
         bedrooms: 6,
         bathrooms: 4,
         roadAccess: "22 ft",
@@ -153,6 +166,7 @@ export const properties: Property[] = [
   },
   {
     id: "kirtipur-bungalow",
+    transaction: "buy",
     image: "/properties/property-kirtipur.jpg",
     imageAlt: "Modern white bungalow with a landscaped front garden",
     price: "Rs 4.20 Cr",
@@ -224,6 +238,7 @@ export const properties: Property[] = [
   },
   {
     id: "harmony-colony-bungalow",
+    transaction: "buy",
     image: "/properties/property-bhaisepati.jpg",
     imageAlt: "Modern bungalow entrance surrounded by tropical greenery",
     price: "Rs 5.50 Cr",
@@ -295,6 +310,7 @@ export const properties: Property[] = [
   },
   {
     id: "tikathali-house",
+    transaction: "buy",
     image: "/properties/property-tikathali.jpg",
     imageAlt: "Contemporary suburban home surrounded by a green garden",
     price: "Rs 4 Cr",
@@ -366,6 +382,7 @@ export const properties: Property[] = [
   },
   {
     id: "bhaisepati-family-home",
+    transaction: "buy",
     image: "/properties/property-bhaisepaty01.jpeg",
     imageAlt: "Modern family home surrounded by landscaped greenery",
     price: "Rs 6.25 Cr",
@@ -437,6 +454,7 @@ export const properties: Property[] = [
   },
   {
     id: "mulpani-modern-home",
+    transaction: "buy",
     image: "/properties/property-mulpani01.jpg",
     imageAlt: "Two-story modern home with a landscaped garden",
     price: "Rs 3.65 Cr",

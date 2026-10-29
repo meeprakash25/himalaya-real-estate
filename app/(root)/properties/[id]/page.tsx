@@ -27,7 +27,7 @@ export async function generateMetadata ({ params }: PropertyPageProps): Promise<
 
   return {
     title: `${property.title} | Himalaya Real Estate`,
-    description: property.detail?.seoDescription ?? `${property.type} for sale at ${property.address}. ${property.details}.`
+    description: property.detail?.seoDescription ?? `${property.type} for ${property.transaction === "rent" ? "rent" : "sale"} at ${property.address}. ${property.details}.`
   }
 }
 
