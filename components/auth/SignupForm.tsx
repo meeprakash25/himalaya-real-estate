@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { type FieldErrors, type Resolver, useForm } from "react-hook-form"
+import { Controller, type FieldErrors, type Resolver, useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { AuthCard } from "@/components/auth/AuthCard"
@@ -10,8 +10,8 @@ import { GoogleAuthButton } from "@/components/auth/GoogleAuthButton"
 import { PasswordInput } from "@/components/auth/PasswordInput"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 
 const signupSchema = z
@@ -49,16 +49,11 @@ const signupResolver: Resolver<SignupValues> = async (values) => {
 export function SignupForm () {
   const [submitting, setSubmitting] = useState(false)
   const [status, setStatus] = useState("")
-  const [termsAccepted, setTermsAccepted] = useState(false)
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors }
-  } = useForm<SignupValues>({
+  const { control, handleSubmit } = useForm<SignupValues>({
     resolver: signupResolver,
     defaultValues: { fullName: "", email: "", password: "", confirmPassword: "", termsAccepted: false }
   })
+
   async function onSubmit () {
     setSubmitting(true)
     setStatus("")
@@ -69,100 +64,123 @@ export function SignupForm () {
 
   return (
     <AuthCard title="Create your account" description="Find your next place with Himalaya Real Etate.">
-      <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="full-name">Full name</Label>
-          <Input
-            id="full-name"
-            type="text"
-            autoComplete="name"
-            placeholder="Your full name"
-            aria-invalid={Boolean(errors.fullName)}
-            aria-describedby={errors.fullName ? "full-name-error" : undefined}
-            className="h-11"
-            {...register("fullName")}
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+        <FieldGroup>
+          <Controller
+            control={control}
+            name="fullName"
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid || undefined}>
+                <FieldLabel htmlFor="full-name">Full name</FieldLabel>
+                <Input
+                  {...field}
+                  id="full-name"
+                  type="text"
+                  autoComplete="name"
+                  className="h-11"
+                  placeholder="Your full name"
+                  aria-invalid={fieldState.invalid || undefined}
+                />
+                <FieldError errors={[fieldState.error]} />
+              </Field>
+            )}
           />
-          {errors.fullName && <p id="full-name-error" className="text-sm text-destructive">{errors.fullName.message}</p>}
-        </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="signup-email">Email</Label>
-          <Input
-            id="signup-email"
-            type="email"
-            autoComplete="email"
-            placeholder="you@example.com"
-            aria-invalid={Boolean(errors.email)}
-            aria-describedby={errors.email ? "signup-email-error" : undefined}
-            className="h-11"
-            {...register("email")}
+          <Controller
+            control={control}
+            name="email"
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid || undefined}>
+                <FieldLabel htmlFor="signup-email">Email</FieldLabel>
+                <Input
+                  {...field}
+                  id="signup-email"
+                  type="email"
+                  autoComplete="email"
+                  className="h-11"
+                  placeholder="you@example.com"
+                  aria-invalid={fieldState.invalid || undefined}
+                />
+                <FieldError errors={[fieldState.error]} />
+              </Field>
+            )}
           />
-          {errors.email && <p id="signup-email-error" className="text-sm text-destructive">{errors.email.message}</p>}
-        </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="signup-password">Password</Label>
-          <PasswordInput
-            id="signup-password"
-            autoComplete="new-password"
-            placeholder="At least 8 characters"
-            aria-invalid={Boolean(errors.password)}
-            aria-describedby={errors.password ? "signup-password-error" : undefined}
-            {...register("password")}
+          <Controller
+            control={control}
+            name="password"
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid || undefined}>
+                <FieldLabel htmlFor="signup-password">Password</FieldLabel>
+                <PasswordInput
+                  {...field}
+                  id="signup-password"
+                  autoComplete="new-password"
+                  placeholder="At least 8 characters"
+                  aria-invalid={fieldState.invalid || undefined}
+                />
+                <FieldError errors={[fieldState.error]} />
+              </Field>
+            )}
           />
-          {errors.password && <p id="signup-password-error" className="text-sm text-destructive">{errors.password.message}</p>}
-        </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="confirm-password">Confirm password</Label>
-          <PasswordInput
-            id="confirm-password"
-            autoComplete="new-password"
-            placeholder="Re-enter your password"
-            aria-invalid={Boolean(errors.confirmPassword)}
-            aria-describedby={errors.confirmPassword ? "confirm-password-error" : undefined}
-            {...register("confirmPassword")}
+          <Controller
+            control={control}
+            name="confirmPassword"
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid || undefined}>
+                <FieldLabel htmlFor="confirm-password">Confirm password</FieldLabel>
+                <PasswordInput
+                  {...field}
+                  id="confirm-password"
+                  autoComplete="new-password"
+                  placeholder="Re-enter your password"
+                  aria-invalid={fieldState.invalid || undefined}
+                />
+                <FieldError errors={[fieldState.error]} />
+              </Field>
+            )}
           />
-          {errors.confirmPassword && <p id="confirm-password-error" className="text-sm text-destructive">{errors.confirmPassword.message}</p>}
-        </div>
 
-        <div>
-          <div className="flex items-start gap-2">
-            <Checkbox
-              id="terms-accepted"
-              checked={termsAccepted}
-              aria-invalid={Boolean(errors.termsAccepted)}
-              aria-describedby={errors.termsAccepted ? "terms-error" : undefined}
-              onCheckedChange={(checked) => {
-                const accepted = checked === true
-                setTermsAccepted(accepted)
-                setValue("termsAccepted", accepted, { shouldValidate: true })
-              }}
-            />
-            <Label htmlFor="terms-accepted" className="cursor-pointer text-sm leading-5 font-normal text-muted-foreground">
-              I agree to the <Link href="#terms" className="font-medium text-primary underline-offset-4 hover:underline">terms and conditions</Link>
-            </Label>
+          <Controller
+            control={control}
+            name="termsAccepted"
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid || undefined}>
+                <div className="flex items-start gap-2">
+                  <Checkbox
+                    id="terms-accepted"
+                    checked={field.value}
+                    onCheckedChange={(checked) => field.onChange(checked === true)}
+                    aria-invalid={fieldState.invalid || undefined}
+                  />
+                  <FieldLabel htmlFor="terms-accepted" className="cursor-pointer leading-5 font-normal text-muted-foreground">
+                    I agree to the <Link href="#terms" className="font-medium text-primary underline-offset-4 hover:underline">terms and conditions</Link>
+                  </FieldLabel>
+                </div>
+                <FieldError errors={[fieldState.error]} />
+              </Field>
+            )}
+          />
+
+          <Button type="submit" size="lg" disabled={submitting} className="h-11 w-full bg-primary text-primary-foreground hover:bg-primary-dark">
+            {submitting ? "Creating account..." : "Create account"}
+          </Button>
+          <p role="status" aria-live="polite" className="text-center text-sm text-muted-foreground">{status}</p>
+
+          <div className="flex items-center gap-3" aria-label="Or continue with">
+            <Separator className="flex-1" />
+            <span className="shrink-0 text-xs text-muted-foreground">Or continue with</span>
+            <Separator className="flex-1" />
           </div>
-          {errors.termsAccepted && <p id="terms-error" className="mt-2 text-sm text-destructive">{errors.termsAccepted.message}</p>}
-        </div>
 
-        <Button type="submit" size="lg" disabled={submitting} className="h-11 w-full bg-primary text-primary-foreground hover:bg-primary-dark">
-          {submitting ? "Creating account..." : "Create account"}
-        </Button>
-        <p role="status" aria-live="polite" className="text-center text-sm text-muted-foreground">{status}</p>
+          <GoogleAuthButton />
 
-        <div className="flex items-center gap-3" aria-label="Or continue with">
-          <Separator className="flex-1" />
-          <span className="shrink-0 text-xs text-muted-foreground">Or continue with</span>
-          <Separator className="flex-1" />
-        </div>
-
-        <GoogleAuthButton />
-
-        <p className="text-center text-sm text-muted-foreground">
-          Already have an account?{" "}
-          <Link href="/login" className="font-semibold text-primary underline-offset-4 hover:underline">Log in</Link>
-        </p>
+          <p className="text-center text-sm text-muted-foreground">
+            Already have an account?{" "}
+            <Link href="/login" className="font-semibold text-primary underline-offset-4 hover:underline">Log in</Link>
+          </p>
+        </FieldGroup>
       </form>
     </AuthCard>
   )

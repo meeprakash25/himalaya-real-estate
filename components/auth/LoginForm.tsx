@@ -2,15 +2,15 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { type FieldErrors, type Resolver, useForm } from "react-hook-form"
+import { Controller, type FieldErrors, type Resolver, useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { GoogleAuthButton } from "@/components/auth/GoogleAuthButton"
 import { PasswordInput } from "@/components/auth/PasswordInput"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 
 const loginSchema = z.object({
@@ -44,11 +44,7 @@ export function LoginForm () {
   const [remember, setRemember] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [status, setStatus] = useState("")
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<LoginValues>({
+  const { control, handleSubmit } = useForm<LoginValues>({
     resolver: loginResolver,
     defaultValues: { email: "", password: "" }
   })
@@ -62,62 +58,74 @@ export function LoginForm () {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
-      <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
-        <Input
-          id="email"
-          type="email"
-          autoComplete="email"
-          placeholder="you@example.com"
-          aria-invalid={Boolean(errors.email)}
-          aria-describedby={errors.email ? "email-error" : undefined}
-          className="h-11"
-          {...register("email")}
+    <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <FieldGroup>
+        <Controller
+          control={control}
+          name="email"
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid || undefined}>
+              <FieldLabel htmlFor="email">Email</FieldLabel>
+              <Input
+                {...field}
+                id="email"
+                type="email"
+                autoComplete="email"
+                className="h-11"
+                placeholder="you@example.com"
+                aria-invalid={fieldState.invalid || undefined}
+              />
+              <FieldError errors={[fieldState.error]} />
+            </Field>
+          )}
         />
-        {errors.email && <p id="email-error" className="text-sm text-destructive">{errors.email.message}</p>}
-      </div>
 
-      <div className="space-y-2">
-        <div className="flex items-center justify-between gap-3">
-          <Label htmlFor="password">Password</Label>
-          <Link href="#forgot-password" className="text-sm font-medium text-primary underline-offset-4 hover:underline">
-            Forgot password?
-          </Link>
+        <Controller
+          control={control}
+          name="password"
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid || undefined}>
+              <div className="flex items-center justify-between gap-3">
+                <FieldLabel htmlFor="password">Password</FieldLabel>
+                <Link href="#forgot-password" className="text-sm font-medium text-primary underline-offset-4 hover:underline">
+                  Forgot password?
+                </Link>
+              </div>
+              <PasswordInput
+                {...field}
+                id="password"
+                autoComplete="current-password"
+                placeholder="Enter your password"
+                aria-invalid={fieldState.invalid || undefined}
+              />
+              <FieldError errors={[fieldState.error]} />
+            </Field>
+          )}
+        />
+
+        <Field orientation="horizontal">
+          <Checkbox id="remember" checked={remember} onCheckedChange={(checked) => setRemember(checked === true)} />
+          <FieldLabel htmlFor="remember" className="cursor-pointer font-normal text-muted-foreground">Remember me</FieldLabel>
+        </Field>
+
+        <Button type="submit" size="lg" disabled={submitting} className="h-11 w-full bg-primary text-primary-foreground hover:bg-primary-dark">
+          {submitting ? "Signing in..." : "Log in"}
+        </Button>
+        <p role="status" aria-live="polite" className="text-center text-sm text-muted-foreground">{status}</p>
+
+        <div className="flex items-center gap-3" aria-label="Or continue with">
+          <Separator className="flex-1" />
+          <span className="shrink-0 text-xs text-muted-foreground">Or continue with</span>
+          <Separator className="flex-1" />
         </div>
-        <PasswordInput
-          id="password"
-          autoComplete="current-password"
-          placeholder="Enter your password"
-          aria-invalid={Boolean(errors.password)}
-          aria-describedby={errors.password ? "password-error" : undefined}
-          {...register("password")}
-        />
-        {errors.password && <p id="password-error" className="text-sm text-destructive">{errors.password.message}</p>}
-      </div>
 
-      <div className="flex items-center gap-2">
-        <Checkbox id="remember" checked={remember} onCheckedChange={(checked) => setRemember(checked === true)} />
-        <Label htmlFor="remember" className="cursor-pointer text-sm font-normal text-muted-foreground">Remember me</Label>
-      </div>
+        <GoogleAuthButton />
 
-      <Button type="submit" size="lg" disabled={submitting} className="h-11 w-full bg-primary text-primary-foreground hover:bg-primary-dark">
-        {submitting ? "Signing in..." : "Log in"}
-      </Button>
-      <p role="status" aria-live="polite" className="text-center text-sm text-muted-foreground">{status}</p>
-
-      <div className="flex items-center gap-3" aria-label="Or continue with">
-        <Separator className="flex-1" />
-        <span className="shrink-0 text-xs text-muted-foreground">Or continue with</span>
-        <Separator className="flex-1" />
-      </div>
-
-      <GoogleAuthButton />
-
-      <p className="text-center text-sm text-muted-foreground">
-        Don&apos;t have an account?{" "}
-        <Link href="/signup" className="font-semibold text-primary underline-offset-4 hover:underline">Sign up</Link>
-      </p>
+        <p className="text-center text-sm text-muted-foreground">
+          Don&apos;t have an account?{" "}
+          <Link href="/signup" className="font-semibold text-primary underline-offset-4 hover:underline">Sign up</Link>
+        </p>
+      </FieldGroup>
     </form>
   )
 }
