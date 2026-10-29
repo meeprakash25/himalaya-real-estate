@@ -1,14 +1,38 @@
-import { Container } from "@/components/layout/container"
+import type { Metadata } from "next"
 
-export default function HelpPage () {
+import { AboutCta } from "@/components/about/AboutCta"
+import { AboutHero } from "@/components/about/AboutHero"
+import { FocusCards } from "@/components/about/FocusCards"
+import { HumanExperienceSection } from "@/components/about/HumanExperienceSection"
+import { PlanYourMoveSection } from "@/components/about/PlanYourMoveSection"
+import { StartSearchSection } from "@/components/about/StartSearchSection"
+import { TestimonialsSection } from "@/components/about/TestimonialsSection"
+import {
+  aboutCta,
+  aboutHero,
+  experienceSection,
+  focusCards,
+  planSection,
+  startSearch,
+  testimonialsSection
+} from "@/data/about"
+
+export const metadata: Metadata = {
+  title: "About us | Himalaya Real Etate",
+  description:
+    "Learn how Himalaya Real Etate helps buyers, renters, and sellers search for property across Nepal with more clarity and confidence."
+}
+
+export default function AboutUsPage () {
   return (
     <main id="main-content" className="flex-1">
-      <section className="py-20 sm:py-28" aria-labelledby="page-title">
-        <Container>
-          <h1 id="page-title" className="font-heading text-title font-semibold text-foreground">Help</h1>
-          <p className="mt-3 text-body text-muted-foreground">Coming soon...</p>
-        </Container>
-      </section>
+      <AboutHero content={aboutHero} />
+      <FocusCards cards={focusCards} />
+      <StartSearchSection content={startSearch} />
+      <PlanYourMoveSection content={planSection} />
+      <HumanExperienceSection content={experienceSection} />
+      <TestimonialsSection content={testimonialsSection} />
+      <AboutCta content={aboutCta} />
     </main>
   )
 }

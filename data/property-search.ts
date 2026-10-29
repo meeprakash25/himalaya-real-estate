@@ -3,6 +3,7 @@ export interface PropertySearchFilters {
   location?: string
   type?: string
   budget?: string
+  bedrooms?: string
   query?: string
 }
 

@@ -32,6 +32,7 @@ async function PropertiesPageContent ({ searchParams }: PropertiesPageProps) {
     location: getValue("location"),
     type: getValue("type"),
     budget: getValue("budget"),
+    bedrooms: getValue("bedrooms"),
     query: getValue("query")
   }
 

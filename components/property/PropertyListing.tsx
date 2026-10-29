@@ -105,7 +105,7 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
   const [location, setLocation] = useState(initialFilters.location ?? "all")
   const [type, setType] = useState(initialFilters.type ?? "all")
   const [budget, setBudget] = useState(normalizeBudgetFilter(initialFilters.budget ?? "any"))
-  const [bedrooms, setBedrooms] = useState("")
+  const [bedrooms, setBedrooms] = useState(initialFilters.bedrooms ?? "")
   const [transaction, setTransaction] = useState<"buy" | "rent">(initialFilters.transaction === "rent" ? "rent" : "buy")
   const [sort, setSort] = useState("newest")
   const [view, setView] = useState<"list" | "grid">("list")
