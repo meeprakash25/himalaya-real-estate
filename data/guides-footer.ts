@@ -7,7 +7,7 @@ export const guides = [
     readingTime: "6 min read",
     title: "Your checklist for buying a home in Nepal",
     excerpt: "From your first viewing to ownership documents: know what to look for.",
-    href: "/blog"
+    href: "/guides-and-insights"
   },
   {
     id: "buying-land",
@@ -17,7 +17,7 @@ export const guides = [
     readingTime: "5 min read",
     title: "Buying land? Start with the right questions.",
     excerpt: "A practical look at land records, road access and planning for your plot.",
-    href: "/blog"
+    href: "/guides-and-insights"
   },
   {
     id: "renting-well",
@@ -27,7 +27,7 @@ export const guides = [
     readingTime: "4 min read",
     title: "Find a rental that feels like your own.",
     excerpt: "The details to consider before you sign for your next apartment.",
-    href: "/blog"
+    href: "/guides-and-insights"
   }
 ] as const
 
@@ -58,11 +58,11 @@ export const footerLinkGroups = [
   {
     title: "Resources",
     links: [
-      { label: "Home-buying guide", href: "/blog" },
+      { label: "Home-buying guide", href: "/guides-and-insights" },
       { label: "EMI Calculator", href: "/calculator" },
       { label: "Construction Calculator", href: "/calculator" },
       { label: "Area Converter", href: "/calculator" },
-      { label: "Blog & insights", href: "/blog" },
+      { label: "Guides & insights", href: "/guides-and-insights" },
     ],
   },
   {

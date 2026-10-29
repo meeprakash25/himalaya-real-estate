@@ -49,7 +49,7 @@ export function HomeBuyingGuide () {
             </ol>
 
             <Link
-              href="/blog"
+              href="/guides-and-insights"
               className={buttonVariants({
                 variant: "outline",
                 size: "lg",

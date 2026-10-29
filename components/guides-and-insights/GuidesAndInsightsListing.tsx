@@ -7,9 +7,9 @@ import { useMemo, useState } from "react"
 
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import type { blogPosts } from "@/data/blog-posts"
+import type { guidesAndInsightsPosts } from "@/data/guides-and-insights"
 
-type BlogPost = (typeof blogPosts)[number]
+type InsightPost = (typeof guidesAndInsightsPosts)[number]
 
 type SortOption = "latest" | "title" | "shortest"
 
@@ -19,9 +19,9 @@ const sortLabels: Record<SortOption, string> = {
   shortest: "Shortest read"
 }
 
-const minutes = (post: BlogPost) => Number.parseInt(post.readingTime, 10)
+const minutes = (post: InsightPost) => Number.parseInt(post.readingTime, 10)
 
-export function BlogListing ({ posts }: { posts: readonly BlogPost[] }) {
+export function GuidesAndInsightsListing ({ posts }: { posts: readonly InsightPost[] }) {
   const [query, setQuery] = useState("")
   const [sort, setSort] = useState<SortOption>("latest")
 
@@ -44,7 +44,7 @@ export function BlogListing ({ posts }: { posts: readonly BlogPost[] }) {
           <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary">
             A LITTLE LOCAL KNOWLEDGE
           </p>
-          <h1 id="blog-title" className="mt-2.5 font-heading text-title font-semibold text-foreground">
+          <h1 id="guides-and-insights-title" className="mt-2.5 font-heading text-title font-semibold text-foreground">
             Guides &amp; insights
           </h1>
           <p className="mt-2.5 text-body text-muted-foreground">

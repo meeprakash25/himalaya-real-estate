@@ -21,7 +21,7 @@ export function GuidesAndInsights () {
             </h2>
           </div>
           <Link
-            href="/blog"
+            href="/guides-and-insights"
             className={buttonVariants({
               variant: "outline",
               size: "lg",

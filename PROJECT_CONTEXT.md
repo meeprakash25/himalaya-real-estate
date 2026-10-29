@@ -16,7 +16,7 @@ Himalaya Real Estate (HRE) is a Next.js property listings and search site focuse
 - `/` homepage
 - `/properties` listings with filters, sort, and list/grid views
 - `/properties/[id]` property detail (IDs from `data/properties.ts`; unknown IDs call `notFound()`)
-- `/login`, `/signup`, `/blog`, `/help`
+- `/login`, `/signup`, `/guides-and-insights`, `/help`
 
 ## Current Status
 

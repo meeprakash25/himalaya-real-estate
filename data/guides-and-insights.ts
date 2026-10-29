@@ -1,7 +1,7 @@
 import { guides } from "@/data/guides-footer"
 
-export const blogPosts = [
-  ...guides.map((guide) => ({ ...guide, href: `/${guide.href}` })),
+export const guidesAndInsightsPosts = [
+  ...guides,
   {
     id: "ownership-documents",
     image: "/images/guide-land-ownership.jpg",
