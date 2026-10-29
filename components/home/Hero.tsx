@@ -106,8 +106,7 @@ export function Hero () {
   return (
     <section className="bg-accent py-8 md:py-10" aria-labelledby="hero-title">
       <Container>
-        <div
-          className="grid items-center gap-8 lg:grid-cols-[minmax(0,580px)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(0,600px)_minmax(0,620px)] xl:gap-5">
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,580px)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(0,600px)_minmax(0,620px)] xl:gap-5">
           <div className="flex flex-col items-start">
             <p className="flex items-center gap-2 text-label leading-[13px] font-bold tracking-[0.08em] text-primary">
               <span aria-hidden="true" className="h-0.5 w-5 bg-primary" />
@@ -136,8 +135,7 @@ export function Hero () {
             </ul>
           </div>
 
-          <figure
-            className="relative aspect-31/21 overflow-hidden rounded-panel lg:aspect-auto lg:h-105">
+          <figure className="relative aspect-31/21 overflow-hidden rounded-panel lg:aspect-auto lg:h-105">
             <Image
               src="/images/hero-home.jpg"
               alt="A modern home surrounded by greenery in Nepal"
@@ -192,8 +190,7 @@ export function Hero () {
             <p className="text-xs text-muted-foreground">A new beginning starts with a search.</p>
           </div>
 
-          <div
-            className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-[repeat(3,minmax(0,1fr))_196px]">
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-[repeat(3,minmax(0,1fr))_196px]">
             <SearchField
               id="location"
               label="LOCATION"
@@ -212,10 +209,23 @@ export function Hero () {
               value={homeType}
               onChange={setHomeType}
             />
-            <SearchField id="budget" label="BUDGET" placeholder="Any budget" options={budgetRanges} icon="budget" value={budget} onChange={setBudget} />
+            <SearchField
+              id="budget"
+              label="BUDGET"
+              placeholder="Any budget"
+              options={budgetRanges}
+              icon="budget"
+              value={budget}
+              onChange={setBudget}
+            />
             <Link
-              href={propertiesHref({ transaction, location: location ?? undefined, type: homeType ?? undefined, budget: normalizeBudgetFilter(budget ?? "any") })}
-              className="inline-flex h-[50px] items-center justify-center gap-2 self-center rounded-control bg-primary px-5 text-sm font-semibold text-on-primary hover:bg-primary-dark focus-visible:outline-offset-2">
+              href={propertiesHref({
+                transaction,
+                location: location ?? undefined,
+                type: homeType ?? undefined,
+                budget: normalizeBudgetFilter(budget ?? "any"),
+              })}
+              className="inline-flex min-h-[58px] items-center justify-center gap-2 self-center rounded-control bg-primary px-5 text-sm font-semibold text-on-primary hover:bg-primary-dark focus-visible:outline-offset-2">
               Search properties
               <svg
                 aria-hidden="true"
@@ -236,16 +246,21 @@ export function Hero () {
           {popularSearches.map((search) => (
             <a
               key={search}
-              href={propertiesHref(search.toLowerCase().includes("rent")
-                ? { transaction: "rent", location: "Bhaisepati" }
-                : search.toLowerCase().includes("land")
-                  ? { type: "Land", location: "Kathmandu" }
-                  : search.toLowerCase().includes("apartment")
-                    ? { type: "Apartment" }
-                    : { type: "House", location: "Lalitpur" })}
+              href={propertiesHref(
+                search.toLowerCase().includes("rent") ? { transaction: "rent", location: "Bhaisepati" }
+                : search.toLowerCase().includes("land") ? { type: "Land", location: "Kathmandu" }
+                : search.toLowerCase().includes("apartment") ? { type: "Apartment" }
+                : { type: "House", location: "Lalitpur" }
+              )}
               className="inline-flex min-h-[29px] items-center gap-2 rounded-full border border-border-soft px-3 text-[11px] leading-[13px] text-foreground transition-colors hover:border-primary hover:text-primary">
               {search}
-              <svg aria-hidden="true" viewBox="0 0 12 12" className="size-3 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.2">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 12 12"
+                className="size-3 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.2">
                 <path d="M8.5 8.5v-5H3.5m5 0-5 5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
