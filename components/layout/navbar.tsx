@@ -54,7 +54,7 @@ export function Navbar () {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-0 sm:gap-4">
+        <div className="flex items-center gap-0 xl:gap-4">
           <div className="hidden shrink-0 items-center gap-6 xl:flex">
             <Link
               href="/login"
