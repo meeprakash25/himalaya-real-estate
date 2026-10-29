@@ -28,7 +28,15 @@ export function Navbar () {
           href="/"
           aria-label="Himalaya Real Etate home"
           className="flex shrink-0 items-center gap-2 focus-visible:rounded-control">
-          <Image src="/hre.png" alt="" width={600} height={140} aria-hidden="true" className="h-auto w-[190px] dark:brightness-0 dark:invert" priority />
+          <Image
+            src="/hre.png"
+            alt=""
+            width={600}
+            height={140}
+            aria-hidden="true"
+            className="h-auto w-[190px] dark:brightness-0 dark:invert"
+            priority
+          />
         </Link>
 
         <nav aria-label="Main navigation" className="hidden xl:block">
@@ -47,7 +55,6 @@ export function Navbar () {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-6 xl:flex">
-          <ModeToggle />
           <Link
             href="/login"
             className="rounded-control text-sm font-semibold text-foreground transition-colors hover:text-primary">
@@ -68,26 +75,29 @@ export function Navbar () {
           </Link>
         </div>
 
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon"
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-navigation"
-          onClick={() => setMenuOpen((open) => !open)}
-          className="size-11 rounded-control text-foreground hover:bg-secondary xl:hidden">
-          <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
-          <span aria-hidden="true" className="flex w-5 flex-col gap-1.5">
-            <span
-              className={`h-0.5 w-full bg-current transition-transform ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
-            />
-            <span className={`h-0.5 w-full bg-current transition-opacity ${menuOpen ? "opacity-0" : ""}`} />
-            <span
-              className={`h-0.5 w-full bg-current transition-transform ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
-            />
-          </span>
-        </Button>
+        <div className="flex items-center">
+          <ModeToggle />
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMenuOpen((open) => !open)}
+            className="size-11 rounded-control text-foreground hover:bg-secondary xl:hidden">
+            <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
+            <span aria-hidden="true" className="flex w-5 flex-col gap-1.5">
+              <span
+                className={`h-0.5 w-full bg-current transition-transform ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
+              />
+              <span className={`h-0.5 w-full bg-current transition-opacity ${menuOpen ? "opacity-0" : ""}`} />
+              <span
+                className={`h-0.5 w-full bg-current transition-transform ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
+              />
+            </span>
+          </Button>
+        </div>
       </Container>
 
       <nav
