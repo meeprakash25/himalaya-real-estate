@@ -54,7 +54,7 @@ export function Navbar () {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-0 xl:gap-4">
+        <div className="flex items-center gap-1 xl:gap-4">
           <div className="hidden shrink-0 items-center gap-6 xl:flex">
             <Link
               href="/login"
@@ -84,7 +84,7 @@ export function Navbar () {
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((open) => !open)}
-            className="size-11 rounded-control text-foreground hover:bg-secondary xl:hidden">
+            className="size-9 rounded-control text-foreground hover:bg-secondary xl:hidden">
             <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
             <span aria-hidden="true" className="flex w-5 flex-col gap-1.5">
               <span

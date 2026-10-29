@@ -106,7 +106,7 @@ export function Hero () {
   return (
     <section className="bg-accent py-8 md:py-10" aria-labelledby="hero-title">
       <Container>
-        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,580px)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(0,600px)_minmax(0,620px)] xl:gap-5">
+        <div className="grid items-center justify-between gap-8 lg:grid-cols-[minmax(0,580px)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(0,600px)_minmax(0,620px)] xl:gap-5">
           <div className="flex flex-col items-start">
             <p className="flex items-center gap-2 text-label leading-[13px] font-bold tracking-[0.08em] text-primary">
               <span aria-hidden="true" className="h-0.5 w-5 bg-primary" />
