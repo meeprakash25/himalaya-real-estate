@@ -10,7 +10,7 @@ export function AboutCta ({ content }: { content: AboutCtaContent }) {
       <Container>
         <div className="grid gap-8 rounded-panel border border-border bg-footer-background p-6 sm:p-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-12 lg:p-12">
           <div className="flex flex-col items-start">
-            <SectionEyebrow inverse>{content.eyebrow}</SectionEyebrow>
+            <SectionEyebrow>{content.eyebrow}</SectionEyebrow>
             <h2
               id="about-cta-title"
               className="mt-5 max-w-2xl font-heading text-3xl leading-tight font-semibold text-footer-foreground sm:text-promo-title">

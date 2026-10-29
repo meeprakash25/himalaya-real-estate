@@ -7,7 +7,7 @@ import type { StartSearchContent } from "@/data/about"
 
 export function StartSearchSection ({ content }: { content: StartSearchContent }) {
   return (
-    <section className="bg-background py-16 sm:py-20" aria-labelledby="start-search-title">
+    <section className="bg-background py-16 sm:py-20" id="start-search-section" aria-labelledby="start-search-title">
       <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,460px)] lg:items-start lg:gap-16">
         <div className="flex flex-col items-start">
           <SectionEyebrow>{content.eyebrow}</SectionEyebrow>

@@ -148,21 +148,23 @@ export const planSection: PlanSectionContent = {
       title: "Begin with what daily life requires",
       description:
         "Decide which areas you want to be close to, how much room you need, and which features are essential rather than nice to have.",
-      link: { label: "Set your search criteria", href: "/properties" }
+      link: { label: "Set your search criteria", href: "#start-search-section" },
     },
     {
       number: "02",
       title: "Review the listing as a whole",
       description:
-        "Consider the price, location, and property details together. Confirm what is included and raise open questions before going any further."
+        "Consider the price, location, and property details together. Confirm what is included and raise open questions before going any further.",
+      link: { label: "Set your search criteria", href: "#start-search-section" },
     },
     {
       number: "03",
       title: "Compare your shortlist, then visit",
       description:
-        "Line up your favourite homes side by side, then arrange an in-person visit to each one before you make a decision."
-    }
-  ]
+        "Line up your favourite homes side by side, then arrange an in-person visit to each one before you make a decision.",
+      link: { label: "Find an agent", href: "/contact-us" },
+    },
+  ],
 }
 
 export const experienceSection: ExperienceSectionContent = {
@@ -217,5 +219,5 @@ export const aboutCta: AboutCtaContent = {
   primaryLabel: "Explore properties",
   primaryHref: "/properties",
   secondaryLabel: "List your property",
-  secondaryHref: "/signup"
+  secondaryHref: "/sell"
 }
