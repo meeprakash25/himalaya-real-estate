@@ -78,7 +78,7 @@ export function FeaturedProperties () {
           </div>
 
           <CarouselContent className="mt-8 -ml-5 xl:mt-7 xl:-ml-6">
-            {properties.map((property, index) => (
+            {properties.slice(0, 6).map((property, index) => (
               <CarouselItem
                 key={property.id}
                 aria-label={`${index + 1} of ${properties.length}`}
