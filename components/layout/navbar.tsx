@@ -54,28 +54,27 @@ export function Navbar () {
           </ul>
         </nav>
 
-        <div className="hidden shrink-0 items-center gap-6 xl:flex">
-          <Link
-            href="/login"
-            className="rounded-control text-sm font-semibold text-foreground transition-colors hover:text-primary">
-            Join
-          </Link>
-          <Link
-            href="/signup"
-            className={buttonVariants({
-              variant: "default",
-              size: "lg",
-              className:
-                "h-11 gap-3 rounded-control bg-primary px-4.5 text-sm font-semibold text-on-primary hover:bg-primary-dark",
-            })}>
-            List your property
-            <span aria-hidden="true" className="text-lg leading-none">
-              +
-            </span>
-          </Link>
-        </div>
-
-        <div className="flex items-center">
+        <div className="flex items-center gap-4">
+          <div className="hidden shrink-0 items-center gap-6 xl:flex">
+            <Link
+              href="/login"
+              className="rounded-control text-sm font-semibold text-foreground transition-colors hover:text-primary">
+              Join
+            </Link>
+            <Link
+              href="/signup"
+              className={buttonVariants({
+                variant: "default",
+                size: "lg",
+                className:
+                  "h-11 gap-3 rounded-control bg-primary px-4.5 text-sm font-semibold text-on-primary hover:bg-primary-dark",
+              })}>
+              List your property
+              <span aria-hidden="true" className="text-lg leading-none">
+                +
+              </span>
+            </Link>
+          </div>
           <ModeToggle />
           <Button
             type="button"
