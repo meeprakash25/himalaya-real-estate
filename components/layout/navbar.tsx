@@ -59,7 +59,7 @@ export function Navbar () {
             <Link
               href="/login"
               className="rounded-control text-sm font-semibold text-foreground transition-colors hover:text-primary">
-              Join
+              Login
             </Link>
             <Link
               href="/sell"

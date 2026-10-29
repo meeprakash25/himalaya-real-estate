@@ -41,8 +41,8 @@ export const footerLinkGroups = [
       { label: "Buy a property", href: "/properties?transaction=buy" },
       { label: "Rent a property", href: "/properties?transaction=rent" },
       { label: "Sell with Himalaya Real Etate", href: "/contact-us" },
-      { label: "List your property", href: "/signup" }
-    ]
+      { label: "List your property", href: "/sell" },
+    ],
   },
   {
     title: "Popular locations",
@@ -52,26 +52,26 @@ export const footerLinkGroups = [
       { label: "Budhanilakantha", href: "/properties?location=Budhanilakantha" },
       { label: "Mahalaxmi", href: "/properties?location=Mahalaxmi" },
       { label: "Chandragiri", href: "/properties?location=Chandragiri" },
-      { label: "Godawari", href: "/properties?location=Godawari" }
-    ]
+      { label: "Godawari", href: "/properties?location=Godawari" },
+    ],
   },
   {
     title: "Resources",
     links: [
       { label: "Home-buying guide", href: "/blog" },
       { label: "EMI Calculator", href: "/calculator" },
-      { label: "Construction Calculator", href: "#" },
-      { label: "Area Converter", href: "#" },
-      { label: "Blog & insights", href: "/blog" }
-    ]
+      { label: "Construction Calculator", href: "/calculator" },
+      { label: "Area Converter", href: "/calculator" },
+      { label: "Blog & insights", href: "/blog" },
+    ],
   },
   {
     title: "Himalaya Real Etate",
     links: [
       { label: "About us", href: "/about-us" },
-      { label: "Help centre", href: "/help" },
+      { label: "Help centre", href: "/contact-us" },
       { label: "Contact us", href: "/contact-us" },
-      { label: "Join Himalaya Real Etate", href: "/signup" }
-    ]
-  }
+      { label: "Join Himalaya Real Etate", href: "/signup" },
+    ],
+  },
 ] as const
