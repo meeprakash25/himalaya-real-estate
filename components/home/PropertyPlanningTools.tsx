@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { Container } from "@/components/layout/container"
 import { Card } from "@/components/ui/card"
 import { planningTools } from "@/data/planning-tools"
@@ -67,10 +69,18 @@ export function PropertyPlanningTools () {
                 <p className="mt-2 min-h-[46px] text-body-sm text-muted-foreground">{tool.description}</p>
               </div>
 
-              <div className={`mt-auto flex items-center gap-1.5 pt-4.5 text-tool-action font-semibold ${tool.tone === "sand" ? "text-muted-foreground" : "text-primary"}`}>
-                <span>{tool.action}</span>
-                {tool.tone !== "sand" && <ArrowRightIcon />}
-              </div>
+              {!("href" in tool) ? (
+                <div className="mt-auto flex items-center gap-1.5 pt-4.5 text-tool-action font-semibold text-muted-foreground">
+                  <span>{tool.action}</span>
+                </div>
+              ) : (
+                <Link
+                  href={tool.href}
+                  className="mt-auto flex items-center gap-1.5 pt-4.5 text-tool-action font-semibold text-primary transition-colors hover:text-primary-dark">
+                  <span>{tool.action}</span>
+                  <ArrowRightIcon />
+                </Link>
+              )}
             </Card>
           ))}
         </div>
