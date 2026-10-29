@@ -62,7 +62,7 @@ export function Navbar () {
               Join
             </Link>
             <Link
-              href="/signup"
+              href="/sell"
               className={buttonVariants({
                 variant: "default",
                 size: "lg",
