@@ -121,7 +121,7 @@ export function Navbar () {
             href="/login"
             onClick={() => setMenuOpen(false)}
             className="rounded-control p-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary hover:text-primary">
-            Join
+            Login
           </Link>
           <Link
             href="/signup"
