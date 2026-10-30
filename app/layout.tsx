@@ -10,7 +10,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Himalaya Real Etate | Find your place",
+  title: "Himalaya Real Estate | Find your place",
   description: "Discover verified homes, land, and commercial spaces across Nepal."
 }
 
