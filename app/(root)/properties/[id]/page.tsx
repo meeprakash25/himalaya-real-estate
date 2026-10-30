@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
 
-import { PropertyDetailSkeleton } from "@/components/property/PropertyDetailSkeleton"
+import { PropertyDetail } from "@/components/property/PropertyDetail"
+import { PropertyDetailLoadingSkeleton } from "@/components/property/PropertyDetailLoadingSkeleton"
 import { properties } from "@/data/properties"
 
 interface PropertyPageProps {
@@ -33,7 +34,7 @@ export async function generateMetadata ({ params }: PropertyPageProps): Promise<
 
 export default function PropertyPage ({ params }: PropertyPageProps) {
   return (
-    <Suspense fallback={<main id="main-content" className="min-h-96 flex-1 bg-background" aria-busy="true" />}>
+    <Suspense fallback={<PropertyDetailLoadingSkeleton />}>
       <PropertyPageContent params={params} />
     </Suspense>
   )
@@ -47,5 +48,5 @@ async function PropertyPageContent ({ params }: PropertyPageProps) {
 
   const similarProperties = properties.filter((item) => item.id !== property.id).slice(0, 3)
 
-  return <PropertyDetailSkeleton property={property} similarProperties={similarProperties} />
+  return <PropertyDetail property={property} similarProperties={similarProperties} />
 }
