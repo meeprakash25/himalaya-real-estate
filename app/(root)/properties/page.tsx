@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Suspense } from "react"
 
 import { PropertyListing } from "@/components/property/PropertyListing"
+import { PropertyListingSkeleton } from "@/components/property/PropertyListingSkeleton"
 import type { PropertySearchFilters } from "@/data/property-search"
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ type PropertiesPageProps = {
 
 export default function PropertiesPage ({ searchParams }: PropertiesPageProps) {
   return (
-    <Suspense fallback={<main id="main-content" className="min-h-96 flex-1 bg-background" aria-busy="true" />}>
+    <Suspense fallback={<PropertyListingSkeleton />}>
       <PropertiesPageContent searchParams={searchParams} />
     </Suspense>
   )
