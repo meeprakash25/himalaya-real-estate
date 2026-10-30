@@ -91,10 +91,18 @@ function PropertyCard ({ property, grid }: { property: Property, grid: boolean }
 
 function ListingSelect ({ label, value, onChange, options, className = "" }: { label: string, value: string, onChange: (value: string) => void, options: { value: string, label: string }[], className?: string }) {
   return (
-    <label className={`flex min-w-0 flex-col gap-1 text-[10px] font-semibold tracking-wide text-muted-foreground dark:text-footer-muted ${className}`}>
+    <label
+      className={`flex min-w-0 flex-col gap-1 text-[10px] font-semibold tracking-wide text-muted-foreground dark:text-footer-muted ${className}`}>
       {label}
-      <select value={value} onChange={(event) => onChange(event.target.value)} className="h-9 w-full min-w-0 rounded-control border border-border bg-transparent px-2 text-xs font-medium tracking-normal text-foreground dark:border-footer-divider/50 dark:text-footer-foreground outline-none!">
-        {options.map((option) => <option key={option.value} value={option.value} className="bg-card text-foreground">{option.label}</option>)}
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="h-9 w-full min-w-0 rounded-control border border-border bg-transparent px-2 text-xs font-medium tracking-normal text-foreground outline-none! dark:border-footer-divider/50 dark:text-footer-foreground">
+        {options.map((option) => (
+          <option key={option.value} value={option.value} className="bg-card text-foreground">
+            {option.label}
+          </option>
+        ))}
       </select>
     </label>
   )
@@ -166,104 +174,359 @@ export function PropertyListing ({ initialFilters }: { initialFilters: PropertyS
 
   return (
     <main id="main-content" className="flex-1 bg-background">
-      <section aria-label="Property search filters" className="border-b border-border bg-primary/10 text-foreground dark:border-transparent dark:bg-footer-background dark:text-footer-foreground">
+      <section
+        aria-label="Property search filters"
+        className="border-b border-border bg-primary/10 text-foreground dark:border-transparent dark:bg-footer-background dark:text-footer-foreground">
         <Container className="py-3">
           <div className="grid gap-2 sm:grid-cols-[auto_minmax(150px,1fr)_repeat(3,minmax(120px,0.6fr))_auto] sm:items-end">
             <div className="flex items-center gap-1 rounded-control bg-muted p-1 text-xs font-semibold dark:bg-surface/10">
-              <button type="button" aria-pressed={transaction === "buy"} onClick={() => setTransaction("buy")} className={`rounded-sm px-3 py-2 ${transaction === "buy" ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted dark:text-footer-foreground dark:hover:bg-surface/10"}`}>Buy</button>
-              <button type="button" aria-pressed={transaction === "rent"} onClick={() => setTransaction("rent")} className={`rounded-sm px-3 py-2 ${transaction === "rent" ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted dark:text-footer-foreground dark:hover:bg-surface/10"}`}>Rent</button>
+              <button
+                type="button"
+                aria-pressed={transaction === "buy"}
+                onClick={() => setTransaction("buy")}
+                className={`rounded-sm px-3 py-2 ${transaction === "buy" ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted dark:text-footer-foreground dark:hover:bg-surface/10"}`}>
+                Buy
+              </button>
+              <button
+                type="button"
+                aria-pressed={transaction === "rent"}
+                onClick={() => setTransaction("rent")}
+                className={`rounded-sm px-3 py-2 ${transaction === "rent" ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted dark:text-footer-foreground dark:hover:bg-surface/10"}`}>
+                Rent
+              </button>
             </div>
             <label className="relative flex h-10 min-w-0 items-center gap-2 rounded-control bg-surface px-3 text-foreground">
               <Search aria-hidden="true" className="size-4 shrink-0 text-muted-foreground" />
               <span className="sr-only">Search city, area, or keyword</span>
-              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search city, area, or keyword" className="min-w-0 flex-1 bg-transparent text-xs outline-none! placeholder:text-muted-foreground" />
-              {query && <button type="button" onClick={() => setQuery("")} aria-label="Clear search" className="text-muted-foreground hover:text-foreground">×</button>}
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search city, area, or keyword"
+                className="min-w-0 flex-1 bg-transparent text-xs outline-none! placeholder:text-muted-foreground"
+              />
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => setQuery("")}
+                  aria-label="Clear search"
+                  className="text-muted-foreground hover:text-foreground">
+                  ×
+                </button>
+              )}
             </label>
-            <ListingSelect label="LOCATION" value={location} onChange={setLocation} options={[{ value: "all", label: "All locations" }, ...locationOptions.map((item) => ({ value: item, label: item }))]} />
+            <ListingSelect
+              label="LOCATION"
+              value={location}
+              onChange={setLocation}
+              options={[
+                { value: "all", label: "All locations" },
+                ...locationOptions.map((item) => ({ value: item, label: item })),
+              ]}
+            />
             <ListingSelect label="BUDGET" value={budget} onChange={setBudget} options={listingBudgetOptions} />
-            <ListingSelect label="PROPERTY TYPE" value={type} onChange={setType} options={[{ value: "all", label: "All types" }, ...typeOptions.map((item) => ({ value: item, label: item }))]} />
-            <button type="button" onClick={() => { setQuery(""); setLocation("all"); setType("all"); setBudget("any"); setBedrooms(""); }} className="inline-flex h-10 items-center justify-center gap-2 rounded-control bg-primary px-4 text-xs font-semibold text-primary-foreground hover:bg-primary/90"><SlidersHorizontal aria-hidden="true" className="size-4" /> Reset Filters</button>
+            <ListingSelect
+              label="PROPERTY TYPE"
+              value={type}
+              onChange={setType}
+              options={[
+                { value: "all", label: "All types" },
+                ...typeOptions.map((item) => ({ value: item, label: item })),
+              ]}
+            />
+            <button
+              type="button"
+              onClick={() => {
+                setQuery("")
+                setLocation("all")
+                setType("all")
+                setBudget("any")
+                setBedrooms("")
+              }}
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-control bg-primary px-4 text-xs font-semibold text-primary-foreground hover:bg-primary/90">
+              <SlidersHorizontal aria-hidden="true" className="size-4" /> Reset Filters
+            </button>
           </div>
         </Container>
       </section>
 
       <Container className="py-5 sm:py-7">
-        <nav aria-label="Breadcrumb" className="mb-3 text-xs text-muted-foreground"><Link href="/" className="hover:text-primary">Home</Link><span aria-hidden="true" className="mx-2">›</span><span className="text-foreground">Properties for {transaction === "buy" ? "Sale" : "Rent"}</span></nav>
+        <nav aria-label="Breadcrumb" className="mb-3 text-xs text-muted-foreground">
+          <Link href="/" className="hover:text-primary">
+            Home
+          </Link>
+          <span aria-hidden="true" className="mx-2">
+            ›
+          </span>
+          <span className="text-foreground">Properties for {transaction === "buy" ? "Sale" : "Rent"}</span>
+        </nav>
         <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_17rem] xl:gap-7">
           <div className="min-w-0">
             <section id="property-results" aria-labelledby="results-title">
               <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <h1 id="results-title" className="font-heading text-xl font-semibold text-foreground sm:text-2xl">Properties for {transaction === "buy" ? "Sale" : "Rent"}</h1>
-                  <p className="mt-1 text-xs text-muted-foreground">{visibleProperties.length ? `Showing ${visibleProperties.length} available ${visibleProperties.length === 1 ? "listing" : "listings"}` : "No listings match these filters"}</p>
+                  <h1 id="results-title" className="font-heading text-xl font-semibold text-foreground sm:text-2xl">
+                    Properties for {transaction === "buy" ? "Sale" : "Rent"}
+                  </h1>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    {visibleProperties.length ?
+                      `Showing ${visibleProperties.length} available ${visibleProperties.length === 1 ? "listing" : "listings"}`
+                    : "No listings match these filters"}
+                  </p>
                 </div>
                 <div className="flex items-center justify-between gap-3 sm:justify-end">
-                  {hasFilters && <button type="button" onClick={clearFilters} className="text-xs font-medium text-primary hover:underline">Clear filters</button>}
-                  <label className="flex items-center gap-2 text-xs text-muted-foreground">Sort by
-                    <select value={sort} onChange={(event) => setSort(event.target.value)} className="h-9 rounded-control border border-border bg-card px-2 text-xs font-medium text-foreground outline-none!">
-                      {listingSortOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                  {hasFilters && (
+                    <button
+                      type="button"
+                      onClick={clearFilters}
+                      className="text-xs font-medium text-primary hover:underline">
+                      Clear filters
+                    </button>
+                  )}
+                  <label className="flex items-center gap-2 text-xs text-muted-foreground">
+                    Sort by
+                    <select
+                      value={sort}
+                      onChange={(event) => setSort(event.target.value)}
+                      className="h-9 rounded-control border border-border bg-card px-2 text-xs font-medium text-foreground outline-none!">
+                      {listingSortOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
                     </select>
                   </label>
-                  <div className="hidden items-center rounded-control border border-border p-0.5 sm:flex" role="group" aria-label="Results layout">
-                    <button type="button" aria-label="List view" aria-pressed={view === "list"} onClick={() => setView("list")} className={`rounded-sm p-1.5 ${view === "list" ? "bg-secondary text-primary" : "text-muted-foreground hover:text-foreground"}`}><List aria-hidden="true" className="size-4" /></button>
-                    <button type="button" aria-label="Grid view" aria-pressed={view === "grid"} onClick={() => setView("grid")} className={`rounded-sm p-1.5 ${view === "grid" ? "bg-secondary text-primary" : "text-muted-foreground hover:text-foreground"}`}><Grid2X2 aria-hidden="true" className="size-4" /></button>
+                  <div
+                    className="hidden items-center rounded-control border border-border p-0.5 sm:flex"
+                    role="group"
+                    aria-label="Results layout">
+                    <button
+                      type="button"
+                      aria-label="List view"
+                      aria-pressed={view === "list"}
+                      onClick={() => setView("list")}
+                      className={`rounded-sm p-1.5 ${view === "list" ? "bg-secondary text-primary" : "text-muted-foreground hover:text-foreground"}`}>
+                      <List aria-hidden="true" className="size-4" />
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Grid view"
+                      aria-pressed={view === "grid"}
+                      onClick={() => setView("grid")}
+                      className={`rounded-sm p-1.5 ${view === "grid" ? "bg-secondary text-primary" : "text-muted-foreground hover:text-foreground"}`}>
+                      <Grid2X2 aria-hidden="true" className="size-4" />
+                    </button>
                   </div>
                 </div>
               </div>
 
               <div aria-busy={isLoading} className={view === "grid" ? "grid gap-4 sm:grid-cols-2" : "space-y-3"}>
-                {isLoading
-                  ? Array.from({ length: 3 }, (_, index) => <PropertyCardSkeleton key={index} grid={view === "grid"} />)
-                  : visibleProperties.map((property) => <PropertyCard key={property.id} property={property} grid={view === "grid"} />)}
+                {isLoading ?
+                  Array.from({ length: 3 }, (_, index) => <PropertyCardSkeleton key={index} grid={view === "grid"} />)
+                : visibleProperties.map((property) => (
+                    <PropertyCard key={property.id} property={property} grid={view === "grid"} />
+                  ))
+                }
               </div>
-              {visibleProperties.length === 0 && <div className="mt-4 rounded-card border border-dashed border-border bg-card px-5 py-10 text-center"><p className="font-medium text-foreground">No properties found</p><p className="mt-1 text-sm text-muted-foreground">Try adjusting your location, budget, or keyword.</p><button type="button" onClick={clearFilters} className="mt-4 text-sm font-semibold text-primary hover:underline">Reset filters</button></div>}
+              {visibleProperties.length === 0 && (
+                <div className="mt-4 rounded-card border border-dashed border-border bg-card px-5 py-10 text-center">
+                  <p className="font-medium text-foreground">No properties found</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Try adjusting your location, budget, or keyword.</p>
+                  <button
+                    type="button"
+                    onClick={clearFilters}
+                    className="mt-4 text-sm font-semibold text-primary hover:underline">
+                    Reset filters
+                  </button>
+                </div>
+              )}
             </section>
 
             <section className="mt-9" aria-labelledby="area-snapshots-title">
-              <h2 id="area-snapshots-title" className="font-heading text-lg font-semibold text-foreground">Property snapshots in popular areas</h2>
+              <h2 id="area-snapshots-title" className="font-heading text-lg font-semibold text-foreground">
+                Property snapshots in popular areas
+              </h2>
               <p className="mt-1 text-xs text-muted-foreground">A quick look at the listings in this collection.</p>
               <div className="mt-4 overflow-x-auto rounded-card border border-border bg-card">
                 <table className="w-full min-w-[480px] text-left text-xs">
-                  <thead className="border-b border-border text-[10px] font-semibold tracking-wide text-muted-foreground"><tr><th className="px-4 py-3">AREA</th><th className="px-4 py-3">LISTINGS</th><th className="px-4 py-3 text-right">STARTING PRICE</th></tr></thead>
+                  <thead className="border-b border-border text-[10px] font-semibold tracking-wide text-muted-foreground">
+                    <tr>
+                      <th className="px-4 py-3">AREA</th>
+                      <th className="px-4 py-3">LISTINGS</th>
+                      <th className="px-4 py-3 text-right">STARTING PRICE</th>
+                    </tr>
+                  </thead>
                   <tbody className="divide-y divide-border">
-                    {areaSnapshots.map(([area, listings]) => <tr key={area}><td className="px-4 py-3 text-foreground"><button type="button" onClick={() => applySearch(area)} className="inline-flex items-center text-left hover:text-primary"><MapPin aria-hidden="true" className="mr-1.5 inline size-3.5 text-muted-foreground" />{area}</button></td><td className="px-4 py-3 text-muted-foreground">{listings.length} {listings.length === 1 ? "listing" : "listings"}</td><td className="px-4 py-3 text-right text-foreground">from {listings.slice().sort((left, right) => priceValue(left) - priceValue(right))[0].price}</td></tr>)}
+                    {areaSnapshots.map(([area, listings]) => (
+                      <tr key={area}>
+                        <td className="px-4 py-3 text-foreground">
+                          <button
+                            type="button"
+                            onClick={() => applySearch(area)}
+                            className="inline-flex items-center text-left hover:text-primary">
+                            <MapPin aria-hidden="true" className="mr-1.5 inline size-3.5 text-muted-foreground" />
+                            {area}
+                          </button>
+                        </td>
+                        <td className="px-4 py-3 text-muted-foreground">
+                          {listings.length} {listings.length === 1 ? "listing" : "listings"}
+                        </td>
+                        <td className="px-4 py-3 text-right text-foreground">
+                          from {listings.slice().sort((left, right) => priceValue(left) - priceValue(right))[0].price}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
             </section>
 
             <section className="mt-9" aria-labelledby="explore-title">
-              <h2 id="explore-title" className="font-heading text-lg font-semibold text-foreground">Keep exploring</h2>
+              <h2 id="explore-title" className="font-heading text-lg font-semibold text-foreground">
+                Keep exploring
+              </h2>
               <p className="mt-1 text-xs text-muted-foreground">Find your next home with a little more inspiration.</p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 {[
-                  { title: "Properties in popular areas", links: locationOptions.map((item) => ({ label: item, href: propertiesHref({ transaction: "buy", location: item }) })) },
-                  { title: "Browse by type", links: typeOptions.map((item) => ({ label: item, href: propertiesHref({ transaction: "buy", type: item }) })) },
-                  { title: "Browse by budget", links: listingBudgetOptions.slice(1).map((option) => ({ label: option.label, href: propertiesHref({ transaction: "buy", budget: option.value }) })) },
-                  { title: "Land your next home", links: bedroomHomeLinks.map((item) => ({ label: item, onSelect: () => setBedrooms(item.split(" ")[0]) })) }
-                ].map((group) => <div key={group.title} className="rounded-card border border-border bg-card p-4"><h3 className="text-xs font-semibold text-foreground">{group.title}</h3><ul className="mt-3 space-y-2">{group.links.map((item) => <li key={item.label}>{"href" in item ? <Link href={item.href} className="text-left text-xs text-muted-foreground hover:text-primary">{item.label}</Link> : <button type="button" onClick={item.onSelect} className="text-left text-xs text-muted-foreground hover:text-primary">{item.label}</button>}</li>)}</ul></div>)}
+                  {
+                    title: "Properties in popular areas",
+                    links: locationOptions.map((item) => ({
+                      label: item,
+                      href: propertiesHref({ transaction: "buy", location: item }),
+                    })),
+                  },
+                  {
+                    title: "Browse by type",
+                    links: typeOptions.map((item) => ({
+                      label: item,
+                      href: propertiesHref({ transaction: "buy", type: item }),
+                    })),
+                  },
+                  {
+                    title: "Browse by budget",
+                    links: listingBudgetOptions
+                      .slice(1)
+                      .map((option) => ({
+                        label: option.label,
+                        href: propertiesHref({ transaction: "buy", budget: option.value }),
+                      })),
+                  },
+                  {
+                    title: "Land your next home",
+                    links: bedroomHomeLinks.map((item) => ({
+                      label: item,
+                      onSelect: () => setBedrooms(item.split(" ")[0]),
+                    })),
+                  },
+                ].map((group) => (
+                  <div key={group.title} className="rounded-card border border-border bg-card p-4">
+                    <h3 className="text-xs font-semibold text-foreground">{group.title}</h3>
+                    <ul className="mt-3 space-y-2">
+                      {group.links.map((item) => (
+                        <li key={item.label}>
+                          {"href" in item ?
+                            <Link
+                              href={item.href}
+                              className="text-left text-xs text-muted-foreground hover:text-primary">
+                              {item.label}
+                            </Link>
+                          : <button
+                              type="button"
+                              onClick={item.onSelect}
+                              className="text-left text-xs text-muted-foreground hover:text-primary">
+                              {item.label}
+                            </button>
+                          }
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </section>
           </div>
 
           <aside className="space-y-4 xl:sticky xl:top-5">
             <section aria-labelledby="featured-homes-title" className="rounded-card border border-border bg-card p-3.5">
-              <div className="mb-3 flex items-center justify-between"><h2 id="featured-homes-title" className="text-sm font-semibold text-foreground">Featured homes</h2><Link href="#property-results" className="text-[10px] text-muted-foreground hover:text-primary">View all</Link></div>
-              {featuredProperties.slice(0, 1).map((property) => <Link key={property.id} href={`/properties/${property.id}`} className="group block"><div className="relative aspect-[1.7] overflow-hidden rounded-control"><Image src={property.image} alt={property.imageAlt} fill sizes="(min-width: 1280px) 260px, 100vw" className="object-cover transition-transform group-hover:scale-[1.03]" /><span className="absolute bottom-2 left-2 rounded-full bg-surface px-2 py-1 text-[10px] font-semibold text-foreground">{property.price}</span></div><h3 className="mt-2 line-clamp-1 text-xs font-semibold text-foreground group-hover:text-primary">{property.title}</h3><p className="mt-1 line-clamp-1 text-[10px] text-muted-foreground">{property.address}</p></Link>)}
-              <div className="mt-3 space-y-3 border-t border-border pt-3">{featuredProperties.slice(1).map((property) => <Link key={property.id} href={`/properties/${property.id}`} className="flex items-center gap-2.5"><div className="relative size-14 shrink-0 overflow-hidden rounded-control"><Image src={property.image} alt={property.imageAlt} fill sizes="56px" className="object-cover" /></div><div className="min-w-0"><p className="truncate text-xs font-semibold text-foreground">{property.price} · {property.type}</p><p className="mt-1 line-clamp-2 text-[10px] leading-4 text-muted-foreground">{property.title}</p></div></Link>)}</div>
+              <div className="mb-3 flex items-center justify-between">
+                <h2 id="featured-homes-title" className="text-sm font-semibold text-foreground">
+                  Featured homes
+                </h2>
+                <Link href="#property-results" className="text-[10px] text-muted-foreground hover:text-primary">
+                  View all
+                </Link>
+              </div>
+              {featuredProperties.slice(0, 1).map((property) => (
+                <Link key={property.id} href={`/properties/${property.id}`} className="group block">
+                  <div className="relative aspect-[1.7] overflow-hidden rounded-control">
+                    <Image
+                      src={property.image}
+                      alt={property.imageAlt}
+                      fill
+                      sizes="(min-width: 1280px) 260px, 100vw"
+                      className="object-cover transition-transform group-hover:scale-[1.03]"
+                    />
+                    <span className="absolute bottom-2 left-2 rounded-full bg-surface px-2 py-1 text-[10px] font-semibold text-foreground">
+                      {property.price}
+                    </span>
+                  </div>
+                  <h3 className="mt-2 line-clamp-1 text-xs font-semibold text-foreground group-hover:text-primary">
+                    {property.title}
+                  </h3>
+                  <p className="mt-1 line-clamp-1 text-[10px] text-muted-foreground">{property.address}</p>
+                </Link>
+              ))}
+              <div className="mt-3 space-y-3 border-t border-border pt-3">
+                {featuredProperties.slice(1).map((property) => (
+                  <Link key={property.id} href={`/properties/${property.id}`} className="flex items-center gap-2.5">
+                    <div className="relative size-14 shrink-0 overflow-hidden rounded-control">
+                      <Image src={property.image} alt={property.imageAlt} fill sizes="56px" className="object-cover" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="truncate text-xs font-semibold text-foreground">
+                        {property.price} · {property.type}
+                      </p>
+                      <p className="mt-1 line-clamp-2 text-[10px] leading-4 text-muted-foreground">{property.title}</p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </section>
 
-            <section className="rounded-card bg-footer-background p-4 text-footer-foreground" aria-labelledby="list-property-title">
-              <h2 id="list-property-title" className="font-heading text-sm font-semibold">Sell or rent your property with us, free</h2>
+            <section
+              className="rounded-card bg-footer-background p-4 text-footer-foreground"
+              aria-labelledby="list-property-title">
+              <h2 id="list-property-title" className="font-heading text-sm font-semibold">
+                Sell or rent your property with us, free
+              </h2>
               <p className="mt-1 text-xs leading-5 text-footer-muted">Find genuine buyers and renters easily.</p>
-              <Link href="/signup" className="mt-3 inline-flex min-h-9 w-full items-center justify-center rounded-control bg-primary px-3 text-xs font-semibold text-primary-foreground hover:bg-primary/90">List your property</Link>
+              <Link
+                href="/signup"
+                className="mt-3 inline-flex min-h-9 w-full items-center justify-center rounded-control bg-primary px-3 text-xs font-semibold text-primary-foreground hover:bg-primary/90">
+                List your property
+              </Link>
               <p className="mt-3 text-[10px] font-semibold tracking-wide text-footer-muted">WHY HOMEOWNERS CHOOSE US</p>
-              <ul className="mt-2 space-y-1 text-[10px] text-footer-muted">{homeownerBenefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul>
+              <ul className="mt-2 space-y-1 text-[10px] text-footer-muted">
+                {homeownerBenefits.map((benefit) => (
+                  <li key={benefit}>{benefit}</li>
+                ))}
+              </ul>
             </section>
 
             <section className="rounded-card border border-border bg-card p-4" aria-labelledby="popular-searches-title">
-              <h2 id="popular-searches-title" className="text-sm font-semibold text-foreground">Popular searches</h2>
-              <div className="mt-3 flex flex-wrap gap-2">{listingPopularSearches.map((search) => <button key={search} type="button" onClick={() => applySearch(search.replace(/ for (sale|rent)$/i, ""))} className="rounded-full border border-border px-2.5 py-1.5 text-[10px] text-muted-foreground hover:border-primary hover:text-primary">{search}</button>)}</div>
+              <h2 id="popular-searches-title" className="text-sm font-semibold text-foreground">
+                Popular searches
+              </h2>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {listingPopularSearches.map((search) => (
+                  <button
+                    key={search}
+                    type="button"
+                    onClick={() => applySearch(search.replace(/ for (sale|rent)$/i, ""))}
+                    className="rounded-full border border-border px-2.5 py-1.5 text-[10px] text-muted-foreground hover:border-primary hover:text-primary">
+                    {search}
+                  </button>
+                ))}
+              </div>
             </section>
           </aside>
         </div>
