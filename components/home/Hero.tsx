@@ -106,7 +106,7 @@ export function Hero () {
   return (
     <section className="bg-accent py-8 md:py-10" aria-labelledby="hero-title">
       <Container>
-        <div className="grid items-center justify-between gap-8 lg:grid-cols-[minmax(0,580px)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(0,600px)_minmax(0,620px)] xl:gap-5">
+        <div className="flex flex-wrap items-center justify-between gap-8 md:flex-nowrap xl:gap-5">
           <div className="flex flex-col items-start">
             <p className="flex items-center gap-2 text-label leading-[13px] font-bold tracking-[0.08em] text-primary">
               <span aria-hidden="true" className="h-0.5 w-5 bg-primary" />
@@ -135,14 +135,14 @@ export function Hero () {
             </ul>
           </div>
 
-          <figure className="relative aspect-31/21 overflow-hidden rounded-panel lg:aspect-auto lg:h-105">
+          <figure className="relative aspect-31/21 overflow-hidden rounded-panel sm:w-full md:w-max lg:aspect-auto lg:h-105">
             <Image
               src="/images/hero-home.jpg"
               alt="A modern home surrounded by greenery in Nepal"
               fill
               priority
               sizes="(min-width: 1280px) 620px, (min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
+              className="relative! object-cover"
             />
             <figcaption className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-control bg-surface px-3 py-2 text-[10px] leading-3 font-medium text-foreground">
               <PinIcon className="size-3.5 shrink-0" />A little closer to home.
