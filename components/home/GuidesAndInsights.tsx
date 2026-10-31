@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import { Container } from "@/components/layout/container"
 import { buttonVariants } from "@/components/ui/button"
-import { guides } from "@/data/guides-footer"
+import { guidesAndInsightsPosts } from "@/data/guides-and-insights"
 
 export function GuidesAndInsights () {
   return (
@@ -14,9 +14,7 @@ export function GuidesAndInsights () {
             <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary">
               A LITTLE LOCAL KNOWLEDGE
             </p>
-            <h2
-              id="guides-title"
-              className="mt-2.5 font-heading text-title font-semibold text-foreground">
+            <h2 id="guides-title" className="mt-2.5 font-heading text-title font-semibold text-foreground">
               Make your next move an informed one.
             </h2>
           </div>
@@ -26,7 +24,7 @@ export function GuidesAndInsights () {
               variant: "outline",
               size: "lg",
               className:
-                "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary sm:self-auto"
+                "min-h-[50px] shrink-0 self-start gap-3 rounded-control border-border! bg-transparent px-5 text-sm font-semibold text-primary hover:border-primary! hover:bg-surface/80 hover:text-primary sm:self-auto",
             })}>
             All guides &amp; insights
             <svg
@@ -42,7 +40,7 @@ export function GuidesAndInsights () {
         </header>
 
         <div className="mt-7 grid gap-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-6">
-          {guides.slice(0, 3).map((guide) => (
+          {guidesAndInsightsPosts.slice(0, 3).map((guide) => (
             <article key={guide.id} className="group min-w-0">
               <div className="relative aspect-41/22 overflow-hidden rounded-card">
                 <Image
@@ -61,13 +59,13 @@ export function GuidesAndInsights () {
                   <span className="text-micro leading-3 text-muted-foreground">{guide.readingTime}</span>
                 </div>
                 <h3 className="mt-3 font-heading text-article-title font-semibold text-foreground">
-                  <Link href={guide.href} className="rounded-sm hover:text-primary">
+                  <Link href={`/guides-and-insights/${guide.slug}`} className="rounded-sm hover:text-primary">
                     {guide.title}
                   </Link>
                 </h3>
                 <p className="mt-3 text-body-sm text-muted-foreground">{guide.excerpt}</p>
                 <Link
-                  href={guide.href}
+                  href={`/guides-and-insights/${guide.slug}`}
                   className="mt-3 inline-flex items-center gap-2 text-tool-action font-semibold text-primary hover:text-primary-dark">
                   Read guide
                   <svg

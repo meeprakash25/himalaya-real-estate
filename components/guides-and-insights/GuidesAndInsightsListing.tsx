@@ -7,9 +7,9 @@ import { useMemo, useState } from "react"
 
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import type { guidesAndInsightsPosts } from "@/data/guides-and-insights"
+import type { guidesAndInsightsPosts, GuidePost } from "@/data/guides-and-insights"
 
-type InsightPost = (typeof guidesAndInsightsPosts)[number]
+type InsightPost = GuidePost
 
 type SortOption = "latest" | "title" | "shortest"
 
@@ -41,9 +41,7 @@ export function GuidesAndInsightsListing ({ posts }: { posts: readonly InsightPo
     <>
       <header className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary">
-            A LITTLE LOCAL KNOWLEDGE
-          </p>
+          <p className="text-label leading-[13px] font-bold tracking-[0.08em] text-primary">A LITTLE LOCAL KNOWLEDGE</p>
           <h1 id="guides-and-insights-title" className="mt-2.5 font-heading text-title font-semibold text-foreground">
             Guides &amp; insights
           </h1>
@@ -54,7 +52,10 @@ export function GuidesAndInsightsListing ({ posts }: { posts: readonly InsightPo
 
         <div className="flex flex-col gap-3 sm:flex-row md:shrink-0">
           <div className="relative w-full sm:w-64">
-            <Search aria-hidden="true" className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
+            <Search
+              aria-hidden="true"
+              className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground"
+            />
             <Input
               type="search"
               aria-label="Search guides"
@@ -65,22 +66,25 @@ export function GuidesAndInsightsListing ({ posts }: { posts: readonly InsightPo
             />
           </div>
           <Select value={sort} onValueChange={(value) => setSort(value as SortOption)}>
-            <SelectTrigger aria-label="Sort guides" className="w-full focus-visible:outline-3! data-[size=default]:h-10 sm:w-48">
+            <SelectTrigger
+              aria-label="Sort guides"
+              className="w-full focus-visible:outline-3! data-[size=default]:h-10 sm:w-48">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               {(Object.keys(sortLabels) as SortOption[]).map((option) => (
-                <SelectItem key={option} value={option}>{sortLabels[option]}</SelectItem>
+                <SelectItem key={option} value={option}>
+                  {sortLabels[option]}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
       </header>
 
-      {visiblePosts.length === 0 ? (
+      {visiblePosts.length === 0 ?
         <p className="mt-7 text-body text-muted-foreground">No guides match your search.</p>
-      ) : (
-        <div className="mt-7 grid gap-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-6">
+      : <div className="mt-7 grid gap-8 sm:grid-cols-2 xl:grid-cols-3 xl:gap-6">
           {visiblePosts.map((post, index) => (
             <article key={post.id} className="group min-w-0">
               <div className="relative aspect-41/22 overflow-hidden rounded-card">
@@ -101,12 +105,22 @@ export function GuidesAndInsightsListing ({ posts }: { posts: readonly InsightPo
                   <span className="text-micro leading-3 text-muted-foreground">{post.readingTime}</span>
                 </div>
                 <h2 className="mt-3 font-heading text-article-title font-semibold text-foreground">
-                  <Link href={post.href} className="rounded-sm hover:text-primary">{post.title}</Link>
+                  <Link href={`/guides-and-insights/${post.slug}`} className="rounded-sm hover:text-primary">
+                    {post.title}
+                  </Link>
                 </h2>
                 <p className="mt-3 text-body-sm text-muted-foreground">{post.excerpt}</p>
-                <Link href={post.href} className="mt-3 inline-flex items-center gap-2 text-tool-action font-semibold text-primary hover:text-primary-dark">
+                <Link
+                  href={`/guides-and-insights/${post.slug}`}
+                  className="mt-3 inline-flex items-center gap-2 text-tool-action font-semibold text-primary hover:text-primary-dark">
                   Read guide
-                  <svg aria-hidden="true" viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 16 16"
+                    className="size-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5">
                     <path d="M3 8h10m-4-4 4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </Link>
@@ -114,7 +128,7 @@ export function GuidesAndInsightsListing ({ posts }: { posts: readonly InsightPo
             </article>
           ))}
         </div>
-      )}
+      }
     </>
   )
 }
