@@ -7,7 +7,7 @@ import { useMemo, useState } from "react"
 
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import type { guidesAndInsightsPosts, GuidePost } from "@/data/guides-and-insights"
+import type { GuidePost } from "@/data/guides-and-insights"
 
 type InsightPost = GuidePost
 
